@@ -1,0 +1,1923 @@
+// styleguide:ignore:start
+//////////////////////////////
+// Import Pieces
+//////////////////////////////
+
+
+
+
+@function breakpoint-parse-double($feature, $empty-media, $first) {
+  $parsed: '';
+  $leader: '';
+  // If we're forcing
+  @if not ($empty-media) or not ($first) {
+    $leader: 'and ';
+  }
+
+  $first: nth($feature, 1);
+  $second: nth($feature, 2);
+
+  // If we've got two numbers, we know we need to use the default pair because there are no media queries that has a media feature that is a number
+  @if type-of($first) == 'number' and type-of($second) == 'number' {
+    $parsed: breakpoint-parse-default-pair($first, $second);
+  }
+  // If they are both strings, we send it through the string parser
+  @else if type-of($first) == 'string' and type-of($second) == 'string' {
+    $parsed: breakpoint-parse-double-string($first, $second);
+  }
+  // If it's a string/number pair, we parse it as a normal double
+  @else {
+    $parsed: breakpoint-parse-double-default($first, $second);
+  }
+
+  @return $leader + $parsed;
+}
+// styleguide:ignore:end
+
+
+// Pandora Colors
+//
+// This section describes base colors that are used by pandora components
+//
+// Styleguide 2.0
+//
+
+
+
+// Primary color palette
+//
+// $mx_palette_Primary_50 - Generated color
+// $mx_palette_Primary_100 - Generated color
+// $mx_palette_Primary_200 - Generated color
+// $mx_palette_Primary_300 - Generated color
+// $mx_palette_Primary_400 - Generated color
+// $mx_palette_Primary_500 - Generated color
+// $mx_palette_Primary_600 - Generated color
+// $mx_palette_Primary_700 - Generated color
+// $mx_palette_Primary_800 - Generated color
+// $mx_palette_Primary_900 - Generated color
+// $mx_palette_Primary_A100 - Generated color
+// $mx_palette_Primary_A200 - Generated color
+// $mx_palette_Primary_A400 - Generated color
+// $mx_palette_Primary_A700 - Generated color
+// $mx_palette_Primary_hue-1 - Generated color
+// $mx_palette_Primary_hue-2 - Generated color
+// $mx_palette_Primary_hue-3 - Generated color
+// $mx_palette_Primary_contrastDefaultColor - Generated color
+// $mx_palette_Primary_contrastDarkColors_0 - Generated color
+// $mx_palette_Primary_contrastDarkColors_1 - Generated color
+// $mx_palette_Primary_contrastDarkColors_2 - Generated color
+// $mx_palette_Primary_contrastDarkColors_3 - Generated color
+// $mx_palette_Primary_contrastDarkColors_4 - Generated color
+// $mx_palette_Primary_contrastDarkColors_5 - Generated color
+//
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+//
+// Styleguide 2.1
+//
+
+$mx_palette_Primary_50: #eaedee !default;
+$mx_palette_Primary_100: #c1c8cb !default;
+$mx_palette_Primary_200: #98a3a8 !default;
+$mx_palette_Primary_300: #75848b !default;
+$mx_palette_Primary_400: #52656e !default;
+$mx_palette_Primary_500: #304651 !default;
+$mx_palette_Primary_600: #2a3d47 !default;
+$mx_palette_Primary_700: #24353d !default;
+$mx_palette_Primary_800: #1e2c33 !default;
+$mx_palette_Primary_900: #182329 !default;
+$mx_palette_Primary_A100: #d6dadc !default;
+$mx_palette_Primary_A200: #acb5b9 !default;
+$mx_palette_Primary_A400: #596b74 !default;
+$mx_palette_Primary_A700: #0c1214 !default;
+$mx_palette_Primary_hue-1: 500 !default;
+$mx_palette_Primary_hue-2: 500 !default;
+$mx_palette_Primary_hue-3: 500 !default;
+$mx_palette_Primary_contrastDefaultColor: light !default;
+$mx_palette_Primary_contrastDarkColors_0: 50 !default;
+$mx_palette_Primary_contrastDarkColors_1: 100 !default;
+$mx_palette_Primary_contrastDarkColors_2: 200 !default;
+$mx_palette_Primary_contrastDarkColors_3: 300 !default;
+$mx_palette_Primary_contrastDarkColors_4: 400 !default;
+$mx_palette_Primary_contrastDarkColors_5: A100 !default;
+
+
+// Accent palette
+//
+// $mx_palette_Accent_50 - Generated color
+// $mx_palette_Accent_100 - Generated color
+// $mx_palette_Accent_200 - Generated color
+// $mx_palette_Accent_300 - Generated color
+// $mx_palette_Accent_400 - Generated color
+// $mx_palette_Accent_500 - Generated color
+// $mx_palette_Accent_600 - Generated color
+// $mx_palette_Accent_700 - Generated color
+// $mx_palette_Accent_800 - Generated color
+// $mx_palette_Accent_900 - Generated color
+// $mx_palette_Accent_A100 - Generated color
+// $mx_palette_Accent_A200 - Generated color
+// $mx_palette_Accent_A400 - Generated color
+// $mx_palette_Accent_A700 - Generated color
+// $mx_palette_Accent_hue-1 - Generated color
+// $mx_palette_Accent_hue-2 - Generated color
+// $mx_palette_Accent_hue-3 - Generated color
+// $mx_palette_Accent_contrastDefaultColor - Generated color
+// $mx_palette_Accent_contrastDarkColors_0 - Generated color
+// $mx_palette_Accent_contrastDarkColors_1 - Generated color
+// $mx_palette_Accent_contrastDarkColors_2 - Generated color
+// $mx_palette_Accent_contrastDarkColors_3 - Generated color
+// $mx_palette_Accent_contrastDarkColors_4 - Generated color
+// $mx_palette_Accent_contrastDarkColors_5 - Generated color
+//
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+//
+// Styleguide 2.2
+//
+
+$mx_palette_Accent_50: #fff3ea !default;
+$mx_palette_Accent_100: #fedabf !default;
+$mx_palette_Accent_200: #fec294 !default;
+$mx_palette_Accent_300: #fdae70 !default;
+$mx_palette_Accent_400: #fc994d !default;
+$mx_palette_Accent_500: #fc8529 !default;
+$mx_palette_Accent_600: #dd7424 !default;
+$mx_palette_Accent_700: #bd641f !default;
+$mx_palette_Accent_800: #9e531a !default;
+$mx_palette_Accent_900: #7e4315 !default;
+$mx_palette_Accent_A100: #fee7d4 !default;
+$mx_palette_Accent_A200: #fecea9 !default;
+$mx_palette_Accent_A400: #fd9d54 !default;
+$mx_palette_Accent_A700: #3f210a !default;
+$mx_palette_Accent_hue-1: 500 !default;
+$mx_palette_Accent_hue-2: 500 !default;
+$mx_palette_Accent_hue-3: 500 !default;
+$mx_palette_Accent_contrastDefaultColor: light !default;
+$mx_palette_Accent_contrastDarkColors_0: 50 !default;
+$mx_palette_Accent_contrastDarkColors_1: 100 !default;
+$mx_palette_Accent_contrastDarkColors_2: 200 !default;
+$mx_palette_Accent_contrastDarkColors_3: 300 !default;
+$mx_palette_Accent_contrastDarkColors_4: 400 !default;
+$mx_palette_Accent_contrastDarkColors_5: A100 !default;
+
+
+// Blue palette
+//
+// $mx_palette_Blue_50 - Generated color
+// $mx_palette_Blue_100 - Generated color
+// $mx_palette_Blue_200 - Generated color
+// $mx_palette_Blue_300 - Generated color
+// $mx_palette_Blue_400 - Generated color
+// $mx_palette_Blue_500 - Generated color
+// $mx_palette_Blue_600 - Generated color
+// $mx_palette_Blue_700 - Generated color
+// $mx_palette_Blue_800 - Generated color
+// $mx_palette_Blue_900 - Generated color
+// $mx_palette_Blue_A100 - Generated color
+// $mx_palette_Blue_A200 - Generated color
+// $mx_palette_Blue_A400 - Generated color
+// $mx_palette_Blue_A700 - Generated color
+// $mx_palette_Blue_hue-1 - Generated color
+// $mx_palette_Blue_hue-2 - Generated color
+// $mx_palette_Blue_hue-3 - Generated color
+// $mx_palette_Blue_contrastDefaultColor - Generated color
+// $mx_palette_Blue_contrastDarkColors_0 - Generated color
+// $mx_palette_Blue_contrastDarkColors_1 - Generated color
+// $mx_palette_Blue_contrastDarkColors_2 - Generated color
+// $mx_palette_Blue_contrastDarkColors_3 - Generated color
+// $mx_palette_Blue_contrastDarkColors_4 - Generated color
+// $mx_palette_Blue_contrastDarkColors_5 - Generated color
+//
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+//
+// Styleguide 2.3
+//
+
+$mx_palette_Blue_50: #e6f5fb !default;
+$mx_palette_Blue_100: #b3e0f3 !default;
+$mx_palette_Blue_200: #81cceb !default;
+$mx_palette_Blue_300: #57bbe4 !default;
+$mx_palette_Blue_400: #2daade !default;
+$mx_palette_Blue_500: #0399d7 !default;
+$mx_palette_Blue_600: #0386bc !default;
+$mx_palette_Blue_700: #0273a1 !default;
+$mx_palette_Blue_800: #026086 !default;
+$mx_palette_Blue_900: #024d6c !default;
+$mx_palette_Blue_A100: #cdebf7 !default;
+$mx_palette_Blue_A200: #9ad6ef !default;
+$mx_palette_Blue_A400: #35addf !default;
+$mx_palette_Blue_A700: #012636 !default;
+$mx_palette_Blue_hue-1: 500 !default;
+$mx_palette_Blue_hue-2: 500 !default;
+$mx_palette_Blue_hue-3: 500 !default;
+$mx_palette_Blue_contrastDefaultColor: light !default;
+$mx_palette_Blue_contrastDarkColors_0: 50 !default;
+$mx_palette_Blue_contrastDarkColors_1: 100 !default;
+$mx_palette_Blue_contrastDarkColors_2: 200 !default;
+$mx_palette_Blue_contrastDarkColors_3: 300 !default;
+$mx_palette_Blue_contrastDarkColors_4: 400 !default;
+$mx_palette_Blue_contrastDarkColors_5: A100 !default;
+
+
+// Rose palette
+//
+// $mx_palette_Rose_50 - Generated color
+// $mx_palette_Rose_100 - Generated color
+// $mx_palette_Rose_200 - Generated color
+// $mx_palette_Rose_300 - Generated color
+// $mx_palette_Rose_400 - Generated color
+// $mx_palette_Rose_500 - Generated color
+// $mx_palette_Rose_600 - Generated color
+// $mx_palette_Rose_700 - Generated color
+// $mx_palette_Rose_800 - Generated color
+// $mx_palette_Rose_900 - Generated color
+// $mx_palette_Rose_A100 - Generated color
+// $mx_palette_Rose_A200 - Generated color
+// $mx_palette_Rose_A400 - Generated color
+// $mx_palette_Rose_A700 - Generated color
+// $mx_palette_Rose_hue-1 - Generated color
+// $mx_palette_Rose_hue-2 - Generated color
+// $mx_palette_Rose_hue-3 - Generated color
+// $mx_palette_Rose_contrastDefaultColor - Generated color
+// $mx_palette_Rose_contrastDarkColors_0 - Generated color
+// $mx_palette_Rose_contrastDarkColors_1 - Generated color
+// $mx_palette_Rose_contrastDarkColors_2 - Generated color
+// $mx_palette_Rose_contrastDarkColors_3 - Generated color
+// $mx_palette_Rose_contrastDarkColors_4 - Generated color
+// $mx_palette_Rose_contrastDarkColors_5 - Generated color
+//
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+//
+// Styleguide 2.4
+//
+
+$mx_palette_Rose_50: #ffeded !default;
+$mx_palette_Rose_100: #fec8c8 !default;
+$mx_palette_Rose_200: #fda4a4 !default;
+$mx_palette_Rose_300: #fc8585 !default;
+$mx_palette_Rose_400: #fc6666 !default;
+$mx_palette_Rose_500: #fb4848 !default;
+$mx_palette_Rose_600: #dc3f3f !default;
+$mx_palette_Rose_700: #bc3636 !default;
+$mx_palette_Rose_800: #9d2d2d !default;
+$mx_palette_Rose_900: #7e2424 !default;
+$mx_palette_Rose_A100: #fedada !default;
+$mx_palette_Rose_A200: #fdb6b6 !default;
+$mx_palette_Rose_A400: #fc6d6d !default;
+$mx_palette_Rose_A700: #3f1212 !default;
+$mx_palette_Rose_hue-1: 500 !default;
+$mx_palette_Rose_hue-2: 500 !default;
+$mx_palette_Rose_hue-3: 500 !default;
+$mx_palette_Rose_contrastDefaultColor: light !default;
+$mx_palette_Rose_contrastDarkColors_0: 50 !default;
+$mx_palette_Rose_contrastDarkColors_1: 100 !default;
+$mx_palette_Rose_contrastDarkColors_2: 200 !default;
+$mx_palette_Rose_contrastDarkColors_3: 300 !default;
+$mx_palette_Rose_contrastDarkColors_4: 400 !default;
+$mx_palette_Rose_contrastDarkColors_5: A100 !default;
+
+
+// Green palette
+//
+// $mx_palette_Green_50 - Generated color
+// $mx_palette_Green_100 - Generated color
+// $mx_palette_Green_200 - Generated color
+// $mx_palette_Green_300 - Generated color
+// $mx_palette_Green_400 - Generated color
+// $mx_palette_Green_500 - Generated color
+// $mx_palette_Green_600 - Generated color
+// $mx_palette_Green_700 - Generated color
+// $mx_palette_Green_800 - Generated color
+// $mx_palette_Green_900 - Generated color
+// $mx_palette_Green_A100 - Generated color
+// $mx_palette_Green_A200 - Generated color
+// $mx_palette_Green_A400 - Generated color
+// $mx_palette_Green_A700 - Generated color
+// $mx_palette_Green_hue-1 - Generated color
+// $mx_palette_Green_hue-2 - Generated color
+// $mx_palette_Green_hue-3 - Generated color
+// $mx_palette_Green_contrastDefaultColor - Generated color
+// $mx_palette_Green_contrastDarkColors_0 - Generated color
+// $mx_palette_Green_contrastDarkColors_1 - Generated color
+// $mx_palette_Green_contrastDarkColors_2 - Generated color
+// $mx_palette_Green_contrastDarkColors_3 - Generated color
+// $mx_palette_Green_contrastDarkColors_4 - Generated color
+// $mx_palette_Green_contrastDarkColors_5 - Generated color
+//
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+//
+// Styleguide 2.5
+//
+
+$mx_palette_Green_50: #eaf7ea !default;
+$mx_palette_Green_100: #c0e8bf !default;
+$mx_palette_Green_200: #96d995 !default;
+$mx_palette_Green_300: #72cc72 !default;
+$mx_palette_Green_400: #4fc04e !default;
+$mx_palette_Green_500: #2cb32b !default;
+$mx_palette_Green_600: #279d26 !default;
+$mx_palette_Green_700: #218620 !default;
+$mx_palette_Green_800: #1c701b !default;
+$mx_palette_Green_900: #165a16 !default;
+$mx_palette_Green_A100: #d5f0d5 !default;
+$mx_palette_Green_A200: #abe1aa !default;
+$mx_palette_Green_A400: #56c255 !default;
+$mx_palette_Green_A700: #0b2d0b !default;
+$mx_palette_Green_hue-1: 500 !default;
+$mx_palette_Green_hue-2: 500 !default;
+$mx_palette_Green_hue-3: 500 !default;
+$mx_palette_Green_contrastDefaultColor: light !default;
+$mx_palette_Green_contrastDarkColors_0: 50 !default;
+$mx_palette_Green_contrastDarkColors_1: 100 !default;
+$mx_palette_Green_contrastDarkColors_2: 200 !default;
+$mx_palette_Green_contrastDarkColors_3: 300 !default;
+$mx_palette_Green_contrastDarkColors_4: 400 !default;
+$mx_palette_Green_contrastDarkColors_5: A100 !default;
+
+
+// Dark Grey palette
+//
+// $mx_palette_DarkGrey_50 - Generated color
+// $mx_palette_DarkGrey_100 - Generated color
+// $mx_palette_DarkGrey_200 - Generated color
+// $mx_palette_DarkGrey_300 - Generated color
+// $mx_palette_DarkGrey_400 - Generated color
+// $mx_palette_DarkGrey_500 - Generated color
+// $mx_palette_DarkGrey_600 - Generated color
+// $mx_palette_DarkGrey_700 - Generated color
+// $mx_palette_DarkGrey_800 - Generated color
+// $mx_palette_DarkGrey_900 - Generated color
+// $mx_palette_DarkGrey_A100 - Generated color
+// $mx_palette_DarkGrey_A200 - Generated color
+// $mx_palette_DarkGrey_A400 - Generated color
+// $mx_palette_DarkGrey_A700 - Generated color
+// $mx_palette_DarkGrey_hue-1 - Generated color
+// $mx_palette_DarkGrey_hue-2 - Generated color
+// $mx_palette_DarkGrey_hue-3 - Generated color
+// $mx_palette_DarkGrey_contrastDefaultColor - Generated color
+// $mx_palette_DarkGrey_contrastDarkColors_0 - Generated color
+// $mx_palette_DarkGrey_contrastDarkColors_1 - Generated color
+// $mx_palette_DarkGrey_contrastDarkColors_2 - Generated color
+// $mx_palette_DarkGrey_contrastDarkColors_3 - Generated color
+// $mx_palette_DarkGrey_contrastDarkColors_4 - Generated color
+// $mx_palette_DarkGrey_contrastDarkColors_5 - Generated color
+//
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+//
+// Styleguide 2.6
+//
+
+$mx_palette_DarkGrey_50: #e7e8e8 !default;
+$mx_palette_DarkGrey_100: #b8b9ba !default;
+$mx_palette_DarkGrey_200: #898a8d !default;
+$mx_palette_DarkGrey_300: #616366 !default;
+$mx_palette_DarkGrey_400: #393c40 !default;
+$mx_palette_DarkGrey_500: #12151a !default;
+$mx_palette_DarkGrey_600: #101217 !default;
+$mx_palette_DarkGrey_700: #0e1014 !default;
+$mx_palette_DarkGrey_800: #0b0d10 !default;
+$mx_palette_DarkGrey_900: #090b0d !default;
+$mx_palette_DarkGrey_A100: #d0d0d1 !default;
+$mx_palette_DarkGrey_A200: #a0a1a3 !default;
+$mx_palette_DarkGrey_A400: #414448 !default;
+$mx_palette_DarkGrey_A700: #050507 !default;
+$mx_palette_DarkGrey_hue-1: 500 !default;
+$mx_palette_DarkGrey_hue-2: 500 !default;
+$mx_palette_DarkGrey_hue-3: 500 !default;
+$mx_palette_DarkGrey_contrastDefaultColor: light !default;
+$mx_palette_DarkGrey_contrastDarkColors_0: 50 !default;
+$mx_palette_DarkGrey_contrastDarkColors_1: 100 !default;
+$mx_palette_DarkGrey_contrastDarkColors_2: 200 !default;
+$mx_palette_DarkGrey_contrastDarkColors_3: 300 !default;
+$mx_palette_DarkGrey_contrastDarkColors_4: 400 !default;
+$mx_palette_DarkGrey_contrastDarkColors_5: A100 !default;
+// styleguide:ignore:start
+@function breakpoint-parse-default($feature) {
+  $default: $breakpoint-default-feature;
+
+  // Set Context
+  $context-setter: private-breakpoint-set-context($default, $feature);
+
+  @if ($breakpoint-to-ems == true) and (type-of($feature) == 'number') {
+    @return '#{$default}: #{breakpoint-to-base-em($feature)}';
+  }
+  @else {
+    @return '#{$default}: #{$feature}';
+  }
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+@function breakpoint-make-resolutions($resolution) {
+  $length: length($resolution);
+
+  $output: ();
+
+  @if $length == 2 {
+    $feature: '';
+    $value: '';
+
+    // Find which is number
+    @if type-of(nth($resolution, 1)) == 'number' {
+      $value: nth($resolution, 1);
+    }
+    @else {
+      $value: nth($resolution, 2);
+    }
+
+    // Determine min/max/standard
+    @if index($resolution, 'min-resolution') {
+      $feature: 'min-';
+    }
+    @else if index($resolution, 'max-resolution') {
+      $feature: 'max-';
+    }
+
+    $standard: '(#{$feature}resolution: #{$value})';
+
+    // If we're not dealing with dppx,
+    @if unit($value) != 'dppx' {
+      $base: 96dpi;
+      @if unit($value) == 'dpcm' {
+        $base: 243.84dpcm;
+      }
+      // Write out feature tests
+      $webkit: '';
+      $moz: '';
+      $webkit: '(-webkit-#{$feature}device-pixel-ratio: #{$value / $base})';
+      $moz: '(#{$feature}-moz-device-pixel-ratio: #{$value / $base})';
+      // Append to output
+      $output: append($output, $standard, space);
+      $output: append($output, $webkit, space);
+      $output: append($output, $moz, space);
+    }
+    @else {
+      $webkit: '';
+      $moz: '';
+      $webkit: '(-webkit-#{$feature}device-pixel-ratio: #{$value / 1dppx})';
+      $moz: '(#{$feature}-moz-device-pixel-ratio: #{$value / 1dppx})';
+      $fallback: '(#{$feature}resolution: #{$value / 1dppx * 96dpi})';
+      // Append to output
+      $output: append($output, $standard, space);
+      $output: append($output, $webkit, space);
+      $output: append($output, $moz, space);
+      $output: append($output, $fallback, space);
+    }
+
+  }
+
+  @return $output;
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+@function breakpoint-parse-double-string($first, $second) {
+  $feature: '';
+  $value: '';
+
+  // Test to see which is the feature and which is the value
+  @if (breakpoint-string-value($first) == true) {
+    $feature: $first;
+    $value: $second;
+  }
+  @else {
+    $feature: $second;
+    $value: $first;
+  }
+
+  // Set Context
+  $context-setter: private-breakpoint-set-context($feature, $value);
+
+  @return '(#{$feature}: #{$value})';
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+@function breakpoint-parse-double-default($first, $second) {
+  $feature: '';
+  $value: '';
+
+  @if type-of($first) == 'string' {
+    $feature: $first;
+    $value: $second;
+  }
+  @else {
+    $feature: $second;
+    $value: $first;
+  }
+
+  // Set Context
+  $context-setter: private-breakpoint-set-context($feature, $value);
+
+  @if ($breakpoint-to-ems == true) {
+    $value: breakpoint-to-base-em($value);
+  }
+
+  @return '(#{$feature}: #{$value})'
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+//////////////////////////////
+// Private Breakpoint Variables
+//////////////////////////////
+$private-breakpoint-context-holder: ();
+$private-breakpoint-query-count: 0 !default;
+
+//////////////////////////////
+// Breakpoint Has Context
+// Returns whether or not you are inside a Breakpoint query
+//////////////////////////////
+@function breakpoint-has-context() {
+  @if length($private-breakpoint-query-count) {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
+
+//////////////////////////////
+// Breakpoint Get Context
+// $feature: Input feature to get it's current MQ context. Returns false if no context
+//////////////////////////////
+@function breakpoint-get-context($feature) {
+  @if map-has-key($private-breakpoint-context-holder, $feature) {
+    $get: map-get($private-breakpoint-context-holder, $feature);
+    // Special handling of no-query from get side so /false/ prepends aren't returned
+    @if $feature == 'no-query' {
+      @if type-of($get) == 'list' and length($get) > 1 and nth($get, 1) == false {
+        $get: nth($get, length($get));
+      }
+    }
+    @return $get;
+  }
+  @else {
+    @if breakpoint-has-context() and $feature == 'media' {
+      @return $breakpoint-default-media;
+    }
+    @else {
+      @return false;
+    }
+  }
+}
+
+//////////////////////////////
+// Private function to set context
+//////////////////////////////
+@function private-breakpoint-set-context($feature, $value) {
+  @if $value == 'monochrome' {
+    $feature: 'monochrome';
+  }
+
+  $current: map-get($private-breakpoint-context-holder, $feature);
+  @if $current and length($current) == $private-breakpoint-query-count {
+    @warn "You have already queried against `#{$feature}`. Unexpected things may happen if you query against the same feature more than once in the same `and` query. Breakpoint is overwriting the current context with `#{$value}`";
+  }
+
+  @if not map-has-key($private-breakpoint-context-holder, $feature) {
+    $v-holder: ();
+    @for $i from 1 to $private-breakpoint-query-count {
+      @if $feature == 'media' {
+        $v-holder: append($v-holder, $breakpoint-default-media);
+      }
+      @else {
+        $v-holder: append($v-holder, false);
+      }
+    }
+    $v-holder: append($v-holder, $value);
+    $private-breakpoint-context-holder: map-merge($private-breakpoint-context-holder, ($feature: $v-holder)) !global;
+  }
+  @else {
+    $v-holder: map-get($private-breakpoint-context-holder, $feature);
+    $length: length($v-holder);
+    @for $i from $length to $private-breakpoint-query-count - 1 {
+      @if $feature == 'media' {
+        $v-holder: append($v-holder, $breakpoint-default-media);
+      }
+      @else {
+        $v-holder: append($v-holder, false);
+      }
+    }
+    $v-holder: append($v-holder, $value);
+    $private-breakpoint-context-holder: map-merge($private-breakpoint-context-holder, ($feature: $v-holder)) !global;
+  }
+
+  @return true;
+}
+
+//////////////////////////////
+// Private function to reset context
+//////////////////////////////
+@mixin private-breakpoint-reset-contexts {
+  $private-breakpoint-context-holder: () !global;
+  $private-breakpoint-query-count: 0 !global;
+}
+// styleguide:ignore:end
+// styleguide:ignore:start
+//////////////////////////////
+// Converts the input value to Base EMs
+//////////////////////////////
+@function breakpoint-to-base-em($value) {
+  $value-unit: unit($value);
+
+  // Will convert relative EMs into root EMs.
+  @if $breakpoint-base-font-size and type-of($breakpoint-base-font-size) == 'number' and $value-unit == 'em' {
+    $base-unit: unit($breakpoint-base-font-size);
+
+    @if $base-unit == 'px' or $base-unit == '%' or $base-unit == 'em' or $base-unit == 'pt' {
+      @return base-conversion($value) / base-conversion($breakpoint-base-font-size) * 1em;
+    }
+    @else {
+      @warn '#{$breakpoint-base-font-size} is not set in valid units for font size!';
+      @return false;
+    }
+  }
+  @else {
+    @return base-conversion($value);
+  }
+}
+
+@function base-conversion($value) {
+  $unit: unit($value);
+
+  @if $unit == 'px' {
+    @return $value / 16px * 1em;
+  }
+  @else if $unit == '%' {
+    @return $value / 100% * 1em;
+  }
+  @else if $unit == 'em' {
+    @return $value;
+  }
+  @else if $unit == 'pt' {
+    @return $value / 12pt * 1em;
+  }
+  @else {
+    @return $value;
+//    @warn 'Everything is terrible! What have you done?!';
+  }
+}
+
+//////////////////////////////
+// Returns whether the feature can have a min/max pair
+//////////////////////////////
+$breakpoint-min-max-features: 'color',
+                              'color-index',
+                              'aspect-ratio',
+                              'device-aspect-ratio',
+                              'device-height',
+                              'device-width',
+                              'height',
+                              'monochrome',
+                              'resolution',
+                              'width';
+
+@function breakpoint-min-max($feature) {
+  @each $item in $breakpoint-min-max-features {
+    @if $feature == $item {
+      @return true;
+    }
+  }
+  @return false;
+}
+
+//////////////////////////////
+// Returns whether the feature can have a string value
+//////////////////////////////
+$breakpoint-string-features:  'orientation',
+                              'scan',
+                              'color',
+                              'aspect-ratio',
+                              'device-aspect-ratio',
+                              'pointer',
+                              'luminosity';
+
+@function breakpoint-string-value($feature) {
+  @each $item in $breakpoint-string-features {
+    @if breakpoint-min-max($item) {
+      @if $feature == 'min-#{$item}' or $feature == 'max-#{$item}' {
+        @return true;
+      }
+    }
+    @else if $feature == $item {
+      @return true;
+    }
+  }
+  @return false;
+}
+
+//////////////////////////////
+// Returns whether the feature is a media type
+//////////////////////////////
+$breakpoint-media-types:  'all',
+                          'braille',
+                          'embossed',
+                          'handheld',
+                          'print',
+                          'projection',
+                          'screen',
+                          'speech',
+                          'tty',
+                          'tv';
+
+@function breakpoint-is-media($feature) {
+  @each $media in $breakpoint-media-types {
+    @if ($feature == $media) or ($feature == 'not #{$media}') or ($feature == 'only #{$media}') {
+      @return true;
+    }
+  }
+
+  @return false;
+}
+
+//////////////////////////////
+// Returns whether the feature can stand alone
+//////////////////////////////
+$breakpoint-single-string-features: 'color',
+                                    'color-index',
+                                    'grid',
+                                    'monochrome';
+
+@function breakpoint-single-string($feature) {
+  @each $item in $breakpoint-single-string-features {
+    @if $feature == $item {
+      @return true;
+    }
+  }
+  @return false;
+}
+
+//////////////////////////////
+// Returns whether the feature
+//////////////////////////////
+@function breakpoint-is-resolution($feature) {
+  $resolutions: 'device-pixel-ratio', 'dpr';
+
+  @if $breakpoint-resolutions {
+    $resolutions: append($resolutions, 'resolution');
+  }
+
+  @each $reso in $resolutions {
+    @if index($feature, $reso) or index($feature, 'min-#{$reso}') or index($feature, 'max-#{$reso}') {
+      @return true;
+    }
+  }
+
+  @return false;
+}
+// styleguide:ignore:end
+// styleguide:ignore:start
+@function breakpoint-no-query($query) {
+  @if type-of($query) == 'list' {
+    $keyword: nth($query, 1);
+
+    @if type-of($keyword) == 'string' and ($keyword == 'no-query' or $keyword == 'no query' or $keyword == 'fallback') {
+      @return nth($query, 2);
+    }
+    @else {
+      @return false;
+    }
+  }
+  @else {
+    @return false;
+  }
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+//////////////////////////////
+// Import Parser Pieces
+//////////////////////////////
+
+
+
+
+
+
+$Memo-Exists: function-exists(memo-get) and function-exists(memo-set);
+
+//////////////////////////////
+// Breakpoint Function
+//////////////////////////////
+@function breakpoint($query, $contexts...) {
+  $run: true;
+  $return: ();
+
+  // Grab the Memo Output if Memoization can be a thing
+  @if $Memo-Exists {
+    $return: memo-get(breakpoint, breakpoint $query $contexts);
+
+    @if $return != null {
+      $run: false;
+    }
+  }
+
+  @if not $Memo-Exists or $run {
+    // Internal Variables
+    $query-string: '';
+    $query-fallback: false;
+    $return: ();
+
+    // Reserve Global Private Breakpoint Context
+    $holder-context: $private-breakpoint-context-holder;
+    $holder-query-count: $private-breakpoint-query-count;
+
+    // Reset Global Private Breakpoint Context
+    $private-breakpoint-context-holder: () !global;
+    $private-breakpoint-query-count: 0 !global;
+
+
+    // Test to see if it's a comma-separated list
+    $or-list: if(list-separator($query) == 'comma', true, false);
+
+
+    @if ($or-list == false and $breakpoint-legacy-syntax == false) {
+      $query-string: breakpoint-parse($query);
+    }
+    @else {
+      $length: length($query);
+
+      $last: nth($query, $length);
+      $query-fallback: breakpoint-no-query($last);
+
+      @if ($query-fallback != false) {
+        $length: $length - 1;
+      }
+
+      @if ($breakpoint-legacy-syntax == true) {
+        $mq: ();
+
+        @for $i from 1 through $length {
+          $mq: append($mq, nth($query, $i), comma);
+        }
+
+        $query-string: breakpoint-parse($mq);
+      }
+      @else {
+        $query-string: '';
+        @for $i from 1 through $length {
+          $query-string: $query-string + if($i == 1, '', ', ') + breakpoint-parse(nth($query, $i));
+        }
+      }
+    }
+
+    $return: ('query': $query-string,
+        'fallback': $query-fallback,
+        'context holder': $private-breakpoint-context-holder,
+        'query count': $private-breakpoint-query-count
+    );
+    @if length($contexts) > 0 and nth($contexts, 1) != false {
+      @if $query-fallback != false {
+        $context-setter: private-breakpoint-set-context('no-query', $query-fallback);
+      }
+      $context-map: ();
+      @each $context in $contexts {
+        $context-map: map-merge($context-map, ($context: breakpoint-get-context($context)));
+      }
+      $return: map-merge($return, (context: $context-map));
+    }
+
+    // Reset Global Private Breakpoint Context
+    $private-breakpoint-context-holder: () !global;
+    $private-breakpoint-query-count: 0 !global;
+
+    @if $Memo-Exists {
+      $holder: memo-set(breakpoint, breakpoint $query $contexts, $return);
+    }
+  }
+
+  @return $return;
+}
+
+//////////////////////////////
+// General Breakpoint Parser
+//////////////////////////////
+@function breakpoint-parse($query) {
+  // Increase number of 'and' queries
+  $private-breakpoint-query-count: $private-breakpoint-query-count + 1 !global;
+
+  // Set up Media Type
+  $query-print: '';
+
+  $force-all: (($breakpoint-force-media-all == true) and ($breakpoint-default-media == 'all'));
+  $empty-media: true;
+  @if ($force-all == true) or ($breakpoint-default-media != 'all') {
+    // Force the print of the default media type if (force all is true and default media type is all) or (default media type is not all)
+    $query-print: $breakpoint-default-media;
+    $empty-media: false;
+  }
+
+
+  $query-resolution: false;
+
+  $query-holder: breakpoint-parse-query($query);
+
+
+
+  // Loop over each parsed out query and write it to $query-print
+  $first: true;
+
+  @each $feature in $query-holder {
+    $length: length($feature);
+
+    // Parse a single feature
+    @if ($length == 1) {
+      // Feature is currently a list, grab the actual value
+      $feature: nth($feature, 1);
+
+      // Media Type must by convention be the first item, so it's safe to flat override $query-print, which right now should only be the default media type
+      @if (breakpoint-is-media($feature)) {
+        @if ($force-all == true) or ($feature != 'all') {
+          // Force the print of the default media type if (force all is true and default media type is all) or (default media type is not all)
+          $query-print: $feature;
+          $empty-media: false;
+
+          // Set Context
+          $context-setter: private-breakpoint-set-context(media, $query-print);
+        }
+      }
+      @else {
+        $parsed: breakpoint-parse-single($feature, $empty-media, $first);
+        $query-print: '#{$query-print} #{$parsed}';
+        $first: false;
+      }
+    }
+    // Parse a double feature
+    @else if ($length == 2) {
+      @if (breakpoint-is-resolution($feature) != false) {
+        $query-resolution: $feature;
+      }
+      @else {
+        $parsed: null;
+        // If it's a string/number pair,
+        // we check to see if one is a single-string value,
+        // then we parse it as a normal double
+        $alpha: nth($feature, 1);
+        $beta: nth($feature, 2);
+        @if breakpoint-single-string($alpha) or breakpoint-single-string($beta) {
+          $parsed: breakpoint-parse-single($alpha, $empty-media, $first);
+          $query-print: '#{$query-print} #{$parsed}';
+          $first: false;
+          $parsed: breakpoint-parse-single($beta, $empty-media, $first);
+          $query-print: '#{$query-print} #{$parsed}';
+        }
+        @else {
+          $parsed: breakpoint-parse-double($feature, $empty-media, $first);
+          $query-print: '#{$query-print} #{$parsed}';
+          $first: false;
+        }
+      }
+    }
+    // Parse a triple feature
+    @else if ($length == 3) {
+      $parsed: breakpoint-parse-triple($feature, $empty-media, $first);
+      $query-print: '#{$query-print} #{$parsed}';
+      $first: false;
+    }
+
+  }
+
+  @if ($query-resolution != false) {
+    $query-print: breakpoint-build-resolution($query-print, $query-resolution, $empty-media, $first);
+  }
+
+  // Loop through each feature that's been detected so far and append 'false' to the the value list to increment their counters
+  @each $f, $v in $private-breakpoint-context-holder {
+    $v-holder: $v;
+    $length: length($v-holder);
+    @if length($v-holder) < $private-breakpoint-query-count {
+      @for $i from $length to $private-breakpoint-query-count {
+        @if $f == 'media' {
+          $v-holder: append($v-holder, $breakpoint-default-media);
+        }
+        @else {
+          $v-holder: append($v-holder, false);
+        }
+      }
+    }
+    $private-breakpoint-context-holder: map-merge($private-breakpoint-context-holder, ($f: $v-holder)) !global;
+  }
+
+  @return $query-print;
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+////////////////////////
+// Default the Breakpoints variable
+////////////////////////
+$breakpoints: () !default;
+
+////////////////////////
+// Respond-to API Mixin
+////////////////////////
+@mixin respond-to($context, $no-query: false) {
+  @if type-of($breakpoints) != 'map' {
+    // Just in case someone writes gibberish to the $breakpoints variable.
+    @warn "Your breakpoints aren't a map! See https://github.com/snugug/respond-to#api if you'd like a reminder on how to use Respond-to";
+    @content;
+  }
+  @else if map-has-key($breakpoints, $context) {
+    @include breakpoint(map-get($breakpoints, $context), $no-query) {
+      @content;
+    }
+  }
+  @else if not map-has-key($breakpoints, $context) {
+    @warn "`#{$context}` isn't a defined breakpoint! Please add it using `$breakpoints: add-breakpoint(`#{$context}`, $value);`";
+    @content;
+  }
+  @else {
+    @warn "You haven't created any breakpoints yet! Make some already! See https://github.com/snugug/respond-to#api if you'd like a reminder on how to use Respond-to";
+    @content;
+  }
+}
+
+//////////////////////////////
+// Add Breakpoint to Breakpoints
+//////////////////////////////
+@function add-breakpoint($name, $bkpt, $overwrite: false) {
+  $output: ($name: $bkpt);
+  @if length($breakpoints) == 0 {
+    @return $output;
+  }
+  @else {
+    @if map-has-key($breakpoints, $name) and $overwrite != true {
+      @warn "You already have a breakpoint named `#{$name}`, please choose another breakpoint name, or pass in `$overwrite: true` to overwrite the previous breakpoint.";
+      @return $breakpoints;
+    }
+    @else if not map-has-key($breakpoints, $name) or $overwrite == true {
+      @return map-merge($breakpoints, $output);
+    }
+  }
+}
+// styleguide:ignore:end
+// styleguide:ignore:start
+@function breakpoint-parse-default-pair($first, $second) {
+  $default: $breakpoint-default-pair;
+  $min: '';
+  $max: '';
+
+  // Sort into min and max
+  $min: min($first, $second);
+  $max: max($first, $second);
+
+  // Set Context
+  $context-setter: private-breakpoint-set-context(min-#{$default}, $min);
+  $context-setter: private-breakpoint-set-context(max-#{$default}, $max);
+
+  // Make them EMs if need be
+  @if ($breakpoint-to-ems == true) {
+    $min: breakpoint-to-base-em($min);
+    $max: breakpoint-to-base-em($max);
+  }
+
+  @return '(min-#{$default}: #{$min}) and (max-#{$default}: #{$max})';
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+@function breakpoint-parse-query($query) {
+  // Parse features out of an individual query
+  $feature-holder: ();
+  $query-holder: ();
+  $length: length($query);
+
+  @if $length == 2 {
+    // If we've got a string/number, number/string, check to see if it's a valid string/number pair or two singles
+    @if (type-of(nth($query, 1)) == 'string' and type-of(nth($query, 2)) == 'number') or (type-of(nth($query, 1)) == 'number' and type-of(nth($query, 2)) == 'string') {
+
+      $number: '';
+      $value: '';
+
+      @if type-of(nth($query, 1)) == 'string' {
+        $number: nth($query, 2);
+        $value: nth($query, 1);
+      }
+      @else {
+        $number: nth($query, 1);
+        $value: nth($query, 2);
+      }
+
+      // If the string value can be a single value, check to see if the number passed in is a valid input for said single value. Fortunately, all current single-value options only accept unitless numbers, so this check is easy.
+      @if breakpoint-single-string($value) {
+        @if unitless($number) {
+          $feature-holder: append($value, $number, space);
+          $query-holder: append($query-holder, $feature-holder, comma);
+          @return $query-holder;
+        }
+      }
+      // If the string is a media type, split the query
+      @if breakpoint-is-media($value) {
+        $query-holder: append($query-holder, nth($query, 1));
+        $query-holder: append($query-holder, nth($query, 2));
+        @return $query-holder;
+      }
+      // If it's not a single feature, we're just going to assume it's a proper string/value pair, and roll with it.
+      @else {
+        $feature-holder: append($value, $number, space);
+        $query-holder: append($query-holder, $feature-holder, comma);
+        @return $query-holder;
+      }
+
+    }
+    // If they're both numbers, we assume it's a double and roll with that
+    @else if (type-of(nth($query, 1)) == 'number' and type-of(nth($query, 2)) == 'number') {
+      $feature-holder: append(nth($query, 1), nth($query, 2), space);
+      $query-holder: append($query-holder, $feature-holder, comma);
+      @return $query-holder;
+    }
+    // If they're both strings and neither are singles, we roll with that.
+    @else if (type-of(nth($query, 1)) == 'string' and type-of(nth($query, 2)) == 'string') {
+      @if not breakpoint-single-string(nth($query, 1)) and not breakpoint-single-string(nth($query, 2)) {
+        $feature-holder: append(nth($query, 1), nth($query, 2), space);
+        $query-holder: append($query-holder, $feature-holder, comma);
+        @return $query-holder;
+      }
+    }
+  }
+  @else if $length == 3 {
+    // If we've got three items and none is a list, we check to see
+    @if type-of(nth($query, 1)) != 'list' and type-of(nth($query, 2)) != 'list' and type-of(nth($query, 3)) != 'list' {
+      // If none of the items are single string values and none of the values are media values, we're good.
+      @if (not breakpoint-single-string(nth($query, 1)) and not breakpoint-single-string(nth($query, 2)) and not breakpoint-single-string(nth($query, 3))) and  ((not breakpoint-is-media(nth($query, 1)) and not breakpoint-is-media(nth($query, 2)) and not breakpoint-is-media(nth($query, 3)))) {
+        $feature-holder: append(nth($query, 1), nth($query, 2), space);
+        $feature-holder: append($feature-holder, nth($query, 3), space);
+        $query-holder: append($query-holder, $feature-holder, comma);
+        @return $query-holder;
+      }
+      // let's check to see if the first item is a media type
+      @else if breakpoint-is-media(nth($query, 1)) {
+        $query-holder: append($query-holder, nth($query, 1));
+        $feature-holder: append(nth($query, 2), nth($query, 3), space);
+        $query-holder: append($query-holder, $feature-holder);
+        @return $query-holder;
+      }
+    }
+  }
+
+  // If it's a single item, or if it's not a special case double or triple, we can simply return the query.
+  @return $query;
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+
+
+@function breakpoint-build-resolution($query-print, $query-resolution, $empty-media, $first) {
+  $leader: '';
+  // If we're forcing
+  @if not ($empty-media) or not ($first) {
+    $leader: 'and ';
+  }
+
+  @if $breakpoint-resolutions and $query-resolution {
+    $resolutions: breakpoint-make-resolutions($query-resolution);
+    $length: length($resolutions);
+    $query-holder: '';
+
+    @for $i from 1 through $length {
+      $query: '#{$query-print} #{$leader}#{nth($resolutions, $i)}';
+      @if $i == 1 {
+        $query-holder: $query;
+      }
+      @else {
+        $query-holder: '#{$query-holder}, #{$query}';
+      }
+    }
+
+    @return $query-holder;
+  }
+  @else {
+    // Return with attached resolution
+    @return $query-print;
+  }
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+//////////////////////////////
+// Import Pieces
+//////////////////////////////
+
+
+@function breakpoint-parse-single($feature, $empty-media, $first) {
+  $parsed: '';
+  $leader: '';
+  // If we're forcing
+  @if not ($empty-media) or not ($first) {
+    $leader: 'and ';
+  }
+
+  // If it's a single feature that can stand alone, we let it
+  @if (breakpoint-single-string($feature)) {
+    $parsed: $feature;
+    // Set Context
+    $context-setter: private-breakpoint-set-context($feature, $feature);
+  }
+  // If it's not a stand alone feature, we pass it off to the default handler.
+  @else {
+    $parsed: breakpoint-parse-default($feature);
+  }
+
+  @return $leader + '(' + $parsed + ')';
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+//////////////////////////////
+// Import Pieces
+//////////////////////////////
+
+
+@function breakpoint-parse-triple($feature, $empty-media, $first) {
+  $parsed: '';
+  $leader: '';
+
+  // If we're forcing
+  @if not ($empty-media) or not ($first) {
+    $leader: 'and ';
+  }
+
+  // separate the string features from the value numbers
+  $string: null;
+  $numbers: null;
+  @each $val in $feature {
+    @if type-of($val) == string {
+      $string: $val;
+    }
+    @else {
+      @if type-of($numbers) == 'null' {
+        $numbers: $val;
+      }
+      @else {
+        $numbers: append($numbers, $val);
+      }
+    }
+  }
+
+  $parsed: breakpoint-parse-triple-default($string, nth($numbers, 1), nth($numbers, 2));
+
+  @return $leader + $parsed;
+
+}
+// styleguide:ignore:end
+// styleguide:ignore:start
+@function breakpoint-parse-triple-default($feature, $first, $second) {
+
+  // Sort into min and max
+  $min: min($first, $second);
+  $max: max($first, $second);
+
+  // Set Context
+  $context-setter: private-breakpoint-set-context(min-#{$feature}, $min);
+  $context-setter: private-breakpoint-set-context(max-#{$feature}, $max);
+
+  // Make them EMs if need be
+  @if ($breakpoint-to-ems == true) {
+    $min: breakpoint-to-base-em($min);
+    $max: breakpoint-to-base-em($max);
+  }
+
+  @return '(min-#{$feature}: #{$min}) and (max-#{$feature}: #{$max})';
+}
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+//////////////////////////////
+// Default Variables
+//////////////////////////////
+// Default Features
+$breakpoint-default-media:      all !default;
+$breakpoint-default-feature:    min-width !default;
+$breakpoint-default-pair:       width !default;
+
+// Default Transforms
+$breakpoint-force-media-all:    false !default;
+$breakpoint-to-ems:             false !default;
+$breakpoint-resolutions:        true !default;
+
+// Default No Query Options
+$breakpoint-no-queries:         false !default;
+$breakpoint-no-query-fallbacks: false !default;
+
+// Deftault Base Font Size
+$breakpoint-base-font-size:     16px !default;
+
+// Legacy Syntax Support
+$breakpoint-legacy-syntax:      false !default;
+
+//////////////////////////////
+// Imports
+//////////////////////////////
+
+
+
+
+
+
+
+//////////////////////////////
+// Breakpoint Mixin
+//////////////////////////////
+
+@mixin breakpoint($query, $no-query: false) {
+  // Reset contexts
+  @include private-breakpoint-reset-contexts();
+
+  $breakpoint: breakpoint($query, false);
+
+  $query-string: map-get($breakpoint, 'query');
+  $query-fallback: map-get($breakpoint, 'fallback');
+
+  $private-breakpoint-context-holder: map-get($breakpoint, 'context holder') !global;
+  $private-breakpoint-query-count: map-get($breakpoint, 'query count') !global;
+
+  // Allow for an as-needed override or usage of no query fallback.
+  @if $no-query != false {
+    $query-fallback: $no-query;
+  }
+
+  @if $query-fallback != false {
+    $context-setter: private-breakpoint-set-context('no-query', $query-fallback);
+  }
+
+  // Print Out Query String
+  @if not $breakpoint-no-queries {
+    @media #{$query-string} {
+      @content;
+    }
+  }
+
+  @if $breakpoint-no-query-fallbacks != false or $breakpoint-no-queries == true {
+
+    $type: type-of($breakpoint-no-query-fallbacks);
+    $print: false;
+
+    @if ($type == 'bool') {
+      $print: true;
+    }
+    @else if ($type == 'string') {
+      @if $query-fallback == $breakpoint-no-query-fallbacks {
+        $print: true;
+      }
+    }
+    @else if ($type == 'list') {
+      @each $wrapper in $breakpoint-no-query-fallbacks {
+        @if $query-fallback == $wrapper {
+          $print: true;
+        }
+      }
+    }
+
+    // Write Fallback
+    @if ($query-fallback != false) and ($print == true) {
+      $type-fallback: type-of($query-fallback);
+
+      @if ($type-fallback != 'bool') {
+        #{$query-fallback} & {
+          @content;
+        }
+      }
+      @else {
+        @content;
+      }
+    }
+  }
+
+  @include private-breakpoint-reset-contexts();
+}
+
+
+@mixin mq($query, $no-query: false) {
+  @include breakpoint($query, $no-query) {
+    @content;
+  }
+}
+// styleguide:ignore:end
+
+
+@mixin material-button() {
+	line-height: 25px;
+	min-width: 7em;
+	margin: 15px 7px;
+	&.md-primary {
+		background-color: $mx_palette_Accent_500 !important;
+	}
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin box-shadow() {
+	box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+	0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+	0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+@mixin transition($argument) {
+	transition: #{$argument};
+	-webkit-transition: #{$argument};
+	-moz-transition: #{$argument};
+	-ms-transition: #{$argument};
+	-o-transition: #{$argument};
+	transition: #{$argument};
+}
+
+@mixin item-shadow() {
+	@include transition(0.8s box-shadow);
+	&:hover {
+		@include box-shadow();
+		@include transition(0.4s box-shadow);
+		z-index: 2;
+	}
+}
+
+@mixin mx-fixed-panel($top:0, $right:0, $bottom:0, $left:0, $zIndex: auto) {
+	position: absolute;
+	left: $left;
+	right: $right;
+	top: $top;
+	bottom: $bottom;
+	z-index:$zIndex;
+}
+
+
+@mixin mx-icon-button(){
+	outline: none;
+	cursor: pointer;
+	padding: .5rem;
+	border-radius: 50%;
+	height: auto;
+	width: auto;
+	
+
+	&:hover {
+		background: $mx_palette_Primary_50;
+
+		color: $mx_palette_Accent_500;
+	}
+}
+// Typography
+//
+// This section describes base typography
+//
+// Styleguide 1.0
+
+$base-font-size: 1.4rem;
+$base-line-height: 1.95em;
+
+$base_black: #000000;
+$base_black_87: rgba($base_black, .87);
+$base_black_54: rgba($base_black, .54);
+$base_black_26: rgba($base_black, .26);
+$base_black_12: rgba($base_black, .12);
+$base_black_8: rgba($base_black, .8);
+
+
+//@font-face {
+//	font-family: 'Open Sans';
+//	src: url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300);
+//}
+
+body {
+	font-size: 100%;
+	line-height: $base-line-height;
+	font-family: "Open Sans", sans-serif;
+	color: $base_black_87;
+}
+
+.bodyHack{
+	font-family: "Open Sans", sans-serif;
+}
+
+// Headings
+//
+// These are our headings
+//
+// markup:
+// <h1>Heading 1</h1>
+// <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa ipsum, tincidunt vel convallis in, suscipit et risus. Morbi erat dolor, mattis at dignissim sed, feugiat sed lorem.
+// <h2>Heading 2</h2>
+// <p>Mauris feugiat suscipit turpis, ut rhoncus lectus finibus sed. Etiam suscipit consectetur eros vitae venenatis.</p>
+// <h3>Heading 3</h3>
+// <p>Ut leo ipsum, tincidunt vel mauris eget, convallis egestas justo. Nunc ligula neque, porta ac lorem id, ultrices dapibus dolor.</p>
+// <h4>Heading 4</h4>
+// <p> Phasellus interdum massa ante, ac placerat felis ultricies at. Fusce vulputate, odio sed convallis laoreet, tortor orci venenatis massa, a placerat ligula nisl vitae felis. In pellentesque ornare eleifend. Suspendisse potenti. Quisque eget mauris enim.</p>
+// <h5>Heading 5</h5>
+// <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa ipsum, tincidunt vel convallis in, suscipit et risus. Morbi erat dolor, mattis at dignissim sed, feugiat sed lorem.
+// <h6>Heading 6</h6>
+// <p>Mauris feugiat suscipit turpis, ut rhoncus lectus finibus sed. Etiam suscipit consectetur eros vitae venenatis.</p>
+//
+// <p>Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-bold">class="mx-text-bold": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-italic">class="mx-text-italic": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-underline">class="mx-text-underline": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-deleted">class="mx-text-deleted": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-small">class="mx-text-small": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-lowercase">class="mx-text-lowercase": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-uppercase">class="mx-text-uppercase": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-capitalize">class="mx-text-capitalize": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-nowrap">class="mx-text-nowrap": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-left">class="mx-text-left": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-center">class="mx-text-center": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-right">class="mx-text-right": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-justify">class="mx-text-justify": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-muted">class="mx-text-muted": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-primary">class="mx-text-primary": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-success">class="mx-text-success": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-info">class="mx-text-info": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-warning">class="mx-text-warning": Lorem ipsum dolor sit amet</p>
+// <p class="mx-text-danger">class="mx-text-danger": Lorem ipsum dolor sit amet</p>
+//
+// Styleguide 1.1
+
+
+
+//
+//md-headline {
+//    font-size: $headline-font-size-base;
+//    font-weight: 400;
+//    line-height: rem(3.2);
+//}
+//.md-title {
+//    @include md-title();
+//}
+//.md-subhead {
+//    @include md-subhead();
+//}
+
+h1, .mx-h1 {
+
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    font-family: inherit;
+    font-style: inherit;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+h2, .mx-h2 {
+
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    font-family: inherit;
+    font-style: inherit;
+    margin-top: 22px;
+    margin-bottom: 22px;
+
+}
+h3, .mx-h3 {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.010em;
+    line-height: 24px;
+    font-family: inherit;
+    font-style: inherit;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+h4, .mx-h4 {
+    font-family: inherit;
+    font-weight: 400;
+    font-style: inherit;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+h5, .mx-h5 {
+
+    font-family: inherit;
+    font-weight: 400;
+
+    font-size: 12px;
+    line-height: 18px;
+
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+p, ul, ol, pre, table, blockquote {
+    margin-top: 0px;
+    margin-bottom: 22px;
+}
+ul ul, ol ol, ul ol, ol ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+hr {
+    border: 1px solid;
+    margin: -1px 0;
+}
+b, strong, em, small, code {
+    line-height: 1;
+}
+sup {
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+
+p, ul, ol, pre, table, blockquote, span, div{
+	//margin-top: 1.75rem;
+	//margin-bottom: 1.75rem;
+	font-size: $base-font-size;
+}
+
+.mx-text-bold {font-weight: bold;}
+.mx-text-italic {font-style: italic;}
+.mx-text-underline {text-decoration: underline;}
+.mx-text-deleted {text-decoration: line-through;}
+.mx-text-small {font-size: 80%;}
+.mx-text-lowercase {text-transform: lowercase;}
+.mx-text-uppercase {text-transform: uppercase;}
+.mx-text-capitalize {text-transform: capitalize;}
+
+.mx-text-nowrap {white-space: nowrap;}
+.mx-text-left {text-align: left;}
+.mx-text-center {text-align: center;}
+.mx-text-right {text-align: right;}
+.mx-text-justify {text-align: justify;}
+
+.mx-text-muted {color: $mx_palette_DarkGrey_A200;}
+.mx-text-primary {color: $mx_palette_Blue_700;}
+.mx-text-success {color: $mx_palette_Green_700;}
+.mx-text-info {color: $mx_palette_Blue_500;}
+.mx-text-warning {color: $mx_palette_Accent_500;}
+.mx-text-danger {color: $mx_palette_Rose_500;}
+
+md-input-container, md-radio-button, md-switch, md-select{
+	font-size: $base-font-size;
+    display:block;
+	margin: 18px 0 18px 0;
+	padding: 2px;
+}
+
+$base_black: #000000;
+$base_black_87: lighten($base_black, 13%);
+$base_black_54: lighten($base_black, 46%);
+$base_black_26: lighten($base_black, 74%);
+$base_black_12: lighten($base_black, 88%);
+$base_black_8: lighten($base_black, 92%);
+
+$links-color: $mx_palette_Accent_500;
+
+a {
+	color: $links-color;
+	font-size: 1.2rem;
+	font-weight: 600;
+	text-decoration: none;
+	letter-spacing: .09px;
+	&:visited{
+		color: $links-color;
+		font-size: 1.2rem;
+		font-weight: 600;
+		text-decoration: none;
+		letter-spacing: .09px;
+	}
+	&:hover{
+		color: #015070;
+	}
+}
+
+
+
+// styleguide:ignore:start
+$m42-blue-primary: #0399d7 !default; //todo: find usage
+$m42-rose-500: #fb4848 !default; //todo: find usage
+$m42-blue-secondary: #4A90E2 !default; //todo: find usage
+$error-color: #e84351 !default !default;
+$error-border-color: #e84351 !default;
+$error-background: #f2dede !default;
+
+$white: #fff !default;
+
+$menu-text-color: rgba(255,255,255,0.70) !default;
+
+$link-color: #337ab7 !default;
+
+$pane-body-background:#ffffff;
+$panels-text-color: #FFF;
+
+$text-error: #d9534f;
+
+$content-background:#ffffff;
+
+$content-background: #ffffff;
+
+$status-assigned: #5bc0de;
+$status-new: $m42-rose-500;
+$status-in-progress: #5cb85c;
+
+$tab-active-ink: #4285f4;
+
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+
+
+
+
+$screen-extra-small: 0 599px;
+$screen-small: 600px 959px;
+$screen-middle: 960px 1439px;
+$screen-wide: 1440px;
+
+$screen-mobile: 0 959px;
+$screen-desktop: 960px;
+
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+
+.mx-pull-left {float: left;}
+.mx-pull-right {float: right;}
+.mx-clearfix:after {clear: both;}
+
+.mx-show-xs,
+.mx-show-sm,
+.mx-show-md,
+.mx-show-lg,
+.mx-show-xs-block,
+.mx-show-sm-block,
+.mx-show-md-block,
+.mx-show-lg-block,
+.mx-show-xs-inline,
+.mx-show-sm-inline,
+.mx-show-md-inline,
+.mx-show-lg-inline,
+.mx-show-xs-desktop-inline,
+.mx-show-sm-desktop-inline,
+.mx-show-md-desktop-inline,
+.mx-show-lg-desktop-inline {
+	display: none !important;
+}
+
+@include breakpoint($screen-extra-small) {
+	.mx-show-xs {display: block !important;}
+	table.mx-show-xs {display: table !important;}
+	tr.mx-show-xs {display: table-row !important;}
+	th.mx-show-xs, td.mx-show-xs {display: table-cell !important;}
+	.mx-show-xs-block {display: block !important;}
+	.mx-show-xs-inline {display: inline !important;}
+	.mx-show-xs-inline-block {display: inline-block !important;}
+	.mx-hide-xs {display: none !important;}
+}
+
+@include breakpoint($screen-small) {
+	.mx-show-sm {display: block !important;}
+	table.mx-show-sm {display: table !important;}
+	tr.mx-show-sm {display: table-row !important;}
+	th.mx-show-sm, td.mx-show-sm {display: table-cell !important;}
+	.mx-show-sm-block {display: block !important;}
+	.mx-show-sm-inline {display: inline !important;}
+	.mx-show-sm-inline-block {display: inline-block !important;}
+	.mx-hide-sm {display: none !important;}
+}
+
+@include breakpoint($screen-middle) {
+	.mx-show-md {display: block !important;}
+	table.mx-show-md {display: table !important;}
+	tr.mx-show-md {display: table-row !important;}
+	th.mx-show-md, td.mx-show-md {display: table-cell !important;}
+	.mx-show-md-block {display: block !important;}
+	.mx-show-md-inline {display: inline !important;}
+	.mx-show-md-inline-block {display: inline-block !important;}
+	.mx-hide-md {display: none !important;}
+}
+
+@include breakpoint($screen-wide) {
+	.mx-show-lg {display: block !important;}
+	table.mx-show-lg {display: table !important;}
+	tr.mx-show-lg {display: table-row !important;}
+	th.mx-show-lg, td.mx-show-lg {display: table-cell !important;}
+	.mx-show-lg-block {display: block !important;}
+	.mx-show-lg-inline {display: inline !important;}
+	.mx-show-lg-inline-block {display: inline-block !important;}
+	.mx-hide-lg {display: none !important;}
+}
+
+.mx-show-mobile,
+.mx-show-desktop,
+.mx-show-mobile-block,
+.mx-show-desktop-block,
+.mx-show-mobile-inline,
+.mx-show-desktop-inline,
+.mx-show-mobile-inline-block,
+.mx-show-desktop-inline-block {
+  display: none !important;
+}
+
+@include breakpoint($screen-mobile) {
+	.mx-show-mobile {display: block !important;}
+	table.mx-show-mobile {display: table !important;}
+	tr.mx-show-mobile {display: table-row !important;}
+	th.mx-show-mobile, td.mx-show-mobile {display: table-cell !important;}
+	.mx-show-mobile-block {display: block !important;}
+	.mx-show-mobile-inline {display: inline !important;}
+	.mx-show-mobile-inline-block {display: inline-block !important;}
+	.mx-hide-mobile {display: none !important;}
+}
+
+@include breakpoint($screen-desktop) {
+	.mx-show-desktop {display: block !important;}
+	table.mx-show-desktop {display: table !important;}
+	tr.mx-show-desktop {display: table-row !important;}
+	th.mx-show-desktop, td.mx-show-desktop {display: table-cell !important;}
+	.mx-show-desktop-block {display: block !important;}
+	.mx-show-desktop-inline {display: inline !important;}
+	.mx-show-desktop-inline-block {display: inline-block !important;}
+	.mx-hide-desktop {display: none !important;}
+}
+
+.mx-bg-active {background-color: $mx_palette_Primary_A100;}
+.mx-bg-success {background-color: $mx_palette_Green_A100;}
+.mx-bg-info {background-color: $mx_palette_Blue_A100;}
+.mx-bg-warning {background-color: $mx_palette_Accent_A200;}
+.mx-bg-danger {background-color: $mx_palette_Rose_A100;}
+.mx-cancel-button {background-color: $mx_palette_Green_A100;}
+.alert-danger {
+	background-color: $mx_palette_Rose_500;
+	font-size: 1.5625rem;
+	line-height: 1.75rem;
+	color: $mx_palette_Rose_50;
+}
+.alert-success{
+	background-color: $mx_palette_Green_500;
+	font-size: 1.5625rem;
+	line-height: 1.75rem;
+	color: $mx_palette_Green_50;
+}
+.alert-info{
+	background-color: $mx_palette_Blue_500;
+	font-size: 1.5625rem;
+	line-height: 1.75rem;
+	color: $mx_palette_Blue_50;
+}
+.alert-warning{
+	background-color: $mx_palette_Accent_500;
+	font-size: 1.5625rem;
+	line-height: 1.75rem;
+	color: $mx_palette_Accent_50;
+}
+
+.md-hue-2{
+	span{
+		font-weight: 600;
+		letter-spacing: 0.1px;
+		margin: 0 10px;
+		color: white;
+	}
+}
+
+@mixin flex-properties($name: null)
+{
+	$flexName : 'mx-flex';
+	$growValue : $name;
+	@if $name != null {
+		$flexName: 'mx-flex-#{$name}';
+		$name : '-#{$name}';
+	} @else {
+		$name : '';
+	}
+
+	.#{$flexName} {
+		flex-grow: #{$growValue};
+		display: flex;
+		box-sizing: border-box;
+		display: -webkit-flex;
+	}
+}
+
+@mixin build-flex(){
+	@for $i from 1 through 10 {
+		@include flex-properties($i);
+	}
+}
+
+@include build-flex();
+
+.mx-icon-button {
+	@include mx-icon-button();
+}
+
+// styleguide:ignore:end
+
+

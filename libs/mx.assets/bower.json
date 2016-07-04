@@ -1,0 +1,12 @@
+{
+  "name": "PandoraAssets",
+  "version": "1.1.64",
+  "main": [],
+  "ignore": [],
+  "homepage": "https://github.com/Matrix42AG/PandoraAssets",
+  "authors": [
+    "Matrix42"
+  ],
+  "description": "Pandora assets",
+  "license": "Matrix42AG"
+}

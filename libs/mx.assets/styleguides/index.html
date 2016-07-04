@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sgApp">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/PandoraAssets/assets/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    var _styleguideConfig = {"title":"Matrix42 Assets","disableEncapsulation":false,"disableHtml5Mode":true};
+    (function() {
+      'use strict';
+      var userStyleFiles = [
+          '/PandoraAssets/styleguide.css',
+          '/PandoraAssets/styleguide_pseudo_styles.css',
+          '/PandoraAssets/styleguide_helper_elements.css'
+        ],
+        head = document.querySelector('head');
+
+      function addCssLink(href, options) {
+        var link = document.createElement('link');
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('type', 'text/css');
+        link.setAttribute('href', href);
+        if (options && options.noReload) {
+          link.setAttribute('data-noreload', true);
+        }
+        head.appendChild(link);
+      }
+
+      // Use Shadow DOM but fallback to global styles if shadow DOM is not supported
+      if (typeof head.createShadowRoot !== 'function' || _styleguideConfig.disableEncapsulation) {
+        userStyleFiles.forEach(addCssLink);
+      }
+
+      addCssLink('/PandoraAssets/styleguide_at_rules.css');
+      addCssLink('/PandoraAssets/styleguide-app.css', {noReload: true});
+    }());
+  </script>
+  <script type="text/ng-template" id="userStyles.html">
+    <style>
+      @import url('/PandoraAssets/styleguide.css');
+      @import url('/PandoraAssets/styleguide_pseudo_styles.css');
+      @import url('/PandoraAssets/styleguide_helper_elements.css');
+    </style>
+  </script>
+  <title ng-bind-html="$root.pageTitle | unsafe">Matrix42 Assets</title>
+  
+  <script type="text/javascript">
+    var filesConfig = [];
+  </script>
+  <base href="/PandoraAssets/" />
+</head>
+<body class="sg">
+  
+  <div class="sg view-index" ui-view></div>
+  <script src="/PandoraAssets/js/vendor.js"></script>
+  <script src="/PandoraAssets/js/app.js"></script>
+  
+</body>
+</html>

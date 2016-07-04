@@ -1,0 +1,21 @@
+{
+  "name": "PandoraAssets",
+  "version": "1.1.64",
+  "main": [],
+  "ignore": [],
+  "homepage": "https://github.com/Matrix42AG/PandoraAssets",
+  "authors": [
+    "Matrix42"
+  ],
+  "description": "Pandora assets",
+  "license": "Matrix42AG",
+  "_release": "1.1.64",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.64",
+    "commit": "9caa5e865f7ef63792da7eef0d6acf2a4b010600"
+  },
+  "_source": "https://github.com/Matrix42AG/bower-PandoraAssets.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/Matrix42AG/bower-PandoraAssets.git"
+}

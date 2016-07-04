@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>Matrix42 Icons/Black/Refresh</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Matrix42-Icons-Black" sketch:type="MSArtboardGroup" transform="translate(-259.000000, -112.000000)" fill="#000000">
+            <g id="Matrix42-Icons/Black/Refresh" sketch:type="MSLayerGroup" transform="translate(259.000000, 112.000000)">
+                <path d="M12.796875,2.203125 C11.4375,0.84375 9.571875,0 7.5,0 C3.35625,0 0.009375,3.35625 0.009375,7.5 C0.009375,11.64375 3.35625,15 7.5,15 C10.996875,15 13.9125,12.609375 14.746875,9.375 L12.796875,9.375 C12.028125,11.559375 9.946875,13.125 7.5,13.125 C4.396875,13.125 1.875,10.603125 1.875,7.5 C1.875,4.396875 4.396875,1.875 7.5,1.875 C9.05625,1.875 10.44375,2.521875 11.45625,3.54375 L8.4375,6.5625 L15,6.5625 L15,0 L12.796875,2.203125 L12.796875,2.203125 Z" id="Shape" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

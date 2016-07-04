@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>Matrix42 Icons/Black/Styles</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Matrix42-Icons-Black" sketch:type="MSArtboardGroup" transform="translate(-57.000000, -208.000000)" fill="#000000">
+            <g id="Matrix42-Icons/Black/Styles" sketch:type="MSLayerGroup" transform="translate(57.000000, 208.000000)">
+                <path d="M1.53,17.65 L2.87,18.21 L2.87,9.18 L0.44,15.04 C0.03,16.06 0.52,17.23 1.53,17.65 L1.53,17.65 Z M21.03,13.95 L16.07,1.98 C15.76,1.23 15.03,0.77 14.26,0.75 C14,0.75 13.73,0.79 13.47,0.9 L6.1,3.95 C5.35,4.26 4.89,4.98 4.87,5.75 C4.86,6.02 4.91,6.29 5.02,6.55 L9.98,18.52 C10.29,19.28 11.03,19.74 11.81,19.75 C12.07,19.75 12.33,19.7 12.58,19.6 L19.94,16.55 C20.96,16.13 21.45,14.96 21.03,13.95 L21.03,13.95 Z M6.88,6.75 C6.33,6.75 5.88,6.3 5.88,5.75 C5.88,5.2 6.33,4.75 6.88,4.75 C7.43,4.75 7.88,5.2 7.88,5.75 C7.88,6.3 7.43,6.75 6.88,6.75 L6.88,6.75 Z M4.88,17.75 C4.88,18.85 5.78,19.75 6.88,19.75 L8.33,19.75 L4.88,11.41 L4.88,17.75 L4.88,17.75 Z" id="Shape" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

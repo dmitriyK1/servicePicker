@@ -1,0 +1,139 @@
+<html lang="en" ng-app="app">
+
+<head>
+    <meta name="viewport" content="initial-scale=1" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular&#45;material/1.1.0&#45;rc4/angular&#45;material.css" type="text/css" media="all"> -->
+    <link rel="stylesheet" href="libs/angular-material/angular-material.css" type="text/css" media="all">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="directives/mxServicePicker.directive.css" media="all">
+    <style>
+
+       pre {
+          padding-left: 1rem;
+       }
+
+       h1 {
+          margin-bottom: -1rem;
+       }
+
+       md-checkbox {
+          width: 25%;
+       }
+
+       md-checkbox span {
+          -webkit-user-select: none;
+          user-select: none;
+       }
+
+    </style>
+</head>
+
+<body>
+
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-animate/angular-animate.js"></script>
+    <script src="libs/angular-aria/angular-aria.js"></script>
+    <script src="libs/angular-material/angular-material.js"></script>
+    <script src="libs/angular-messages/angular-messages.js"></script>
+
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script> -->
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular&#45;animate.js"></script> -->
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular&#45;aria.js"></script> -->
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular&#45;messages.js"></script> -->
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular&#45;material/1.1.0&#45;rc4/angular&#45;material.js"></script> -->
+
+   <script src="libs/angular-sanitize/angular-sanitize.js"></script>
+   <script src="libs/html2canvas/build/html2canvas.min.js"></script>
+   <script src="libs/ua-parser-js/dist/ua-parser.min.js"></script>
+   <script src="libs/ng-file-upload/ng-file-upload.js"></script>
+   <script src="libs/angular-ui-grid/ui-grid.js"></script>
+   <script src="libs/angular-route/angular-route.js"></script>
+   <script src="libs/tinymce-dist/tinymce.js"></script>
+   <script src="libs/angular-ui-tinymce/src/tinymce.js"></script>
+   <script src="libs/sc-date-time/dist/sc-date-time.js"></script>
+   <script src="libs/mx.components/mx.components.all.js"></script>
+   <script src="libs/moment/moment.js"></script>
+   <script src="libs/angular-moment/angular-moment.js"></script>
+   <script src="libs/oclazyload/dist/ocLazyLoad.js"></script>
+
+
+   <!-- ================================================================================  -->
+
+    <script src="app.js"></script>
+
+    <script src="controllers/demo.ctrl.js"></script>
+
+    <script src="services/mxServicePicker.js"></script>
+
+    <script src="controllers/mxServicePicker.ctrl.js"></script>
+
+    <script src="directives/mxServicePicker.directive.js"></script>
+
+   <!-- ================================================================================  -->
+
+    <div ng-controller="DemoCtrl as demoCtrl">
+        <form>
+
+            <div layout="column" layout-padding>
+               <md-checkbox ng-model="demoCtrl.isRequired">Required</md-checkbox>
+               <md-checkbox ng-model="demoCtrl.isReadOnly">Read-only</md-checkbox>
+               <md-checkbox ng-model="demoCtrl.isDisabled">Disabled</md-checkbox>
+            </div>
+
+           <mx-service-picker
+              label               = "Service picker"
+              mode                = "demoCtrl.mode"
+              ng-disabled         = "demoCtrl.isDisabled"
+              read-only           = "demoCtrl.isReadOnly"
+              required            = "demoCtrl.isRequired"
+            ></mx-service-picker>
+
+        </form>
+
+        <pre>
+            <h1>mx-service-picker directive API:</h1>
+
+            <b style="font-size: 1rem;">&lt;mx-service-picker</b>
+                ng-disabled = "demoCtrl.isDisabled"
+                read-only   = "demoCtrl.isReadOnly"
+                required    = "demoCtrl.isRequired"
+
+                label       = "Service picker"
+
+                on-change   = "demoCtrl.onChange()"
+
+                ng-model    = "demoCtrl.model"
+            <b style="font-size: 1rem;">&gt;</b>
+
+            <h1>Binding settings:</h1>
+
+      <span style="font-size: 1rem;">
+         bindToController: {
+
+            <b>// Boolean</b>
+                  disabled : "=ngDisabled",
+                  readOnly : "=",
+                  required : "=",
+
+            <b>// String</b>
+                  label    : "@",
+
+            <b>// Function</b>
+                  onChange : "&",
+
+            <b>// Object</b>
+                  model    : "=ngModel"
+
+         }
+      </span>
+
+        </pre>
+
+    </div>
+    <!-- DemoCtrl end  -->
+
+</body>
+</html>

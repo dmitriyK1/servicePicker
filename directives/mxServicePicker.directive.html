@@ -1,0 +1,58 @@
+<md-autocomplete
+        clear-autocomplete-btn
+        mx-picker-autocomplete
+	md-item-text              = "vm.getTitle(item)"
+	md-items                  = "item in vm.autoCompleteSearch()"
+	md-search-text            = "vm.autoCompleteSearchText"
+        md-delay                  = "vm.loadDelay"
+        md-floating-label         = "{{ :: vm.label }}"
+        md-input-maxlength        = "30"
+        md-input-name             = "autocomplete"
+        md-match-case-insensitive = "true"
+        md-menu-class             = "{{ :: vm.dropdownHtmlClass }}"
+        md-min-length             = "0 || +vm.readOnly"
+        md-no-cache               = "true"
+        md-search-text-change     = "vm.autoCompleteSearchTextChange()"
+        md-select-on-match        = "true"
+        md-selected-item          = "vm.selectedItem"
+        md-selected-item-change   = "vm.onItemChange(item)"
+        ng-class                  = "isValidSearch ? ''  : 'invalid-value' "
+        ng-disabled               = "vm.disabled"
+        ng-form                   = "autocompleteForm"
+        ng-readonly               = "vm.readOnly"
+        ng-required               = "vm.required"
+>
+
+
+        <md-item-template>
+                <span md-highlight-flags="^i" md-highlight-text="searchText">{{ item }}</span>
+
+                <!-- <span md&#45;highlight&#45;text="vm.autoCompleteSearchText">{{$parent.vm.getTitle(item)}}</span> -->
+        </md-item-template>
+
+        <div
+                class   = "hint hint-info"
+                ng-if   = "autocompleteForm.autocomplete.$valid || (autocompleteForm.autocomplete.$invalid && !autocompleteForm.autocomplete.$touched)"
+                ng-hide = "vm.readOnly"
+                ng-bind = "::vm.hint"
+        >
+        </div>
+
+        <!-- <mx&#45;control&#45;errors></mx&#45;control&#45;errors> -->
+
+        <div
+                ng-messages = "autocompleteForm.autocomplete.$error"
+                ng-if       = "autocompleteForm.autocomplete.$touched && (!vm.readOnly)"
+                ng-hide     = "vm.disabled"
+        >
+                <div class="hint" ng-message="required">This field is required</div>
+                <div ng-message="md-input-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+
+        <md-not-found>
+                <span>{{ vm.notFoundMessage }}</span>
+                <!-- <span>{{vm.notFoundMessage}}<a ng&#45;if="vm.availableNotFoundButton" href ng&#45;click="vm.notFoundClick()">{{vm.notFound.buttonText}}</a></span> -->
+        </md-not-found>
+
+        <md-icon tabindex="-1" class="autocomplete-search" ng-if="vm.browseLookup && !(vm.disabled || vm.readOnly)" ng-click="vm.browseLookup()">search</md-icon>
+</md-autocomplete>

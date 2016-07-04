@@ -1,0 +1,16 @@
+a.pseudo-class-visited {
+  color: #fc8529;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: .09px;
+}
+
+a.pseudo-class-hover {
+  color: #015070;
+}
+
+.mx-icon-button.pseudo-class-hover {
+  background: #eaedee;
+  color: #fc8529;
+}
