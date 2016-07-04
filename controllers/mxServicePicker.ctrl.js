@@ -6,12 +6,8 @@
         .module('app')
         .controller('MxServicePickerCtrl', MxServicePickerCtrl)
 
-    function MxServicePickerCtrl($log) {
+    function MxServicePickerCtrl() {
         var vm = this;
-
-        vm.$log = $log;
-
-        console.log('MxServicePickerCtrl initialized');
     }
 
 })(window);

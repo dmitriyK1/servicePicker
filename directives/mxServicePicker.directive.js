@@ -21,8 +21,6 @@
             }
         };
 
-        console.log('mxServicePicker directive initialized');
-
         return ddo;
     }
 

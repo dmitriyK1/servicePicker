@@ -6,8 +6,6 @@
         .service('ServicePicker', ServicePicker);
 
     function ServicePicker() {
-        console.log('ServicePicker service initialized');
-
         var service = this;
 
         service.search           = search;
