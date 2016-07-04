@@ -11,3 +11,83 @@ md-autocomplete {
     width: 900px;
 }
 
+md-autocomplete button md-icon {
+    z-index: 100;
+}
+
+md-autocomplete.invalid-value input {
+    color: red !important;
+}
+
+.autocomplete-search {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.md-autocomplete-suggestions a {
+    text-decoration: underline;
+}
+
+.test-input {
+    display: block;
+    width: 100%;
+    transition: background 0.3s ease-out;
+    padding: 5px;
+    margin-bottom: 0.5rem;
+    border: 1px gray solid;
+}
+
+.test-input:focus {
+    outline: 0;
+    border: 1px solid blue;
+    background: #EBEBEB;
+}
+
+.clear-autocomplete {
+    position: absolute;
+    top: 10% !important;
+    right: 20px !important;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.25s linear;
+}
+
+
+md-autocomplete.md-default-theme button.clear-autocomplete:after,
+md-autocomplete button.clear-autocomplete:after {
+    background: none;
+}
+
+.clear-autocomplete.visible {
+    visibility: visible;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.clear-autocomplete i {
+    font-size: 20px;
+}
+
+.clear-autocomplete {
+    cursor: pointer;
+    -webkit-user-select: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+[md-highlight-text] .highlight {
+    color: red !important;
+    font-weight: bold;
+}
+
+md-autocomplete input:focus {
+    color: rgba(0,0,0,0.87) !important;
+}
+
+md-autocomplete.error input {
+    color: red !important;
+}
