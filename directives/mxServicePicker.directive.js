@@ -18,6 +18,10 @@
         function link(scope, element, attrs, ctrl) {
             element.on('keydown', onKeyDown);
 
+            scope.$on('$destroy', function cleanUp() {
+                element.off('keydown');
+            });
+
             function onKeyDown(e) {
                 if (e.keyCode !== 190) return;
 
