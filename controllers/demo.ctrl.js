@@ -17,7 +17,7 @@
 
         vm.onChange = onChange;
 
-        vm.service  = ServicePicker;
+        vm.searchService  = ServicePicker;
 
         function onChange() {
             console.log('search item changed');
