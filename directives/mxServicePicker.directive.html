@@ -8,6 +8,7 @@
 <hr>
 
    <!-- md&#45;items                  = "vm.model.search({ mode: vm.mode, keyword: md&#45;search&#45;text })" -->
+
 <md-autocomplete
    clear-autocomplete-btn
    md-items                  = "item in [1,2,3]"
@@ -23,8 +24,6 @@
    md-search-text-change     = "vm.model.search(vm)"
    md-delay                  = "300"
 >
-
-
         <md-item-template>
 
            <section ng-if="vm.mode === 'service' ">
