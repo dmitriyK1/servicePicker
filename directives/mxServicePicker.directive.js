@@ -26,6 +26,14 @@
                 if (e.keyCode !== 190) return;
 
                 console.log('dot pressed');
+
+                var inputValue = scope.vm.keyword;
+                var count      = (inputValue.match(/\./g) || []).length;
+
+                console.log(count);
+
+                if (count === 2) e.preventDefault();
+
                 scope.vm.model.search(scope.vm);
             }
 
