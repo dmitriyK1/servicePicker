@@ -13,6 +13,8 @@
         vm.isRequired = true;
 
         vm.mode       = 'host';
+        vm.modes = ['host', 'service', 'operation'];
+
         // vm.mode    = 'service';
         // vm.mode    = 'operation';
 

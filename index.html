@@ -87,7 +87,9 @@
                <md-checkbox ng-model="demoCtrl.isDisabled">Disabled</md-checkbox>
 
                <md-input-container>
-                  <input type="text" placeholder="Choose query mode" ng-model="demoCtrl.mode">
+                  <md-select ng-model="demoCtrl.mode" placeholder="Select a query mode">
+                     <md-option ng-value="mode" ng-repeat="mode in demoCtrl.modes">{{ mode }}</md-option>
+                  </md-select>
                </md-input-container>
             </div>
 
