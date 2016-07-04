@@ -16,6 +16,8 @@
         return ddo;
 
         function link(scope, element, attrs, ctrl) {
+            var MAX_NESTING = 2;
+
             element.on('keydown', onKeyDown);
 
             scope.$on('$destroy', function cleanUp() {
@@ -27,12 +29,19 @@
 
                 console.log('dot pressed');
 
-                var inputValue = scope.vm.keyword;
-                var count      = (inputValue.match(/\./g) || []).length;
+                var inputValue    = scope.vm.keyword;
 
-                console.log(count);
+                if (!inputValue) {
+                    e.preventDefault();
+                    return;
+                }
+                var count         = (inputValue.match(/\./g) || []).length;
+                var isLastCharDot = inputValue[inputValue.length-1] === '.';
 
-                if (count === 2) e.preventDefault();
+                if (!inputValue.length || count === MAX_NESTING || isLastCharDot) {
+                    e.preventDefault();
+                    return;
+                }
 
                 scope.vm.model.search(scope.vm);
             }
