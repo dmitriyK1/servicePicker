@@ -23,7 +23,6 @@
 
             if (!mode) throw new Error('Mode not specified.');
 
-            if (mode === 'host')      return _searchForHost(keyword);
             if (mode === 'service')   return _searchForService(keyword);
             if (mode === 'operation') return _searchForOperation(keyword);
 
@@ -31,17 +30,6 @@
         }
 
         function getDisplayString(id) { }
-
-        function _searchForHost(keyword) {
-            console.log('searching for a host...');
-
-            var hostSearchResult = {
-                id       : 777,
-                hostName : 'myHostName'
-            };
-
-            return hostSearchResult;
-        }
 
         function _searchForService(keyword) {
             console.log('searching for a service...');

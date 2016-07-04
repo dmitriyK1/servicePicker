@@ -12,11 +12,8 @@
         vm.isReadOnly = false;
         vm.isRequired = true;
 
-        vm.mode       = 'host';
-        vm.modes = ['host', 'service', 'operation'];
-
-        // vm.mode    = 'service';
-        // vm.mode    = 'operation';
+        vm.mode  = 'service';
+        vm.modes = ['service', 'operation'];
 
         vm.onChange = onChange;
 
