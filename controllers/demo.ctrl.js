@@ -5,11 +5,11 @@
         .module('app')
         .controller('DemoCtrl', DemoCtrl)
 
-    function DemoCtrl($q) {
+    function DemoCtrl(ServicePicker) {
         var vm = this;
 
-        vm.isReadOnly = false;
         vm.isDisabled = false;
+        vm.isReadOnly = false;
         vm.isRequired = true;
 
         vm.mode       = 'host';
@@ -17,6 +17,8 @@
         // vm.mode    = 'operation';
 
         vm.onChange = onChange;
+
+        vm.service  = ServicePicker;
 
         function onChange() {
             console.log('search item changed');

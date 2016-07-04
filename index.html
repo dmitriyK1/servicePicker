@@ -65,31 +65,35 @@
     <script src="app.js"></script>
 
     <script src="controllers/demo.ctrl.js"></script>
-
-    <script src="services/mxServicePicker.js"></script>
-
     <script src="controllers/mxServicePicker.ctrl.js"></script>
-
+    <script src="services/mxServicePicker.js"></script>
     <script src="directives/mxServicePicker.directive.js"></script>
+
+
 
    <!-- ================================================================================  -->
 
     <div ng-controller="DemoCtrl as demoCtrl">
         <form>
 
+           <mx-service-picker
+              label       = "Service picker"
+              mode        = "{{ demoCtrl.mode }}"
+              ng-disabled = "demoCtrl.isDisabled"
+              read-only   = "demoCtrl.isReadOnly"
+              required    = "demoCtrl.isRequired"
+              ng-model    = "demoCtrl.service"
+            ></mx-service-picker>
+
             <div layout="column" layout-padding>
                <md-checkbox ng-model="demoCtrl.isRequired">Required</md-checkbox>
                <md-checkbox ng-model="demoCtrl.isReadOnly">Read-only</md-checkbox>
                <md-checkbox ng-model="demoCtrl.isDisabled">Disabled</md-checkbox>
-            </div>
 
-           <mx-service-picker
-              label               = "Service picker"
-              mode                = "demoCtrl.mode"
-              ng-disabled         = "demoCtrl.isDisabled"
-              read-only           = "demoCtrl.isReadOnly"
-              required            = "demoCtrl.isRequired"
-            ></mx-service-picker>
+               <md-input-container>
+                  <input type="text" placeholder="Choose query mode" ng-model="demoCtrl.mode">
+               </md-input-container>
+            </div>
 
         </form>
 
