@@ -8,6 +8,7 @@
 
     function MxServicePickerCtrl() {
         var vm = this;
+        vm.keyword = '';
     }
 
 })(window);

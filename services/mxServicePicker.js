@@ -19,6 +19,7 @@
             var hostId    = options.hostId;
             var serviceId = options.serviceId;
 
+            if (!keyword) return;
             if (!mode) throw new Error('Mode not specified.');
 
             if (mode === 'service')   return _searchForService(keyword);

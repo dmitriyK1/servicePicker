@@ -11,7 +11,7 @@
 <md-autocomplete
    clear-autocomplete-btn
    md-items                  = "item in [1,2,3]"
-   md-search-text            = "item"
+   md-search-text            = "vm.keyword"
    md-match-case-insensitive = "true"
    md-no-cache               = "true"
    md-select-on-match        = "true"
@@ -20,7 +20,7 @@
    md-min-length             = "0"
    md-floating-label         = "{{ :: vm.label }}"
    md-input-name             = "autocomplete"
-   md-search-text-change     = "vm.model.search({ mode: vm.mode })"
+   md-search-text-change     = "vm.model.search(vm)"
    md-delay                  = "300"
 >
 
