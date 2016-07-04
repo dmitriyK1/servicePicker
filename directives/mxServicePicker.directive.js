@@ -5,13 +5,35 @@
         .module('app')
         .directive('mxServicePicker', mxServicePicker)
         .directive('clearAutocompleteBtn', clearAutocompleteBtn)
+        .directive('mxServiceAutocomplete', mxServiceAutocomplete)
+
+    function mxServiceAutocomplete() {
+        var ddo = {
+            require: 'mdAutocomplete',
+            link: link
+        };
+
+        return ddo;
+
+        function link(scope, element, attrs, ctrl) {
+            element.on('keydown', onKeyDown);
+
+            function onKeyDown(e) {
+                if (e.keyCode !== 190) return;
+
+                console.log('dot pressed');
+                scope.vm.model.search(scope.vm);
+            }
+
+        }
+    }
 
     function mxServicePicker() {
         var ddo = {
-            restrict         : 'E',
-            controller       : 'MxServicePickerCtrl as vm',
-            templateUrl      : 'directives/mxServicePicker.directive.html',
-            scope            : {},
+            restrict    : 'E',
+            controller  : 'MxServicePickerCtrl as vm',
+            templateUrl : 'directives/mxServicePicker.directive.html',
+            scope       : {},
 
             bindToController : {
                 disabled : '=ngDisabled',
