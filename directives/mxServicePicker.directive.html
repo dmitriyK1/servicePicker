@@ -2,65 +2,26 @@
 <h3>label:     {{ vm.label }}</h3>
 <h3>mode:      {{ vm.mode }}</h3>
 <h3>disabled:  {{ vm.disabled }}</h3>
-<h3>read-only: {{ vm.readOnly }}</h3>
 <h3>required:  {{ vm.required }}</h3>
 <h3>model:     {{ vm.model }}</h3>
 
 <hr>
 
-<!-- <md&#45;autocomplete -->
-<!-- 	md&#45;item&#45;text              = "vm.getTitle(item)" -->
-<!-- 	md&#45;items                  = "item in vm.autoCompleteSearch()" -->
-<!-- 	md&#45;search&#45;text            = "vm.autoCompleteSearchText" -->
-<!--         md&#45;delay                  = "vm.loadDelay" -->
-<!--         md&#45;floating&#45;label         = "{{ :: vm.label }}" -->
-<!--         md&#45;input&#45;maxlength        = "30" -->
-<!--         md&#45;input&#45;name             = "autocomplete" -->
-<!--         md&#45;match&#45;case&#45;insensitive = "true" -->
-<!--         md&#45;menu&#45;class             = "{{ :: vm.dropdownHtmlClass }}" -->
-<!--         md&#45;min&#45;length             = "0 || +vm.readOnly" -->
-<!--         md&#45;no&#45;cache               = "true" -->
-<!--         md&#45;search&#45;text&#45;change     = "vm.autoCompleteSearchTextChange()" -->
-<!--         md&#45;select&#45;on&#45;match        = "true" -->
-<!--         md&#45;selected&#45;item          = "vm.selectedItem" -->
-<!--         md&#45;selected&#45;item&#45;change   = "vm.onItemChange(item)" -->
-<!--         ng&#45;class                  = "isValidSearch ? ''  : 'invalid&#45;value' " -->
-<!--         ng&#45;disabled               = "vm.disabled" -->
-<!--         ng&#45;form                   = "autocompleteForm" -->
-<!--         ng&#45;readonly               = "vm.readOnly" -->
-<!--         ng&#45;required               = "vm.required" -->
-<!-- > -->
-<!--  -->
-<!--  -->
-<!--         <md&#45;item&#45;template> -->
-<!--                 <span md&#45;highlight&#45;flags="^i" md&#45;highlight&#45;text="searchText">{{ item }}</span> -->
-<!--  -->
-<!--                 <!&#45;&#45; <span md&#38;#45;highlight&#38;#45;text="vm.autoCompleteSearchText">{{$parent.vm.getTitle(item)}}</span> &#45;&#45;> -->
-<!--         </md&#45;item&#45;template> -->
-<!--  -->
-<!--         <div -->
-<!--                 class   = "hint hint&#45;info" -->
-<!--                 ng&#45;if   = "autocompleteForm.autocomplete.$valid || (autocompleteForm.autocomplete.$invalid &#38;&#38; !autocompleteForm.autocomplete.$touched)" -->
-<!--                 ng&#45;hide = "vm.readOnly" -->
-<!--                 ng&#45;bind = "::vm.hint" -->
-<!--         > -->
-<!--         </div> -->
-<!--  -->
-<!--         <!&#45;&#45; <mx&#38;#45;control&#38;#45;errors></mx&#38;#45;control&#38;#45;errors> &#45;&#45;> -->
-<!--  -->
-<!--         <div -->
-<!--                 ng&#45;messages = "autocompleteForm.autocomplete.$error" -->
-<!--                 ng&#45;if       = "autocompleteForm.autocomplete.$touched &#38;&#38; (!vm.readOnly)" -->
-<!--                 ng&#45;hide     = "vm.disabled" -->
-<!--         > -->
-<!--                 <div class="hint" ng&#45;message="required">This field is required</div> -->
-<!--                 <div ng&#45;message="md&#45;input&#45;maxlength">The name has to be less than 30 characters long.</div> -->
-<!--         </div> -->
-<!--  -->
-<!--         <md&#45;not&#45;found> -->
-<!--                 <span>{{ vm.notFoundMessage }}</span> -->
-<!--                 <!&#45;&#45; <span>{{vm.notFoundMessage}}<a ng&#38;#45;if="vm.availableNotFoundButton" href ng&#38;#45;click="vm.notFoundClick()">{{vm.notFound.buttonText}}</a></span> &#45;&#45;> -->
-<!--         </md&#45;not&#45;found> -->
-<!--  -->
-<!--         <md&#45;icon tabindex="&#45;1" class="autocomplete&#45;search" ng&#45;if="vm.browseLookup &#38;&#38; !(vm.disabled || vm.readOnly)" ng&#45;click="vm.browseLookup()">search</md&#45;icon> -->
-<!-- </md&#45;autocomplete> -->
+<md-autocomplete
+   md-items = "[1,2,3]"
+   md-match-case-insensitive = "true"
+   md-no-cache               = "true"
+   md-select-on-match        = "true"
+   ng-disabled               = "vm.disabled"
+   ng-required               = "vm.required"
+   md-min-length             = "0"
+   md-floating-label         = "{{ :: vm.label }}"
+   md-input-name             = "autocomplete"
+   md-search-text-change     = "vm.model.search({ mode: vm.mode })"
+>
+
+
+        <md-item-template>
+                <span md-highlight-flags="^i"></span>
+        </md-item-template>
+</md-autocomplete>

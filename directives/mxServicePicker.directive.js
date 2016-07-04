@@ -11,13 +11,13 @@
             controller       : 'MxServicePickerCtrl as vm',
             templateUrl      : 'directives/mxServicePicker.directive.html',
             scope            : {},
+
             bindToController : {
                 disabled : '=ngDisabled',
                 label    : '@',
                 mode     : '@',
                 model    : '=ngModel',
-                readOnly : '=',
-                required : '=',
+                required : '='
             }
         };
 

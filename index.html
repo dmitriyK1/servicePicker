@@ -69,8 +69,6 @@
     <script src="services/mxServicePicker.js"></script>
     <script src="directives/mxServicePicker.directive.js"></script>
 
-
-
    <!-- ================================================================================  -->
 
     <div ng-controller="DemoCtrl as demoCtrl">
@@ -80,14 +78,12 @@
               label       = "Service picker"
               mode        = "{{ demoCtrl.mode }}"
               ng-disabled = "demoCtrl.isDisabled"
-              read-only   = "demoCtrl.isReadOnly"
               required    = "demoCtrl.isRequired"
               ng-model    = "demoCtrl.service"
             ></mx-service-picker>
 
             <div layout="column" layout-padding>
                <md-checkbox ng-model="demoCtrl.isRequired">Required</md-checkbox>
-               <md-checkbox ng-model="demoCtrl.isReadOnly">Read-only</md-checkbox>
                <md-checkbox ng-model="demoCtrl.isDisabled">Disabled</md-checkbox>
 
                <md-input-container>
@@ -102,12 +98,9 @@
 
             <b style="font-size: 1rem;">&lt;mx-service-picker</b>
                 ng-disabled = "demoCtrl.isDisabled"
-                read-only   = "demoCtrl.isReadOnly"
                 required    = "demoCtrl.isRequired"
 
                 label       = "Service picker"
-
-                on-change   = "demoCtrl.onChange()"
 
                 ng-model    = "demoCtrl.model"
             <b style="font-size: 1rem;">&gt;</b>
@@ -119,14 +112,10 @@
 
             <b>// Boolean</b>
                   disabled : "=ngDisabled",
-                  readOnly : "=",
                   required : "=",
 
             <b>// String</b>
                   label    : "@",
-
-            <b>// Function</b>
-                  onChange : "&",
 
             <b>// Object</b>
                   model    : "=ngModel"
