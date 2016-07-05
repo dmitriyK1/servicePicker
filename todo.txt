@@ -4,6 +4,7 @@ http://stackoverflow.com/questions/28069696/match-multiple-object-property-value
 
 
 * сделать режим поиска hosts
+    - inspect json structure
 
 
 # если выбран mode:service
