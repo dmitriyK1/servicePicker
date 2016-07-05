@@ -82,16 +82,40 @@
         <form>
            <md-input-container layout="row">
                <input
-                     class="form-control"
-                     type="text"
-                     placeholder="Alternative service picker"
-                     ng-model="selected"
-                     uib-typeahead="state for state in demoCtrl.states | filter:$viewValue"
+                     class         = "form-control"
+                     ng-model      = "selected"
+                     placeholder   = "Alternative service picker"
+                     type          = "text"
+                     uib-typeahead = "state for state in demoCtrl.states | filter:$viewValue"
                >
 
             <!-- uib&#45;typeahead="state for state in demoCtrl.states | filter:$viewValue | limitTo:8" -->
 
            </md-input-container>
+
+<!-- ================================================================================ -->
+
+               <input
+                     uib-typeahead = "state for state in demoCtrl.getLocation($viewValue) | filter:$viewValue"
+               >
+
+           <md-input-container>
+               <input
+                     class                = "form-control"
+                     ng-model             = "asyncSelected"
+                     type                 = "text"
+                     placeholder          = "Data loaded via $http"
+                     typeahead-no-results = "noResults"
+                     uib-typeahead        = "address for address in getLocation($viewValue)"
+               >
+
+               <div ng-show="noResults">
+                  <i class="glyphicon glyphicon-remove"></i> No Results Found
+               </div>
+           </md-input-container>
+
+
+<!-- ================================================================================ -->
 
            <mx-service-picker
               label       = "Service picker"
