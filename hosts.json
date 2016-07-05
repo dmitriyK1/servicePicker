@@ -1,141 +1,162 @@
-var operations = [{
-    operationId   : 0,
-    operationName : 'DeviceInfo'
-}, {
-    operationId   : 1,
-    operationName : 'DeviceRestart'
-}, {
-    operationId   : 2,
-    operationName : 'DeviceUpdate'
-}];
+[{
+        "hostId": 0,
+        "hostName": "SilverBack",
+        "services": [{
+            "serviceId": 0,
+            "serviceName": "Device",
+            "operations": [{
+                "operationId": 0,
+                "operationName": "DeviceInfo"
+            }, {
+                "operationId": 1,
+                "operationName": "DeviceRestart"
+            }, {
+                "operationId": 2,
+                "operationName": "DeviceUpdate"
+            }]
+        }, {
+            "serviceId": 1,
+            "serviceName": "ApplicationManagement",
+            "operations": [{
+                "operationId": 3,
+                "operationName": "Update"
+            }, {
+                "operationId": 4,
+                "operationName": "Refresh"
+            }, {
+                "operationId": 5,
+                "operationName": "Reload"
+            }]
+        }]
+    },
 
-var operations2 = [{
-    operationId   : 3,
-    operationName : 'Update'
-}, {
-    operationId   : 4,
-    operationName : 'Refresh'
-}, {
-    operationId   : 5,
-    operationName : 'Reload'
-}];
+    {
+        "hostId": 1,
+        "hostName": "DevEnvironment",
+        "services": [{
+            "serviceId": 2,
+            "serviceName": "CoreMessaging",
+            "operations": [{
+                "operationId": 6,
+                "operationName": "Create"
+            }, {
+                "operationId": 7,
+                "operationName": "Read"
+            }, {
+                "operationId": 8,
+                "operationName": "Delete"
+            }]
+        }, {
+            "serviceId": 3,
+            "serviceName": "History",
+            "operations": [{
+                "operationId": 9,
+                "operationName": "Options"
+            }, {
+                "operationId": 10,
+                "operationName": "Get"
+            }, {
+                "operationId": 11,
+                "operationName": "Head"
+            }]
+        }]
+    },
 
-var operations3 = [{
-    operationId   : 6,
-    operationName : 'Create'
-},{
-    operationId   : 7,
-    operationName : 'Read'
-},{
-    operationId   : 8,
-    operationName : 'Delete'
-}];
+    {
+        "hostId": 2,
+        "hostName": "ProductionEnvironment",
+        "services": [{
+            "serviceId": 4,
+            "serviceName": "Queue",
+            "operations": [{
+                "operationId": 12,
+                "operationName": "Trace"
+            }, {
+                "operationId": 13,
+                "operationName": "Put"
+            }, {
+                "operationId": 14,
+                "operationName": "Connect"
+            }]
+        }, {
+            "serviceId": 5,
+            "serviceName": "Network",
+            "operations": [{
+                "operationId": 15,
+                "operationName": "Fetch"
+            }, {
+                "operationId": 16,
+                "operationName": "Pull"
 
-var operations4 = [{
-    operationId   : 9,
-    operationName : 'Options'
-}, {
-    operationId   : 10,
-    operationName : 'Get'
-}, {
-    operationId   : 11,
-    operationName : 'Head'
-}];
+            }, {
+                "operationId": 17,
+                "operationName": "Push"
+            }]
+        }]
+    },
 
-var operations5 = [{
-    operationId   : 12,
-    operationName : 'Trace'
-}, {
-    operationId   : 13,
-    operationName : 'Put'
-}, {
-    operationId   : 14,
-    operationName : 'Connect'
-}];
+    {
+        "hostId": 3,
+        "hostName": "TestingEnvironment",
+        "services": [{
+            "serviceId": 6,
+            "serviceName": "Device Install Service",
+            "operations": [{
+                "operationId": 18,
+                "operationName": "Fetch"
+            }, {
+                "operationId": 19,
+                "operationName": "Pull"
 
-var operations6 = [{
-    operationId   : 15,
-    operationName : 'Fetch'
-},{
-    operationId   : 16,
-    operationName : 'Pull'
+            }, {
+                "operationId": 20,
+                "operationName": "Push"
+            }]
+        }, {
+            "serviceId": 7,
+            "serviceName": "Enterprise App Management Service",
+            "operations": [{
+                "operationId": 21,
+                "operationName": "DeviceInfo"
+            }, {
+                "operationId": 22,
+                "operationName": "DeviceRestart"
+            }, {
+                "operationId": 23,
+                "operationName": "DeviceUpdate"
+            }]
+        }]
+    },
 
-},{
-    operationId   : 17,
-    operationName : 'Push'
-}];
-
-// --------------------------------------------------------------------------------
-//                   Services
-// --------------------------------------------------------------------------------
-    var service = {
-        serviceId   : 0,
-        serviceName : 'Device',
-        operations  : operations
-    };
-
-    var service2 = {
-        serviceId   : 1,
-        serviceName : 'ApplicationManagement',
-        operations  : operations2
-    };
-
-    var service3 = {
-        serviceId   : 2,
-        serviceName : 'CoreMessaging',
-        operations  : operations3
-    };
-
-    var service4 = {
-        serviceId   : 3,
-        serviceName : 'History',
-        operations  : operations4
-    };
-
-    var service5 = {
-        serviceId   : 4,
-        serviceName : 'Queue',
-        operations  : operations5
-    };
-
-    var service6 = {
-        serviceId   : 5,
-        serviceName : 'Network',
-        operations  : operations6
-    };
-// --------------------------------------------------------------------------------
-//                   Hosts
-// --------------------------------------------------------------------------------
-    var host = {
-        hostId   : 0,
-        hostName : 'SilverBack',
-        services : [service, service2]
-    };
-
-    var host2 = {
-        hostId   : 1,
-        hostName : 'DevEnvironment',
-        services : [service2, service3]
-    };
-
-    var host3 = {
-        hostId   : 2,
-        hostName : 'ProductionEnvironment',
-        services : [service3, service4]
-    };
-
-    var host4 = {
-        hostId   : 3,
-        hostName : 'TestingEnvironment',
-        services : [service4, service5]
-    };
-
-    var host5 = {
-        hostId   : 4,
-        hostName : 'StagingEnvironment',
-        services : [service5, service6]
-    };
-// --------------------------------------------------------------------------------
-
-    var hosts = [host, host2, host3, host4, host5];
-
+    {
+        "hostId": 4,
+        "hostName": "StagingEnvironment",
+        "services": [{
+            "serviceId": 8,
+            "serviceName": "Function Discovery Provider Host",
+            "operations": [{
+                "operationId": 3,
+                "operationName": "Update"
+            }, {
+                "operationId": 4,
+                "operationName": "Refresh"
+            }, {
+                "operationId": 5,
+                "operationName": "Reload"
+            }]
+        }, {
+            "serviceId": 9,
+            "serviceName": "Network Connections",
+            "operations": [{
+                "operationId": 9,
+                "operationName": "Options"
+            }, {
+                "operationId": 10,
+                "operationName": "Get"
+            }, {
+                "operationId": 11,
+                "operationName": "Head"
+            }]
+        }]
+    }
+]
