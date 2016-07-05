@@ -80,15 +80,17 @@
 
     <div ng-controller="DemoCtrl as demoCtrl">
         <form>
-
            <md-input-container layout="row">
                <input
                      class="form-control"
                      type="text"
                      placeholder="Alternative service picker"
                      ng-model="selected"
-                     uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"
+                     uib-typeahead="state for state in demoCtrl.states | filter:$viewValue"
                >
+
+            <!-- uib&#45;typeahead="state for state in demoCtrl.states | filter:$viewValue | limitTo:8" -->
+
            </md-input-container>
 
            <mx-service-picker
