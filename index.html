@@ -83,7 +83,7 @@
            <md-input-container layout="row">
                <input
                      class         = "form-control"
-                     ng-model      = "selected"
+                     ng-model      = "demoCtrl.selected"
                      placeholder   = "Alternative service picker"
                      type          = "text"
                      uib-typeahead = "state for state in demoCtrl.states | filter:$viewValue"
@@ -95,20 +95,23 @@
 
 <!-- ================================================================================ -->
 
-           <md-input-container layout="row">
+           <md-input-container layout="column">
                <input
                      class                = "form-control"
-                     ng-model             = "asyncSelected"
+                     ng-model             = "demoCtrl.asyncSelected"
                      type                 = "text"
                      placeholder          = "Data loaded via $http"
-                     typeahead-no-results = "noResults"
+                     typeahead-no-results = "demoCtrl.noResults"
+                     typeahead-loading    = "loadingLocations"
                      uib-typeahead        = "address for address in demoCtrl.getLocation($viewValue)"
                >
+           </md-input-container>
 
-               <div ng-show="noResults">
+               <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+
+               <div ng-show="demoCtrl.noResults">
                   <i class="glyphicon glyphicon-remove"></i> No Results Found
                </div>
-           </md-input-container>
 
 
 <!-- ================================================================================ -->
