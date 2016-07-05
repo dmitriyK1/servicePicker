@@ -95,18 +95,14 @@
 
 <!-- ================================================================================ -->
 
-               <input
-                     uib-typeahead = "state for state in demoCtrl.getLocation($viewValue) | filter:$viewValue"
-               >
-
-           <md-input-container>
+           <md-input-container layout="row">
                <input
                      class                = "form-control"
                      ng-model             = "asyncSelected"
                      type                 = "text"
                      placeholder          = "Data loaded via $http"
                      typeahead-no-results = "noResults"
-                     uib-typeahead        = "address for address in getLocation($viewValue)"
+                     uib-typeahead        = "address for address in demoCtrl.getLocation($viewValue)"
                >
 
                <div ng-show="noResults">
