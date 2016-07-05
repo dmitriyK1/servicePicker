@@ -18518,8 +18518,6 @@ var ITEM_HEIGHT   = 41,
     MENU_PADDING  = 8,
     INPUT_PADDING = 2; // Padding provided by `md-input-container`
 
-window.MdAutocompleteCtrl = MdAutocompleteCtrl;
-
 function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming, $window,
                              $animate, $rootElement, $attrs, $q) {
   //-- private variables

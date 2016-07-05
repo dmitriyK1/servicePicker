@@ -8,10 +8,8 @@
 
 function customAutocomplete () {
 
-  console.log(w.MdAutocompleteCtrl);
-
   return {
-    controller:   w.MdAutocompleteCtrl,
+    controller:   'MdAutocompleteCtrl',
     controllerAs: '$mdAutocompleteCtrl',
     scope:        {
       inputName:      '@mdInputName',
