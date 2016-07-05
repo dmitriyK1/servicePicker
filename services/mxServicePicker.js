@@ -7,6 +7,13 @@
 
     function ServicePicker($http) {
         var service = this;
+        var hosts;
+
+        $http
+            .get('hosts.json')
+            .then(function onGet(data) {
+                hosts = data.data;
+        });
 
         service.search           = search;
         service.getDisplayString = getDisplayString;
