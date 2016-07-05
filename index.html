@@ -95,7 +95,7 @@
 
 <!-- ================================================================================ -->
 
-           <md-input-container layout="column">
+           <md-input-container style="position: relative;" layout="row">
                <input
                      class                = "form-control"
                      ng-model             = "demoCtrl.asyncSelected"
@@ -104,14 +104,18 @@
                      typeahead-no-results = "demoCtrl.noResults"
                      typeahead-loading    = "loadingLocations"
                      uib-typeahead        = "address for address in demoCtrl.getLocation($viewValue)"
+                     spellcheck           = "false"
                >
-           </md-input-container>
 
-               <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+               <i style="position: absolute; top: 10px; left: -20px; color: blue;" ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
 
-               <div ng-show="demoCtrl.noResults">
+               <div style="position: absolute; top: 40px; color: red;" ng-show="demoCtrl.noResults">
                   <i class="glyphicon glyphicon-remove"></i> No Results Found
                </div>
+
+           </md-input-container>
+
+
 
 
 <!-- ================================================================================ -->

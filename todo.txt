@@ -3,7 +3,7 @@ http://stackoverflow.com/questions/28069696/match-multiple-object-property-value
 
 
 
-- сделать режим поиска hosts
+* сделать режим поиска hosts
 
 
 # если выбран mode:service
