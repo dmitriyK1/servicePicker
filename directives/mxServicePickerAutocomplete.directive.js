@@ -78,12 +78,39 @@ function mxServicePickerAutocomplete() {
                 ng-class = "::menuClass"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
             >\
-                <li ng-repeat="value in $mdAutocompleteCtrl.matches">Host: {{ value }}</li>\
+                <li\
+                  ng-repeat="value in $mdAutocompleteCtrl.matches"\
+                  ng-class = "{ selected: $index === $mdAutocompleteCtrl.index }"\
+                  ng-click = "$mdAutocompleteCtrl.select($index)"\
+                >\
+                  Host: {{ value }}</li>\
             </ul>\
             <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'service\'|| $mdAutocompleteCtrl.mode === \'operation\' ">Services:</div>\
-            <div ng-repeat="value in $mdAutocompleteCtrl.matches">Service: {{ value }}</div>\
-            <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'operation\' ">Operations:</div>\
             <ul class="md-autocomplete-suggestions"\
+                ng-class = "::menuClass"\
+                id       = "ul-{{$mdAutocompleteCtrl.id}}"\
+            >\
+                <li\
+                  ng-repeat="value in $mdAutocompleteCtrl.matches"\
+                  ng-class = "{ selected: $index === $mdAutocompleteCtrl.index }"\
+                  ng-click = "$mdAutocompleteCtrl.select($index)"\
+                >\
+                  Service: {{ value }}</li>\
+            </ul>\
+            <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'operation\' ">Operations:</div>\
+            <ul class = "md-autocomplete-suggestions"\
+                ng-class = "::menuClass"\
+                id       = "ul-{{$mdAutocompleteCtrl.id}}"\
+            >\
+                <li\
+                  ng-if="$mdAutocompleteCtrl.mode === \'operation\' "\
+                  ng-repeat="value in $mdAutocompleteCtrl.matches"\
+                  ng-class = "{ selected: $index === $mdAutocompleteCtrl.index }"\
+                  ng-click = "$mdAutocompleteCtrl.select($index)"\
+                >\
+                  Operations: {{ value }}</li>\
+            </ul>\
+            <ul class="md-autocomplete-suggestions hidden"\
                 ng-class = "::menuClass"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
             >\
