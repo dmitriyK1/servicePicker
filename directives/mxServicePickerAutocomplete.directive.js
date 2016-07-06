@@ -59,37 +59,49 @@ function mxServicePickerAutocomplete() {
           ' + getInputElement() + '\
           <md-progress-linear\
               class="' + (attr.mdFloatingLabel ? 'md-inline' : '') + '"\
-              ng-if="$mdAutocompleteCtrl.loadingIsVisible()"\
-              md-mode="indeterminate"></md-progress-linear>\
+              ng-if   = "$mdAutocompleteCtrl.loadingIsVisible()"\
+              md-mode = "indeterminate"\
+              ></md-progress-linear>\
           <md-virtual-repeat-container\
               md-auto-shrink\
-              md-auto-shrink-min="1"\
-              ng-mouseenter="$mdAutocompleteCtrl.listEnter()"\
-              ng-mouseleave="$mdAutocompleteCtrl.listLeave()"\
-              ng-mouseup="$mdAutocompleteCtrl.mouseUp()"\
-              ng-hide="$mdAutocompleteCtrl.hidden"\
-              class="md-autocomplete-suggestions-container md-whiteframe-z1"\
-              ng-class="{ \'md-not-found\': $mdAutocompleteCtrl.notFoundVisible() }"\
-              role="presentation">\
+              md-auto-shrink-min = "1"\
+              ng-mouseenter      = "$mdAutocompleteCtrl.listEnter()"\
+              ng-mouseleave      = "$mdAutocompleteCtrl.listLeave()"\
+              ng-mouseup         = "$mdAutocompleteCtrl.mouseUp()"\
+              ng-hide            = "$mdAutocompleteCtrl.hidden"\
+              class              = "md-autocomplete-suggestions-container md-whiteframe-z1"\
+              ng-class           = "{ \'md-not-found\': $mdAutocompleteCtrl.notFoundVisible() }"\
+              role               = "presentation"\
+              >\
             <div class="md-autocomplete-section">Hosts:</div>\
+            <ul class="md-autocomplete-suggestions"\
+                ng-class = "::menuClass"\
+                id       = "ul-{{$mdAutocompleteCtrl.id}}"\
+            >\
+                <li ng-repeat="value in $mdAutocompleteCtrl.matches">Host: {{ value }}</li>\
+            </ul>\
             <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'service\'|| $mdAutocompleteCtrl.mode === \'operation\' ">Services:</div>\
+            <div ng-repeat="value in $mdAutocompleteCtrl.matches">Service: {{ value }}</div>\
             <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'operation\' ">Operations:</div>\
             <ul class="md-autocomplete-suggestions"\
-                ng-class="::menuClass"\
-                id="ul-{{$mdAutocompleteCtrl.id}}">\
+                ng-class = "::menuClass"\
+                id       = "ul-{{$mdAutocompleteCtrl.id}}"\
+            >\
               <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches"\
-                  ng-class="{ selected: $index === $mdAutocompleteCtrl.index }"\
-                  ng-click="$mdAutocompleteCtrl.select($index)"\
-                  md-extra-name="$mdAutocompleteCtrl.itemName">\
+                  ng-class      = "{ selected: $index === $mdAutocompleteCtrl.index }"\
+                  ng-click      = "$mdAutocompleteCtrl.select($index)"\
+                  md-extra-name = "$mdAutocompleteCtrl.itemName"\
+              >\
                   ' + itemTemplate + '\
                   </li>' + noItemsTemplate + '\
             </ul>\
           </md-virtual-repeat-container>\
         </md-autocomplete-wrap>\
         <aria-status\
-            class="md-visually-hidden"\
-            role="status"\
-            aria-live="assertive">\
+            class     = "md-visually-hidden"\
+            role      = "status"\
+            aria-live = "assertive"\
+        >\
           <p ng-repeat="message in $mdAutocompleteCtrl.messages track by $index" ng-if="message">{{message}}</p>\
         </aria-status>';
 
@@ -116,23 +128,23 @@ function mxServicePickerAutocomplete() {
               <label>{{floatingLabel}}</label>\
               <input type="search"\
         ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
-                  id="{{ inputId || \'fl-input-\' + $mdAutocompleteCtrl.id }}"\
-                  name="{{inputName}}"\
-                  autocomplete="off"\
-                  ng-required="$mdAutocompleteCtrl.isRequired"\
-                  ng-minlength="inputMinlength"\
-                  ng-maxlength="inputMaxlength"\
-                  ng-disabled="$mdAutocompleteCtrl.isDisabled"\
-                  ng-model="$mdAutocompleteCtrl.scope.searchText"\
-                  ng-keydown="$mdAutocompleteCtrl.keydown($event)"\
-                  ng-blur="$mdAutocompleteCtrl.blur()"\
-                  ng-focus="$mdAutocompleteCtrl.focus()"\
-                  aria-owns="ul-{{$mdAutocompleteCtrl.id}}"\
-                  aria-label="{{floatingLabel}}"\
-                  aria-autocomplete="list"\
-                  aria-haspopup="true"\
-                  aria-activedescendant=""\
-                  aria-expanded="{{!$mdAutocompleteCtrl.hidden}}"/>\
+                  id                    = "{{ inputId || \'fl-input-\' + $mdAutocompleteCtrl.id }}"\
+                  name                  = "{{inputName}}"\
+                  autocomplete          = "off"\
+                  ng-required           = "$mdAutocompleteCtrl.isRequired"\
+                  ng-minlength          = "inputMinlength"\
+                  ng-maxlength          = "inputMaxlength"\
+                  ng-disabled           = "$mdAutocompleteCtrl.isDisabled"\
+                  ng-model              = "$mdAutocompleteCtrl.scope.searchText"\
+                  ng-keydown            = "$mdAutocompleteCtrl.keydown($event)"\
+                  ng-blur               = "$mdAutocompleteCtrl.blur()"\
+                  ng-focus              = "$mdAutocompleteCtrl.focus()"\
+                  aria-owns             = "ul-{{$mdAutocompleteCtrl.id}}"\
+                  aria-label            = "{{floatingLabel}}"\
+                  aria-autocomplete     = "list"\
+                  aria-haspopup         = "true"\
+                  aria-activedescendant = ""\
+                  aria-expanded         = "{{!$mdAutocompleteCtrl.hidden}}"/>\
               <div md-autocomplete-parent-scope md-autocomplete-replace>' + leftover + '</div>\
             </md-input-container>';
 
