@@ -188,7 +188,6 @@ function mxServicePickerAutocomplete() {
         return ddo;
 
         function link(scope, element, attrs, ctrl) {
-            var MAX_NESTING  = 2;
             var DOT_CHARCODE = 190;
 
             element.on('keydown', onKeyDown);
@@ -201,7 +200,12 @@ function mxServicePickerAutocomplete() {
 
               // TODO: refactor into switch statement
 
+                var mode    = scope.vm.mode;
                 var keyCode = e.keyCode;
+                var maxNesting;
+
+                if (mode === 'service')   maxNesting = 1;
+                if (mode === 'operation') maxNesting = 2;
 
                 if (keyCode === $mdConstant.KEY_CODE.SPACE) {
                   console.log('space pressed');
@@ -222,7 +226,7 @@ function mxServicePickerAutocomplete() {
                 var count         = (inputValue.match(/\./g) || []).length;
                 var isLastCharDot = inputValue[inputValue.length-1] === '.';
 
-                if (!inputValue.length || count === MAX_NESTING || isLastCharDot) {
+                if (!inputValue.length || count === maxNesting || isLastCharDot) {
                     e.preventDefault();
                     return;
                 }
