@@ -1,7 +1,9 @@
 
 http://stackoverflow.com/questions/28069696/match-multiple-object-property-values-on-angularjs-typeahead
 
-* сделать режим поиска hosts
+# убрать mxServicePickerAutocompletePatch
+
+- сделать режим поиска hosts
 
 - сделать вывод категорий в dropdown через фильтр        $mdAutocompleteCtrl.matches | ...
 

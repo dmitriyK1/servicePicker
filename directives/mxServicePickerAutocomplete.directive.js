@@ -190,6 +190,11 @@ function mxServicePickerAutocomplete() {
         function link(scope, element, attrs, ctrl) {
             var DOT_CHARCODE = 190;
 
+            scope.$watch('vm.mode', function onModeChange(newValue, oldValue) {
+                console.log('new mode value: ' + newValue);
+                scope.vm.keyword = '';
+            });
+
             element.on('keydown', onKeyDown);
 
             scope.$on('$destroy', function cleanUp() {
@@ -197,8 +202,8 @@ function mxServicePickerAutocomplete() {
             });
 
             function onKeyDown(e) {
-
               // TODO: refactor into switch statement
+              // TODO: add validation function
 
                 var mode    = scope.vm.mode;
                 var keyCode = e.keyCode;
@@ -207,17 +212,24 @@ function mxServicePickerAutocomplete() {
                 if (mode === 'service')   maxNesting = 1;
                 if (mode === 'operation') maxNesting = 2;
 
-                if (keyCode === $mdConstant.KEY_CODE.SPACE) {
-                  console.log('space pressed');
+                var inputValue = e.target.value;
+
+                if ( keyCode === $mdConstant.KEY_CODE.SPACE || keyCode === DOT_CHARCODE && !inputValue ) {
+                  console.log('space pressed or dot pressed');
                   e.preventDefault();
                   return;
+                }
+
+                if (inputValue) {
+                    var pathSections   = inputValue.split('.');
+                    var sectionsNumber = pathSections.length;
+                    console.log(pathSections);
+                    console.log(sectionsNumber);
                 }
 
                 if (keyCode !== DOT_CHARCODE) return;
 
                 console.log('dot pressed');
-
-                var inputValue    = scope.vm.keyword;
 
                 if (!inputValue) {
                     e.preventDefault();
