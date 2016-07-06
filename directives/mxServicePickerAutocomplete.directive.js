@@ -4,7 +4,7 @@
     angular
         .module('app')
         .directive('mxServicePickerAutocomplete', mxServicePickerAutocomplete)
-        .directive('mxServicePickerAutocomplete', mxServicePickerAutocompletePatch)
+        // .directive('mxServicePickerAutocomplete', mxServicePickerAutocompletePatch)
 
 
 function mxServicePickerAutocomplete() {
