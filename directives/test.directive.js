@@ -30,7 +30,10 @@ function customAutocomplete () {
       floatingLabel:  '@?mdFloatingLabel',
       autoselect:     '=?mdAutoselect',
       menuClass:      '@?mdMenuClass',
-      inputId:        '@?mdInputId'
+      inputId:        '@?mdInputId',
+    },
+    bindToController: {
+        mode:         '=?'
     },
     link: function(scope, element, attrs, controller) {
       controller.hasNotFound = element.hasNotFoundTemplate;
@@ -67,7 +70,9 @@ function customAutocomplete () {
               class="md-autocomplete-suggestions-container md-whiteframe-z1"\
               ng-class="{ \'md-not-found\': $mdAutocompleteCtrl.notFoundVisible() }"\
               role="presentation">\
-            <div style="background: #fff; font-weight: bold; padding: 10px 0 10px 10px; cursor: default;">Services: </div>\
+            <div class="md-autocomplete-section">Hosts:</div>\
+            <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'service\' ">Services:</div>\
+            <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'operation\' ">Operations:</div>\
             <ul class="md-autocomplete-suggestions"\
                 ng-class="::menuClass"\
                 id="ul-{{$mdAutocompleteCtrl.id}}">\

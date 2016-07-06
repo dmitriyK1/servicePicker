@@ -54,7 +54,6 @@ md-autocomplete.invalid-value input {
     transition: visibility 0s, opacity 0.25s linear;
 }
 
-
 md-autocomplete.md-default-theme button.clear-autocomplete:after,
 md-autocomplete button.clear-autocomplete:after {
     background: none;
@@ -85,9 +84,20 @@ md-autocomplete button.clear-autocomplete:after {
 }
 
 md-autocomplete input:focus {
-    color: rgba(0,0,0,0.87) !important;
+    color: rgba(0, 0, 0, 0.87) !important;
 }
 
 md-autocomplete.error input {
     color: red !important;
+}
+
+.md-autocomplete-section {
+    background: #fff;
+    font-weight: bold;
+    padding: 10px 0 10px 10px;
+    cursor: default;
+}
+
+.md-virtual-repeat-container.md-autocomplete-suggestions-container {
+    min-height: 200px;
 }
