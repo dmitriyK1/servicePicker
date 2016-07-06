@@ -3,10 +3,10 @@
 
     angular
         .module('app')
-        .directive('customAutocomplete', customAutocomplete)
+        .directive('mxServicePickerAutocomplete', mxServicePickerAutocomplete)
 
 
-function customAutocomplete () {
+function mxServicePickerAutocomplete() {
 
   return {
     controller:   'MdAutocompleteCtrl',
