@@ -12,6 +12,10 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <style>
 
+       .hidden {
+          display: none !important;
+       }
+
        pre {
           padding-left: 1rem;
        }
@@ -71,16 +75,20 @@
     <script src="app.js"></script>
 
     <script src="filters/debug.js"></script>
+
     <script src="controllers/demo.ctrl.js"></script>
     <script src="controllers/mxServicePicker.ctrl.js"></script>
+
     <script src="services/mxServicePicker.js"></script>
+
     <script src="directives/mxServicePicker.directive.js"></script>
+    <script src="directives/mxServicePickerAutocomplete.directive.js"></script>
 
    <!-- ================================================================================  -->
 
     <div ng-controller="DemoCtrl as demoCtrl">
         <form>
-           <md-input-container layout="row">
+           <md-input-container layout="row" class="hidden">
                <input
                      class         = "form-control"
                      ng-model      = "demoCtrl.selected"
@@ -95,7 +103,7 @@
 
 <!-- ================================================================================ -->
 
-           <md-input-container style="position: relative;" layout="row">
+           <md-input-container style="position: relative;" layout="row" class="hidden">
                <input
                      class                = "form-control"
                      ng-model             = "demoCtrl.asyncSelected"
@@ -176,8 +184,6 @@
 
     </div>
     <!-- DemoCtrl end  -->
-
-    <script src="directives/test.directive.js"></script>
 
 </body>
 </html>
