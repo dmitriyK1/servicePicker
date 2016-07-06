@@ -52,6 +52,7 @@ md-autocomplete.invalid-value input {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.25s linear;
+    z-index: 100;
 }
 
 md-autocomplete.md-default-theme button.clear-autocomplete:after,
