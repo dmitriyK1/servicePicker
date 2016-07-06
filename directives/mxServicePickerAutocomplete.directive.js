@@ -4,6 +4,7 @@
     angular
         .module('app')
         .directive('mxServicePickerAutocomplete', mxServicePickerAutocomplete)
+        .directive('mxServicePickerAutocomplete', mxServicePickerAutocompletePatch)
 
 
 function mxServicePickerAutocomplete() {
@@ -170,6 +171,48 @@ function mxServicePickerAutocomplete() {
     }
   };
 }
+
+    function mxServicePickerAutocompletePatch() {
+        var ddo = {
+            link: link
+        };
+
+        return ddo;
+
+        function link(scope, element, attrs, ctrl) {
+            var MAX_NESTING = 2;
+
+            element.on('keydown', onKeyDown);
+
+            scope.$on('$destroy', function cleanUp() {
+                element.off('keydown');
+            });
+
+            function onKeyDown(e) {
+                if (e.keyCode !== 190) return;
+
+                console.log('dot pressed');
+
+                var inputValue    = scope.vm.keyword;
+
+                if (!inputValue) {
+                    e.preventDefault();
+                    return;
+                }
+                var count         = (inputValue.match(/\./g) || []).length;
+                var isLastCharDot = inputValue[inputValue.length-1] === '.';
+
+                if (!inputValue.length || count === MAX_NESTING || isLastCharDot) {
+                    e.preventDefault();
+                    return;
+                }
+
+                scope.vm.model.search(scope.vm);
+            }
+
+        }
+    }
+
 
 
 })(window);

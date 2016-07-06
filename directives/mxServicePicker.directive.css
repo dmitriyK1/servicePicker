@@ -101,3 +101,8 @@ md-autocomplete.error input {
 .md-virtual-repeat-container.md-autocomplete-suggestions-container {
     min-height: 200px;
 }
+
+mx-service-picker-autocomplete {
+    display: block;
+    position: relative;
+}
