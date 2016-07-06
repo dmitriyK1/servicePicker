@@ -202,9 +202,6 @@ function mxServicePickerAutocomplete() {
             });
 
             function onKeyDown(e) {
-              // TODO: refactor into switch statement
-              // TODO: add validation function
-
                 var mode    = scope.vm.mode;
                 var keyCode = e.keyCode;
                 var maxNesting;
@@ -214,7 +211,7 @@ function mxServicePickerAutocomplete() {
 
                 var inputValue = e.target.value;
 
-                if ( keyCode === $mdConstant.KEY_CODE.SPACE || keyCode === DOT_CHARCODE && !inputValue ) {
+                if ( validateInput(keyCode, inputValue) ) {
                   console.log('space pressed or dot pressed');
                   e.preventDefault();
                   return;
@@ -244,11 +241,15 @@ function mxServicePickerAutocomplete() {
                 }
 
                 scope.vm.model.search(scope.vm);
+
+                function validateInput(keyCode, inputValue) {
+                    return keyCode === $mdConstant.KEY_CODE.SPACE || keyCode === DOT_CHARCODE && !inputValue;
+                }
+
             }
 
         }
     }
-
 
 
 })(window);
