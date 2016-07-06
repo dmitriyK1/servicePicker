@@ -180,7 +180,7 @@ function mxServicePickerAutocomplete() {
   };
 }
 
-    function mxServicePickerAutocompletePatch() {
+    function mxServicePickerAutocompletePatch($mdConstant) {
         var ddo = {
             link: link
         };
@@ -188,7 +188,8 @@ function mxServicePickerAutocomplete() {
         return ddo;
 
         function link(scope, element, attrs, ctrl) {
-            var MAX_NESTING = 2;
+            var MAX_NESTING  = 2;
+            var DOT_CHARCODE = 190;
 
             element.on('keydown', onKeyDown);
 
@@ -197,7 +198,18 @@ function mxServicePickerAutocomplete() {
             });
 
             function onKeyDown(e) {
-                if (e.keyCode !== 190) return;
+
+              // TODO: refactor into switch statement
+
+                var keyCode = e.keyCode;
+
+                if (keyCode === $mdConstant.KEY_CODE.SPACE) {
+                  console.log('space pressed');
+                  e.preventDefault();
+                  return;
+                }
+
+                if (keyCode !== DOT_CHARCODE) return;
 
                 console.log('dot pressed');
 
