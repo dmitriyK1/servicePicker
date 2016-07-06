@@ -111,12 +111,11 @@ function mxServicePickerAutocomplete() {
       }
 
       function getInputElement () {
-        if (attr.mdFloatingLabel) {
-          return '\
-            <md-input-container flex ng-if="floatingLabel">\
+        return '\
+        <md-input-container flex ng-if="floatingLabel">\
               <label>{{floatingLabel}}</label>\
               <input type="search"\
-                  ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
+        ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
                   id="{{ inputId || \'fl-input-\' + $mdAutocompleteCtrl.id }}"\
                   name="{{inputName}}"\
                   autocomplete="off"\
@@ -136,37 +135,7 @@ function mxServicePickerAutocomplete() {
                   aria-expanded="{{!$mdAutocompleteCtrl.hidden}}"/>\
               <div md-autocomplete-parent-scope md-autocomplete-replace>' + leftover + '</div>\
             </md-input-container>';
-        } else {
-          return '\
-            <input flex type="search"\
-                ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
-                id="{{ inputId || \'input-\' + $mdAutocompleteCtrl.id }}"\
-                name="{{inputName}}"\
-                ng-if="!floatingLabel"\
-                autocomplete="off"\
-                ng-required="$mdAutocompleteCtrl.isRequired"\
-                ng-disabled="$mdAutocompleteCtrl.isDisabled"\
-                ng-model="$mdAutocompleteCtrl.scope.searchText"\
-                ng-keydown="$mdAutocompleteCtrl.keydown($event)"\
-                ng-blur="$mdAutocompleteCtrl.blur()"\
-                ng-focus="$mdAutocompleteCtrl.focus()"\
-                placeholder="{{placeholder}}"\
-                aria-owns="ul-{{$mdAutocompleteCtrl.id}}"\
-                aria-label="{{placeholder}}"\
-                aria-autocomplete="list"\
-                aria-haspopup="true"\
-                aria-activedescendant=""\
-                aria-expanded="{{!$mdAutocompleteCtrl.hidden}}"/>\
-            <button\
-                type="button"\
-                tabindex="-1"\
-                ng-if="$mdAutocompleteCtrl.scope.searchText && !$mdAutocompleteCtrl.isDisabled"\
-                ng-click="$mdAutocompleteCtrl.clear()">\
-              <md-icon md-svg-icon="md-close"></md-icon>\
-              <span class="md-visually-hidden">Clear</span>\
-            </button>\
-                ';
-        }
+
       }
     }
   };
