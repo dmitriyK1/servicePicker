@@ -2,7 +2,7 @@
         $('#cases').hide();
 
         $('#toggle-cases').click(function() {
-            $('#cases').slideToggle();
+            $('#cases').toggle();
         });
     });
 
