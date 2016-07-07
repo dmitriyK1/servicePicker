@@ -20,6 +20,10 @@
          background: green;
          color: white;
       }
+
+      [id="cases"] {
+         display: none;
+      }
    </style>
 </head>
 
@@ -45,6 +49,60 @@
 
    <hr>
 
+   <button>
+             <h1 id="toggle-cases">Use cases</h1>
+   </button>
+
+   <section id="cases">
+      <h2>Search for service /w hostId</h2>
+      <pre>
+      search({
+         hostId: 0,
+         mode: 'services',
+         keyword: 'SilverBack.dev'
+      }) </pre>
+
+      <h2>Search for service without id</h2>
+      <pre>
+      search({
+         mode: 'services',
+         keyword: 'SilverBack.dev'
+      }) </pre>
+
+      <h2>Search for operation /w hostId & serviceId</h2>
+      <pre>
+      search({
+         hostId: 777,
+         serviceId: 1,
+         mode: 'operations',
+         keyword: 'SomeCommonHostName.CommonServiceName.common'
+      }) </pre>
+
+      <h2>Search for operation /w hostId</h2>
+      <pre>
+      search({
+         hostId: 777,
+         mode: 'operations',
+         keyword: 'SomeCommonHostName.CommonServiceName.common'
+      }) </pre>
+
+      <h2>Search for operation /w hostId</h2>
+      <pre>
+      search({
+         serviceId: 1,
+         mode: 'operations',
+         keyword: 'SomeCommonHostName.CommonServiceName.common'
+      }) </pre>
+
+      <h2>Search for operation without ids</h2>
+      <pre>
+      search({
+         mode: 'operations',
+         keyword: 'SomeCommonHostName.CommonServiceName.common'
+      }) </pre>
+   </section>
+
+   <h1>JSON</h1>
    <pre>
          {
             "hosts": [{
@@ -245,8 +303,9 @@
          }
    </pre>
 
-   <script src="https://code.jquery.com/jquery-3.0.0.slim.js" integrity="sha256-Gp6hp0H+A7axg1tErCucWeOc38irtkVWpUbBZSj8KCg=" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
    <script src="test.js"></script>
    <script src="ui.js"></script>
 </body>
+
 </html>
