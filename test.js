@@ -363,8 +363,6 @@ function getServiceByName(host, serviceName) {
 }
 // ================================================================================
 function getHost(id, hostName) {
-    debugger;
-
     if (typeof id !== 'undefined') {
         var host = getHostById(id);
     } else {
