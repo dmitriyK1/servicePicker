@@ -14,10 +14,10 @@ Array.prototype.concatAll = function() {
 
 var data = {
     "hosts": [{
-            "hostId": 0,
+            "id": 0,
             "hostName": "SilverBack",
             "services": [{
-                "serviceId": 0,
+                "id": 0,
                 "serviceName": "Device",
                 "operations": [{
                     "id": 0,
@@ -30,7 +30,7 @@ var data = {
                     "operationName": "DeviceUpdate"
                 }]
             }, {
-                "serviceId": 1,
+                "id": 1,
                 "serviceName": "ApplicationManagement",
                 "operations": [{
                     "id": 3,
@@ -46,10 +46,10 @@ var data = {
         },
 
         {
-            "hostId": 1,
+            "id": 1,
             "hostName": "DevEnvironment",
             "services": [{
-                "serviceId": 2,
+                "id": 2,
                 "serviceName": "CoreMessaging",
                 "operations": [{
                     "id": 6,
@@ -62,7 +62,7 @@ var data = {
                     "operationName": "Delete"
                 }]
             }, {
-                "serviceId": 3,
+                "id": 3,
                 "serviceName": "History",
                 "operations": [{
                     "id": 9,
@@ -78,10 +78,10 @@ var data = {
         },
 
         {
-            "hostId": 2,
+            "id": 2,
             "hostName": "ProductionEnvironment",
             "services": [{
-                "serviceId": 4,
+                "id": 4,
                 "serviceName": "Queue",
                 "operations": [{
                     "id": 12,
@@ -94,7 +94,7 @@ var data = {
                     "operationName": "Connect"
                 }]
             }, {
-                "serviceId": 5,
+                "id": 5,
                 "serviceName": "Network",
                 "operations": [{
                     "id": 15,
@@ -111,10 +111,10 @@ var data = {
         },
 
         {
-            "hostId": 3,
+            "id": 3,
             "hostName": "TestingEnvironment",
             "services": [{
-                "serviceId": 6,
+                "id": 6,
                 "serviceName": "Device Install Service",
                 "operations": [{
                     "id": 18,
@@ -128,7 +128,7 @@ var data = {
                     "operationName": "Push"
                 }]
             }, {
-                "serviceId": 7,
+                "id": 7,
                 "serviceName": "Enterprise App Management Service",
                 "operations": [{
                     "id": 21,
@@ -144,10 +144,10 @@ var data = {
         },
 
         {
-            "hostId": 4,
+            "id": 4,
             "hostName": "StagingEnvironment",
             "services": [{
-                "serviceId": 8,
+                "id": 8,
                 "serviceName": "Function Discovery Provider Host",
                 "operations": [{
                     "id": 3,
@@ -160,7 +160,7 @@ var data = {
                     "operationName": "Reload"
                 }]
             }, {
-                "serviceId": 9,
+                "id": 9,
                 "serviceName": "Network Connections",
                 "operations": [{
                     "id": 9,
@@ -176,10 +176,10 @@ var data = {
         },
 
         {
-            "hostId": 777,
+            "id": 777,
             "hostName": "SomeCommonHostName",
             "services": [{
-                "serviceId": 0,
+                "id": 0,
                 "serviceName": "Device",
                 "operations": [{
                     "id": 0,
@@ -192,7 +192,7 @@ var data = {
                     "operationName": "DeviceUpdate"
                 }]
             }, {
-                "serviceId": 1,
+                "id": 1,
                 "serviceName": "CommonServiceName",
                 "operations": [{
                     "id": 3,
@@ -211,10 +211,10 @@ var data = {
 };
 
 // ================================================================================
-//                             Search for service /w hostId
+//                             Search for service /w id
 // ================================================================================
 var result = search({
-    hostId: 0,
+    id: 0,
     mode: 'services',
     keyword: 'SilverBack.dev'
 });
@@ -230,31 +230,31 @@ var result = search({
 
 console.log(result);
 // ================================================================================
-//                             Search for operation /w hostId & serviceId
+//                             Search for operation /w id & id
 // ================================================================================
 var result = search({
-    hostId: 777,
-    serviceId: 1,
+    id: 777,
+    id: 1,
     mode: 'operations',
     keyword: 'SomeCommonHostName.CommonServiceName.common'
 });
 
 console.log(result);
 // ================================================================================
-//                             Search for operation /w hostId
+//                             Search for operation /w id
 // ================================================================================
 var result = search({
-    hostId: 777,
+    id: 777,
     mode: 'operations',
     keyword: 'SomeCommonHostName.CommonServiceName.common'
 });
 
 console.log(result);
 // ================================================================================
-//                             Search for operation /w hostId
+//                             Search for operation /w id
 // ================================================================================
 var result = search({
-    serviceId: 1,
+    id: 1,
     mode: 'operations',
     keyword: 'SomeCommonHostName.CommonServiceName.common'
 });
@@ -272,8 +272,8 @@ console.log(result);
 // ================================================================================
 
 function search(options) {
-    var hostId = +options.hostId;
-    var serviceId = +options.serviceId;
+    var id = +options.id;
+    var id = +options.id;
     var keyword = options.keyword;
     var mode = options.mode;
 
@@ -299,32 +299,32 @@ function search(options) {
     }
 
     if (mode === 'services') {
-        return searchForService(hostId, hostName, serviceName);
+        return searchForService(id, hostName, serviceName);
     }
 
     if (mode === 'operations') {
-        return searchForOperation(hostId, hostName, serviceId, serviceName, operationName);
+        return searchForOperation(id, hostName, id, serviceName, operationName);
     }
 
 }
 
-function searchForService(hostId, hostName, serviceName) {
-    var host = getHost(hostId, hostName);
+function searchForService(id, hostName, serviceName) {
+    var host = getHost(id, hostName);
 
     return host.services.filter(function filterServices(service) {
         return ~service.serviceName.toLowerCase().indexOf(serviceName.toLowerCase());
     }).map(function mapServices(service) {
         return {
-            id: service.serviceId,
+            id: service.id,
             serviceName: service.serviceName
         };
     });
 
 }
 
-function searchForOperation(hostId, hostName, serviceId, serviceName, operationName) {
-    var host = getHost(hostId, hostName);
-    var service = getService(host, serviceId, serviceName);
+function searchForOperation(id, hostName, id, serviceName, operationName) {
+    var host = getHost(id, hostName);
+    var service = getService(host, id, serviceName);
 
     return service.operations.filter(function filterOperations(operation) {
         return ~operation.operationName.toLowerCase().indexOf(operationName.toLowerCase());
@@ -334,15 +334,15 @@ function searchForOperation(hostId, hostName, serviceId, serviceName, operationN
 // ================================================================================
 //                           BY ID FILTERING
 // ================================================================================
-function getHostById(hostId) {
+function getHostById(id) {
     return data.hosts.filter(function filterHosts(host) {
-        return host.hostId === hostId;
+        return host.id === id;
     })[0];
 }
 
-function getServiceById(host, serviceId) {
+function getServiceById(host, id) {
     return host.services.filter(function filterServices(service) {
-        return service.serviceId === serviceId;
+        return service.id === id;
     })[0];
 }
 // ================================================================================
@@ -360,9 +360,9 @@ function getServiceByName(host, serviceName) {
     })[0];
 }
 // ================================================================================
-function getHost(hostId, hostName) {
-    if (hostId === 0 || hostId) {
-        var host = getHostById(hostId);
+function getHost(id, hostName) {
+    if (id === 0 || id) {
+        var host = getHostById(id);
     } else {
         var host = getHostByName(hostName);
     }
@@ -370,9 +370,9 @@ function getHost(hostId, hostName) {
     return host;
 }
 
-function getService(host, serviceId, serviceName) {
-    if (serviceId === 0 || serviceId) {
-        var service = getServiceById(host, serviceId);
+function getService(host, id, serviceName) {
+    if (id === 0 || id) {
+        var service = getServiceById(host, id);
     } else {
         var service = getServiceByName(host, serviceName);
     }
@@ -386,10 +386,10 @@ function getHosts(keyword) {
     return data
         .hosts
         .filter(function filterHosts(host) {
-            return ~host.hostName.toLowerCase().indexOf(keyword);
+            return ~host.hostName.toLowerCase().indexOf(keyword.toLowerCase());
         }).map(function mapHosts(host) {
             return {
-                hostId: host.hostId,
+                id: host.id,
                 hostName: host.hostName
             };
         })
@@ -400,11 +400,11 @@ function getServices(keyword) {
         .hosts
         .map(function mapHosts(host) {
             return host.services.filter(function filterServices(service) {
-                return ~service.serviceName.toLowerCase().indexOf(keyword);
+                return ~service.serviceName.toLowerCase().indexOf(keyword.toLowerCase());
             })
         }).concatAll().map(function mapServices(service) {
             return {
-                serviceId: service.serviceId,
+                id: service.id,
                 serviceName: service.serviceName
             };
         })
@@ -416,7 +416,7 @@ function getOperations(keyword) {
         .map(function mapHosts(host) {
             return host.services.map(function mapServices(service) {
                 return service.operations.filter(function filterOperations(operation) {
-                    return ~operation.operationName.toLowerCase().indexOf(keyword);
+                    return ~operation.operationName.toLowerCase().indexOf(keyword.toLowerCase());
                 })
             }).concatAll()
         }).concatAll();
