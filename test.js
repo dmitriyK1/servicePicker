@@ -284,11 +284,16 @@ function search(options) {
     var operationName = pathSections[2];
 
     if (!serviceName) {
-        return {
-            hosts: getHosts(keyword),
-            services: getServices(keyword),
-            operations: getOperations(keyword)
-        };
+        var hosts = getHosts(keyword);
+        var services = getServices(keyword);
+        var operations = getOperations(keyword);
+        var results = {};
+
+        if (hosts.length) results.hosts       = hosts;
+        if (services.length) results.services = services;
+        if (operations.length) results.hosts  = operations;
+
+        return results;
     }
 
     if (mode === 'services') {
