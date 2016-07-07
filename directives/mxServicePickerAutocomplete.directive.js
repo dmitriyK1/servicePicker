@@ -73,38 +73,38 @@ function mxServicePickerAutocomplete() {
               ng-class           = "{ \'md-not-found\': $mdAutocompleteCtrl.notFoundVisible() }"\
               role               = "presentation"\
               >\
-            <div class="md-autocomplete-section">Hosts:</div>\
+            <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.matches[0].hosts.length">Hosts:</div>\
             <ul class="md-autocomplete-suggestions"\
                 ng-class = "::menuClass"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
             >\
                 <li\
-                  ng-repeat="value in $mdAutocompleteCtrl.matches"\
+                  ng-repeat="value in $mdAutocompleteCtrl.matches[0].hosts"\
                   ng-class = "{ selected: $index === $mdAutocompleteCtrl.index }"\
                   ng-click = "$mdAutocompleteCtrl.select($index)"\
                 >\
                   Host: {{ value }}</li>\
             </ul>\
-            <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'services\'|| $mdAutocompleteCtrl.mode === \'operations\' ">Services:</div>\
+            <div class="md-autocomplete-section" ng-if="($mdAutocompleteCtrl.mode === \'services\'|| $mdAutocompleteCtrl.mode === \'operations\') && $mdAutocompleteCtrl.matches[0].services.length ">Services:</div>\
             <ul class="md-autocomplete-suggestions"\
                 ng-class = "::menuClass"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
             >\
                 <li\
-                  ng-repeat="value in $mdAutocompleteCtrl.matches"\
+                  ng-repeat="value in $mdAutocompleteCtrl.matches[0].services"\
                   ng-class = "{ selected: $index === $mdAutocompleteCtrl.index }"\
                   ng-click = "$mdAutocompleteCtrl.select($index)"\
                 >\
                   Service: {{ value }}</li>\
             </ul>\
-            <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'operations\' ">Operations:</div>\
+            <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'operations\' && $mdAutocompleteCtrl.matches[0].operations.length ">Operations:</div>\
             <ul class = "md-autocomplete-suggestions"\
                 ng-class = "::menuClass"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
             >\
                 <li\
                   ng-if="$mdAutocompleteCtrl.mode === \'operations\' "\
-                  ng-repeat="value in $mdAutocompleteCtrl.matches"\
+                  ng-repeat="value in $mdAutocompleteCtrl.matches[0].operations"\
                   ng-class = "{ selected: $index === $mdAutocompleteCtrl.index }"\
                   ng-click = "$mdAutocompleteCtrl.select($index)"\
                 >\

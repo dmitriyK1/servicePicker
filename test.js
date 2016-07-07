@@ -274,26 +274,32 @@ var data = {
 function search(options) {
     var hostId    = options.hostId;
     var serviceId = options.serviceId;
-    var keyword   = options.keyword.trim();
+
+    try {
+        var keyword   = options.keyword.trim();
+    } catch(e) {}
+
     var mode      = options.mode;
 
-    var pathSections = keyword.split('.');
+    try {
+        var pathSections = keyword.split('.');
+    } catch(e) {}
 
-    var hostName = pathSections[0];
-    var serviceName = pathSections[1];
+    var hostName      = pathSections[0];
+    var serviceName   = pathSections[1];
     var operationName = pathSections[2];
 
     if (!keyword) return [];
 
-    if (!serviceName) {
-        var hosts = getHosts(keyword);
-        var services = getServices(keyword);
+    if (!serviceName && !operationName && serviceName !== '' && operationName !== '') {
+        var hosts      = getHosts(keyword);
+        var services   = getServices(keyword);
         var operations = getOperations(keyword);
-        var results = {};
+        var results    = [{}];
 
-        if (hosts.length) results.hosts = hosts;
-        if (services.length) results.services = services;
-        if (operations.length) results.operations = operations;
+        if (hosts.length) results[0].hosts           = hosts;
+        if (services.length) results[0].services     = services;
+        if (operations.length) results[0].operations = operations;
 
         if (!Object.keys(results).length) return [];
 
@@ -301,11 +307,21 @@ function search(options) {
     }
 
     if (mode === 'services') {
-        return searchForService(hostId, hostName, serviceId, serviceName);
+        var services = searchForService(hostId, hostName, serviceId, serviceName);
+        var result = [{ services: services }];
+        return result;
     }
 
     if (mode === 'operations') {
-        return searchForOperation(hostId, hostName, serviceId, serviceName, operationName);
+        if (!operationName && operationName !== '') {
+            var services = searchForService(hostId, hostName, serviceId, serviceName);
+            var result = [{ services: services }];
+            return result;
+        }
+
+        var operations = searchForOperation(hostId, hostName, serviceId, serviceName, operationName);
+        var result = [{ operations: operations }];
+        return result;
     }
 
 }
@@ -317,28 +333,37 @@ function searchForService(hostId, hostName, serviceId, serviceName) {
         var service = getServiceById(host, serviceId)
 
         return {
-            id: service.id,
-            serviceName: service.serviceName
+            services: [{
+                id: service.id,
+                serviceName: service.serviceName
+            }]
         };
+
     }
 
     return host.services.filter(function filterServices(service) {
         return ~service.serviceName.toLowerCase().indexOf(serviceName.toLowerCase());
     }).map(function mapServices(service) {
         return {
-            id: service.id,
-            serviceName: service.serviceName
+                id: service.id,
+                serviceName: service.serviceName
         };
     });
-
 }
 
 function searchForOperation(hostId, hostName, serviceId, serviceName, operationName) {
-    var host = getHost(hostId, hostName);
+    var host    = getHost(hostId, hostName);
     var service = getService(host, serviceId, serviceName);
 
     return service.operations.filter(function filterOperations(operation) {
         return ~operation.operationName.toLowerCase().indexOf(operationName.toLowerCase());
+    }).map(function mapOperations(operation) {
+        return {
+            operations: [{
+                id: operation.id,
+                operationName: operation.operationName
+            }]
+        };
     });
 }
 

@@ -3,7 +3,7 @@
 
 <mx-service-picker-autocomplete
    mx-clear-picker-btn
-   md-items                  = "item in [1,2,3]"
+   md-items                  = "item in vm.model.search(vm)"
    md-search-text            = "vm.keyword"
    md-match-case-insensitive = "true"
    md-no-cache               = "true"
@@ -13,11 +13,11 @@
    md-min-length             = "0"
    md-floating-label         = "{{ :: vm.label }}"
    md-input-name             = "autocomplete"
-   md-search-text-change     = "vm.model.search(vm)"
    md-delay                  = "300"
    spellcheck                = "false"
    mode                      = "vm.mode"
 >
+   <!-- md&#45;search&#45;text&#45;change     = "vm.model.search(vm)" -->
         <md-item-template>
 
            <section ng-if="vm.mode === 'services' ">
