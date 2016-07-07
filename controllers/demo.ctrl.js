@@ -14,8 +14,8 @@
 
         vm.selected = undefined;
 
-        vm.mode  = 'service';
-        vm.modes = ['service', 'operation'];
+        vm.mode  = 'services';
+        vm.modes = ['services', 'operations'];
 
         vm.onChange = onChange;
 

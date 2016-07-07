@@ -272,10 +272,10 @@ var data = {
 // ================================================================================
 
 function search(options) {
-    var hostId = options.hostId;
+    var hostId    = options.hostId;
     var serviceId = options.serviceId;
-    var keyword = options.keyword.trim();
-    var mode = options.mode;
+    var keyword   = options.keyword.trim();
+    var mode      = options.mode;
 
     var pathSections = keyword.split('.');
 

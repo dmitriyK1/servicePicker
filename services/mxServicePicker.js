@@ -18,8 +18,7 @@
             var hostId    = options.hostId;
             var serviceId = options.serviceId;
 
-            console.log('Searching from a service...');
-            console.log(`Mode: ${mode} | Keyword: ${keyword} | hostId: ${hostId} | serviceId: ${serviceId}`);
+            // console.log(`Mode: ${mode} | Keyword: ${keyword} | hostId: ${hostId} | serviceId: ${serviceId}`);
 
             var result = w.search({
                 keyword : keyword,
@@ -27,6 +26,8 @@
             });
 
             console.log(result);
+
+            return result;
         }
 
     }
