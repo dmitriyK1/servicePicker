@@ -17,7 +17,8 @@
             var result = search({
                 hostId: hostId,
                 keyword: keyword,
-                mode: mode
+                mode: mode,
+                serviceId: serviceId
             });
         }
 

@@ -272,10 +272,10 @@ console.log(result);
 // ================================================================================
 
 function search(options) {
-    var hostId    = options.hostId;
+    var hostId = options.hostId;
     var serviceId = options.serviceId;
-    var keyword   = options.keyword.trim();
-    var mode      = options.mode;
+    var keyword = options.keyword.trim();
+    var mode = options.mode;
 
     var pathSections = keyword.split('.');
 
@@ -291,8 +291,8 @@ function search(options) {
         var operations = getOperations(keyword);
         var results = {};
 
-        if (hosts.length) results.hosts           = hosts;
-        if (services.length) results.services     = services;
+        if (hosts.length) results.hosts = hosts;
+        if (services.length) results.services = services;
         if (operations.length) results.operations = operations;
 
         if (!Object.keys(results).length) return [];
@@ -301,7 +301,7 @@ function search(options) {
     }
 
     if (mode === 'services') {
-        return searchForService(hostId, hostName, serviceName);
+        return searchForService(hostId, hostName, serviceId, serviceName);
     }
 
     if (mode === 'operations') {
@@ -310,8 +310,17 @@ function search(options) {
 
 }
 
-function searchForService(id, hostName, serviceName) {
-    var host = getHost(id, hostName);
+function searchForService(hostId, hostName, serviceId, serviceName) {
+    var host = getHost(hostId, hostName);
+
+    if (serviceId) {
+        var service = getServiceById(host, serviceId)
+
+        return {
+            id: service.id,
+            serviceName: service.serviceName
+        };
+    }
 
     return host.services.filter(function filterServices(service) {
         return ~service.serviceName.toLowerCase().indexOf(serviceName.toLowerCase());
