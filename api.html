@@ -3,17 +3,27 @@
 
 <head>
    <meta charset="UTF-8">
-   <title></title>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
    <style>
       button {
          -webkit-user-select: none;
          user-select: none;
       }
+
+      input[type="text"] {
+         width: 100%;
+      }
+
+      [id="output"] {
+         padding: 1rem;
+         background: green;
+         color: white;
+      }
    </style>
 </head>
 
 <body>
-   <input type="text" placeholder="keyword" id="keyword">
+   <input type="text" placeholder="keyword" id="keyword" value="SilverBack.Device">
    <br><br>
    <input type="text" placeholder="hostId" id="hostId">
    <br><br>
@@ -21,11 +31,11 @@
    <br><br>
    <label for="mode">
       Service mode:
-      <input type="radio" name="mode" value="service" checked>
+      <input type="radio" name="mode" value="services" checked>
    </label>
    <label for="mode">
       Operation mode:
-      <input type="radio" name="mode" value="operation">
+      <input type="radio" name="mode" value="operations">
    </label>
    <br><br>
    <button id="submit">submit</button>

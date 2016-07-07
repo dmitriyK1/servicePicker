@@ -272,16 +272,17 @@ console.log(result);
 // ================================================================================
 
 function search(options) {
-    var hostId    = options.hostId;
-    var serviceId = options.serviceId;
-    var keyword   = options.keyword;
-    var mode      = options.mode;
+    var hostId = +options.hostId;
+    var serviceId = +options.serviceId;
+    var keyword = options.keyword;
+    var mode = options.mode;
 
     var pathSections = keyword.split('.');
 
     var hostName = pathSections[0];
     var serviceName = pathSections[1];
     var operationName = pathSections[2];
+
 
     if (mode === 'services') {
         return searchForService(hostId, hostName, serviceName);
@@ -297,7 +298,7 @@ function searchForService(hostId, hostName, serviceName) {
     var host = getHost(hostId, hostName);
 
     return host.services.filter(function filterServices(service) {
-        return ~service.serviceName.toLowerCase().indexOf(serviceName);
+        return ~service.serviceName.toLowerCase().indexOf(serviceName.toLowerCase());
     }).map(function mapServices(service) {
         return {
             serviceId: service.serviceId,
@@ -308,11 +309,11 @@ function searchForService(hostId, hostName, serviceName) {
 }
 
 function searchForOperation(hostId, hostName, serviceId, serviceName, operationName) {
-    var host    = getHost(hostId, hostName);
+    var host = getHost(hostId, hostName);
     var service = getService(host, serviceId, serviceName);
 
     return service.operations.filter(function filterOperations(operation) {
-        return ~operation.operationName.toLowerCase().indexOf(operationName);
+        return ~operation.operationName.toLowerCase().indexOf(operationName.toLowerCase());
     });
 }
 
@@ -326,9 +327,9 @@ function getHostById(hostId) {
 }
 
 function getServiceById(host, serviceId) {
-        return host.services.filter(function filterServices(service) {
-            return service.serviceId === serviceId;
-        })[0];
+    return host.services.filter(function filterServices(service) {
+        return service.serviceId === serviceId;
+    })[0];
 }
 // ================================================================================
 //                           BY NAME FILTERING
@@ -346,7 +347,7 @@ function getServiceByName(host, serviceName) {
 }
 // ================================================================================
 function getHost(hostId, hostName) {
-    if (hostId != undefined) {
+    if (hostId === 0 || hostId) {
         var host = getHostById(hostId);
     } else {
         var host = getHostByName(hostName);
@@ -356,7 +357,7 @@ function getHost(hostId, hostName) {
 }
 
 function getService(host, serviceId, serviceName) {
-    if (serviceId != undefined) {
+    if (serviceId === 0 || serviceId) {
         var service = getServiceById(host, serviceId);
     } else {
         var service = getServiceByName(host, serviceName);
