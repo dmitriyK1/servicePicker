@@ -325,7 +325,6 @@ function getHostById(hostId) {
     })[0];
 }
 
-// search in all hosts
 function getServiceById(host, serviceId) {
         return host.services.filter(function filterServices(service) {
             return service.serviceId === serviceId;
@@ -366,6 +365,8 @@ function getService(host, serviceId, serviceName) {
     return service;
 }
 
+// ================================================================================
+
 function getHosts(keyword) {
     return data
         .hosts
@@ -395,7 +396,6 @@ function getServices(keyword) {
 }
 
 function getOperations(keyword) {
-
     return data
         .hosts
         .map(function mapHosts(host) {
