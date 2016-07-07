@@ -297,8 +297,6 @@ function search(options) {
 
         if (!Object.keys(results).length) return [];
 
-        alert();
-
         return results;
     }
 
