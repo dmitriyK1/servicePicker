@@ -272,10 +272,10 @@ console.log(result);
 // ================================================================================
 
 function search(options) {
-    var id = +options.id;
-    var id = +options.id;
-    var keyword = options.keyword;
-    var mode = options.mode;
+    var id      = +options.id;
+    var id      = +options.id;
+    var keyword = options.keyword.trim();
+    var mode    = options.mode;
 
     var pathSections = keyword.split('.');
 
@@ -294,6 +294,10 @@ function search(options) {
         if (hosts.length) results.hosts           = hosts;
         if (services.length) results.services     = services;
         if (operations.length) results.operations = operations;
+
+        if (!Object.keys(results).length) return [];
+
+        alert();
 
         return results;
     }
