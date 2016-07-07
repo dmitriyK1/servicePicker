@@ -1,4 +1,6 @@
     $(function() {
+        $('#cases').hide();
+
         $('#toggle-cases').click(function() {
             $('#cases').slideToggle();
         });
