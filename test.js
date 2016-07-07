@@ -283,6 +283,13 @@ function search(options) {
     var serviceName = pathSections[1];
     var operationName = pathSections[2];
 
+    if (!serviceName) {
+        return {
+            hosts: getHosts(keyword),
+            services: getServices(keyword),
+            operations: getOperations(keyword)
+        };
+    }
 
     if (mode === 'services') {
         return searchForService(hostId, hostName, serviceName);
