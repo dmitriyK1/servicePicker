@@ -214,7 +214,7 @@ var data = {
 //                             Search for service /w id
 // ================================================================================
 var result = search({
-    id: 0,
+    hostId: 0,
     mode: 'services',
     keyword: 'SilverBack.dev'
 });
@@ -233,8 +233,8 @@ console.log(result);
 //                             Search for operation /w id & id
 // ================================================================================
 var result = search({
-    id: 777,
-    id: 1,
+    hostId: 777,
+    serviceId: 1,
     mode: 'operations',
     keyword: 'SomeCommonHostName.CommonServiceName.common'
 });
@@ -244,7 +244,7 @@ console.log(result);
 //                             Search for operation /w id
 // ================================================================================
 var result = search({
-    id: 777,
+    hostId: 777,
     mode: 'operations',
     keyword: 'SomeCommonHostName.CommonServiceName.common'
 });
@@ -254,7 +254,7 @@ console.log(result);
 //                             Search for operation /w id
 // ================================================================================
 var result = search({
-    id: 1,
+    serviceId: 1,
     mode: 'operations',
     keyword: 'SomeCommonHostName.CommonServiceName.common'
 });
@@ -272,10 +272,10 @@ console.log(result);
 // ================================================================================
 
 function search(options) {
-    var id      = +options.id;
-    var id      = +options.id;
-    var keyword = options.keyword.trim();
-    var mode    = options.mode;
+    var hostId    = options.hostId;
+    var serviceId = options.serviceId;
+    var keyword   = options.keyword.trim();
+    var mode      = options.mode;
 
     var pathSections = keyword.split('.');
 
@@ -301,11 +301,11 @@ function search(options) {
     }
 
     if (mode === 'services') {
-        return searchForService(id, hostName, serviceName);
+        return searchForService(hostId, hostName, serviceName);
     }
 
     if (mode === 'operations') {
-        return searchForOperation(id, hostName, id, serviceName, operationName);
+        return searchForOperation(hostId, hostName, serviceId, serviceName, operationName);
     }
 
 }
@@ -324,9 +324,9 @@ function searchForService(id, hostName, serviceName) {
 
 }
 
-function searchForOperation(id, hostName, id, serviceName, operationName) {
-    var host = getHost(id, hostName);
-    var service = getService(host, id, serviceName);
+function searchForOperation(hostId, hostName, serviceId, serviceName, operationName) {
+    var host = getHost(hostId, hostName);
+    var service = getService(host, serviceId, serviceName);
 
     return service.operations.filter(function filterOperations(operation) {
         return ~operation.operationName.toLowerCase().indexOf(operationName.toLowerCase());
@@ -338,13 +338,13 @@ function searchForOperation(id, hostName, id, serviceName, operationName) {
 // ================================================================================
 function getHostById(id) {
     return data.hosts.filter(function filterHosts(host) {
-        return host.id === id;
+        return host.id == id;
     })[0];
 }
 
 function getServiceById(host, id) {
     return host.services.filter(function filterServices(service) {
-        return service.id === id;
+        return service.id == id;
     })[0];
 }
 // ================================================================================
@@ -363,7 +363,9 @@ function getServiceByName(host, serviceName) {
 }
 // ================================================================================
 function getHost(id, hostName) {
-    if (id === 0 || id) {
+    debugger;
+
+    if (typeof id !== 'undefined') {
         var host = getHostById(id);
     } else {
         var host = getHostByName(hostName);
@@ -373,7 +375,7 @@ function getHost(id, hostName) {
 }
 
 function getService(host, id, serviceName) {
-    if (id === 0 || id) {
+    if (typeof id !== 'undefined') {
         var service = getServiceById(host, id);
     } else {
         var service = getServiceByName(host, serviceName);
