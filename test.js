@@ -20,26 +20,26 @@ var data = {
                 "serviceId": 0,
                 "serviceName": "Device",
                 "operations": [{
-                    "operationId": 0,
+                    "id": 0,
                     "operationName": "DeviceInfo"
                 }, {
-                    "operationId": 1,
+                    "id": 1,
                     "operationName": "DeviceRestart"
                 }, {
-                    "operationId": 2,
+                    "id": 2,
                     "operationName": "DeviceUpdate"
                 }]
             }, {
                 "serviceId": 1,
                 "serviceName": "ApplicationManagement",
                 "operations": [{
-                    "operationId": 3,
+                    "id": 3,
                     "operationName": "Update"
                 }, {
-                    "operationId": 4,
+                    "id": 4,
                     "operationName": "Refresh"
                 }, {
-                    "operationId": 5,
+                    "id": 5,
                     "operationName": "Reload"
                 }]
             }]
@@ -52,26 +52,26 @@ var data = {
                 "serviceId": 2,
                 "serviceName": "CoreMessaging",
                 "operations": [{
-                    "operationId": 6,
+                    "id": 6,
                     "operationName": "Create"
                 }, {
-                    "operationId": 7,
+                    "id": 7,
                     "operationName": "Read"
                 }, {
-                    "operationId": 8,
+                    "id": 8,
                     "operationName": "Delete"
                 }]
             }, {
                 "serviceId": 3,
                 "serviceName": "History",
                 "operations": [{
-                    "operationId": 9,
+                    "id": 9,
                     "operationName": "Options"
                 }, {
-                    "operationId": 10,
+                    "id": 10,
                     "operationName": "Get"
                 }, {
-                    "operationId": 11,
+                    "id": 11,
                     "operationName": "Head"
                 }]
             }]
@@ -84,27 +84,27 @@ var data = {
                 "serviceId": 4,
                 "serviceName": "Queue",
                 "operations": [{
-                    "operationId": 12,
+                    "id": 12,
                     "operationName": "Trace"
                 }, {
-                    "operationId": 13,
+                    "id": 13,
                     "operationName": "Put"
                 }, {
-                    "operationId": 14,
+                    "id": 14,
                     "operationName": "Connect"
                 }]
             }, {
                 "serviceId": 5,
                 "serviceName": "Network",
                 "operations": [{
-                    "operationId": 15,
+                    "id": 15,
                     "operationName": "Fetch"
                 }, {
-                    "operationId": 16,
+                    "id": 16,
                     "operationName": "Pull"
 
                 }, {
-                    "operationId": 17,
+                    "id": 17,
                     "operationName": "Push"
                 }]
             }]
@@ -117,27 +117,27 @@ var data = {
                 "serviceId": 6,
                 "serviceName": "Device Install Service",
                 "operations": [{
-                    "operationId": 18,
+                    "id": 18,
                     "operationName": "Fetch"
                 }, {
-                    "operationId": 19,
+                    "id": 19,
                     "operationName": "Pull"
 
                 }, {
-                    "operationId": 20,
+                    "id": 20,
                     "operationName": "Push"
                 }]
             }, {
                 "serviceId": 7,
                 "serviceName": "Enterprise App Management Service",
                 "operations": [{
-                    "operationId": 21,
+                    "id": 21,
                     "operationName": "DeviceInfo"
                 }, {
-                    "operationId": 22,
+                    "id": 22,
                     "operationName": "DeviceRestart"
                 }, {
-                    "operationId": 23,
+                    "id": 23,
                     "operationName": "DeviceUpdate"
                 }]
             }]
@@ -150,26 +150,26 @@ var data = {
                 "serviceId": 8,
                 "serviceName": "Function Discovery Provider Host",
                 "operations": [{
-                    "operationId": 3,
+                    "id": 3,
                     "operationName": "Update"
                 }, {
-                    "operationId": 4,
+                    "id": 4,
                     "operationName": "Refresh"
                 }, {
-                    "operationId": 5,
+                    "id": 5,
                     "operationName": "Reload"
                 }]
             }, {
                 "serviceId": 9,
                 "serviceName": "Network Connections",
                 "operations": [{
-                    "operationId": 9,
+                    "id": 9,
                     "operationName": "Options"
                 }, {
-                    "operationId": 10,
+                    "id": 10,
                     "operationName": "Get"
                 }, {
-                    "operationId": 11,
+                    "id": 11,
                     "operationName": "Head"
                 }]
             }]
@@ -182,26 +182,26 @@ var data = {
                 "serviceId": 0,
                 "serviceName": "Device",
                 "operations": [{
-                    "operationId": 0,
+                    "id": 0,
                     "operationName": "DeviceInfo"
                 }, {
-                    "operationId": 1,
+                    "id": 1,
                     "operationName": "DeviceRestart"
                 }, {
-                    "operationId": 2,
+                    "id": 2,
                     "operationName": "DeviceUpdate"
                 }]
             }, {
                 "serviceId": 1,
                 "serviceName": "CommonServiceName",
                 "operations": [{
-                    "operationId": 3,
+                    "id": 3,
                     "operationName": "Update"
                 }, {
-                    "operationId": 4,
+                    "id": 4,
                     "operationName": "Refresh"
                 }, {
-                    "operationId": 5,
+                    "id": 5,
                     "operationName": "CommonOperationName"
                 }]
             }]
@@ -315,7 +315,7 @@ function searchForService(hostId, hostName, serviceName) {
         return ~service.serviceName.toLowerCase().indexOf(serviceName.toLowerCase());
     }).map(function mapServices(service) {
         return {
-            serviceId: service.serviceId,
+            id: service.serviceId,
             serviceName: service.serviceName
         };
     });
