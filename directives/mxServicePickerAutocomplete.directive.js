@@ -4,7 +4,7 @@
     angular
         .module('app')
         .directive('mxServicePickerAutocomplete', mxServicePickerAutocomplete)
-        // .directive('mxServicePickerAutocomplete', mxServicePickerAutocompletePatch)
+        .directive('mxServicePickerAutocomplete', mxServicePickerAutocompletePatch)
 
 
 function mxServicePickerAutocomplete() {
@@ -206,8 +206,8 @@ function mxServicePickerAutocomplete() {
                 var keyCode = e.keyCode;
                 var maxNesting;
 
-                if (mode === 'service')   maxNesting = 1;
-                if (mode === 'operation') maxNesting = 2;
+                if (mode === 'services')   maxNesting = 1;
+                if (mode === 'operations') maxNesting = 2;
 
                 var inputValue = e.target.value;
 
@@ -232,15 +232,14 @@ function mxServicePickerAutocomplete() {
                     e.preventDefault();
                     return;
                 }
+
                 var count         = (inputValue.match(/\./g) || []).length;
                 var isLastCharDot = inputValue[inputValue.length-1] === '.';
 
-                if (!inputValue.length || count === maxNesting || isLastCharDot) {
+                if (count === maxNesting || isLastCharDot) {
                     e.preventDefault();
                     return;
                 }
-
-                scope.vm.model.search(scope.vm);
 
                 function validateInput(keyCode, inputValue) {
                     return keyCode === $mdConstant.KEY_CODE.SPACE || keyCode === DOT_CHARCODE && !inputValue;
