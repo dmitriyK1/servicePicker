@@ -48,11 +48,15 @@ md-autocomplete.invalid-value input {
 .clear-autocomplete {
     position: absolute;
     top: 10% !important;
-    right: 20px !important;
+    right: 0;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.25s linear;
     z-index: 100;
+}
+
+.clear-autocomplete--offset {
+    right: 20px !important;
 }
 
 md-autocomplete.md-default-theme button.clear-autocomplete:after,
