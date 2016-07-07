@@ -1,12 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <title></title>
 </head>
-<body>
-   <input type="text">
 
+<body>
+   <input type="text" placeholder="keyword" id="keyword">
+   <br><br>
+   <input type="text" placeholder="hostId" id="hostId">
+   <br><br>
+   <input type="text" placeholder="serviceId" id="serviceId">
+   <br><br>
+   <label for="mode">
+      Service mode:
+      <input type="radio" name="mode" value="service" checked>
+   </label>
+   <label for="mode">
+      Operation mode:
+      <input type="radio" name="mode" value="operation">
+   </label>
+   <br><br>
+   <button id="submit">submit</button>
+
+   <div id="output"></div>
+
+   <hr>
+
+   <pre>
+         {
+            "hosts": [{
+                     "id": 0,
+                     "name": "SilverBack",
+                     "services": [{
+                        "id": 0,
+                        "name": "Device",
+                        "operations": [{
+                           "id": 0,
+                           "name": "DeviceInfo"
+                        }, {
+                           "id": 1,
+                           "name": "DeviceRestart"
+                        }, {
+                           "id": 2,
+                           "name": "DeviceUpdate"
+                        }]
+                     }, {
+                        "id": 1,
+                        "name": "ApplicationManagement",
+                        "operations": [{
+                           "id": 3,
+                           "name": "Update"
+                        }, {
+                           "id": 4,
+                           "name": "Refresh"
+                        }, {
+                           "id": 5,
+                           "name": "Reload"
+                        }]
+                     }]
+               },
+
+               {
+                     "id": 1,
+                     "name": "DevEnvironment",
+                     "services": [{
+                        "id": 2,
+                        "name": "CoreMessaging",
+                        "operations": [{
+                           "id": 6,
+                           "name": "Create"
+                        }, {
+                           "id": 7,
+                           "name": "Read"
+                        }, {
+                           "id": 8,
+                           "name": "Delete"
+                        }]
+                     }, {
+                        "id": 3,
+                        "name": "History",
+                        "operations": [{
+                           "id": 9,
+                           "name": "Options"
+                        }, {
+                           "id": 10,
+                           "name": "Get"
+                        }, {
+                           "id": 11,
+                           "name": "Head"
+                        }]
+                     }]
+               },
+
+               {
+                     "id": 2,
+                     "name": "ProductionEnvironment",
+                     "services": [{
+                        "id": 4,
+                        "name": "Queue",
+                        "operations": [{
+                           "id": 12,
+                           "name": "Trace"
+                        }, {
+                           "id": 13,
+                           "name": "Put"
+                        }, {
+                           "id": 14,
+                           "name": "Connect"
+                        }]
+                     }, {
+                        "id": 5,
+                        "name": "Network",
+                        "operations": [{
+                           "id": 15,
+                           "name": "Fetch"
+                        }, {
+                           "id": 16,
+                           "name": "Pull"
+
+                        }, {
+                           "id": 17,
+                           "name": "Push"
+                        }]
+                     }]
+               },
+
+               {
+                     "id": 3,
+                     "name": "TestingEnvironment",
+                     "services": [{
+                        "id": 6,
+                        "name": "Device Install Service",
+                        "operations": [{
+                           "id": 18,
+                           "name": "Fetch"
+                        }, {
+                           "id": 19,
+                           "name": "Pull"
+
+                        }, {
+                           "id": 20,
+                           "name": "Push"
+                        }]
+                     }, {
+                        "id": 7,
+                        "name": "Enterprise App Management Service",
+                        "operations": [{
+                           "id": 21,
+                           "name": "DeviceInfo"
+                        }, {
+                           "id": 22,
+                           "name": "DeviceRestart"
+                        }, {
+                           "id": 23,
+                           "name": "DeviceUpdate"
+                        }]
+                     }]
+               },
+
+               {
+                     "id": 4,
+                     "name": "StagingEnvironment",
+                     "services": [{
+                        "id": 8,
+                        "name": "Function Discovery Provider Host",
+                        "operations": [{
+                           "id": 3,
+                           "name": "Update"
+                        }, {
+                           "id": 4,
+                           "name": "Refresh"
+                        }, {
+                           "id": 5,
+                           "name": "Reload"
+                        }]
+                     }, {
+                        "id": 9,
+                        "name": "Network Connections",
+                        "operations": [{
+                           "id": 9,
+                           "name": "Options"
+                        }, {
+                           "id": 10,
+                           "name": "Get"
+                        }, {
+                           "id": 11,
+                           "name": "Head"
+                        }]
+                     }]
+               },
+
+               {
+                     "id": 777,
+                     "name": "SomeCommonHostName",
+                     "services": [{
+                        "id": 0,
+                        "name": "Device",
+                        "operations": [{
+                           "id": 0,
+                           "name": "DeviceInfo"
+                        }, {
+                           "id": 1,
+                           "name": "DeviceRestart"
+                        }, {
+                           "id": 2,
+                           "name": "DeviceUpdate"
+                        }]
+                     }, {
+                        "id": 1,
+                        "name": "CommonServiceName",
+                        "operations": [{
+                           "id": 3,
+                           "name": "Update"
+                        }, {
+                           "id": 4,
+                           "name": "Refresh"
+                        }, {
+                           "id": 5,
+                           "name": "CommonOperationName"
+                        }]
+                     }]
+               },
+
+            ]
+         }
+   </pre>
+
+   <script src="https://code.jquery.com/jquery-3.0.0.slim.js" integrity="sha256-Gp6hp0H+A7axg1tErCucWeOc38irtkVWpUbBZSj8KCg=" crossorigin="anonymous"></script>
    <script src="test.js"></script>
+   <script src="ui.js"></script>
 </body>
 </html>
