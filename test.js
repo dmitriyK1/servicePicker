@@ -213,62 +213,62 @@ var data = {
 // ================================================================================
 //                             Search for service /w id
 // ================================================================================
-var result = search({
-    hostId: 0,
-    mode: 'services',
-    keyword: 'SilverBack.dev'
-});
-
-console.log(result);
+// var result = search({
+//     hostId: 0,
+//     mode: 'services',
+//     keyword: 'SilverBack.dev'
+// });
+//
+// console.log(result);
 // ================================================================================
 //                             Search for service without id
 // ================================================================================
-var result = search({
-    mode: 'services',
-    keyword: 'SilverBack.dev'
-});
-
-console.log(result);
+// var result = search({
+//     mode: 'services',
+//     keyword: 'SilverBack.dev'
+// });
+//
+// console.log(result);
 // ================================================================================
 //                             Search for operation /w id & id
 // ================================================================================
-var result = search({
-    hostId: 777,
-    serviceId: 1,
-    mode: 'operations',
-    keyword: 'SomeCommonHostName.CommonServiceName.common'
-});
-
-console.log(result);
+// var result = search({
+//     hostId: 777,
+//     serviceId: 1,
+//     mode: 'operations',
+//     keyword: 'SomeCommonHostName.CommonServiceName.common'
+// });
+//
+// console.log(result);
+// // ================================================================================
+//                             Search for operation /w id
+// ================================================================================
+// var result = search({
+//     hostId: 777,
+//     mode: 'operations',
+//     keyword: 'SomeCommonHostName.CommonServiceName.common'
+// });
+//
+// console.log(result);
 // ================================================================================
 //                             Search for operation /w id
 // ================================================================================
-var result = search({
-    hostId: 777,
-    mode: 'operations',
-    keyword: 'SomeCommonHostName.CommonServiceName.common'
-});
-
-console.log(result);
-// ================================================================================
-//                             Search for operation /w id
-// ================================================================================
-var result = search({
-    serviceId: 1,
-    mode: 'operations',
-    keyword: 'SomeCommonHostName.CommonServiceName.common'
-});
-
-console.log(result);
+// var result = search({
+//     serviceId: 1,
+//     mode: 'operations',
+//     keyword: 'SomeCommonHostName.CommonServiceName.common'
+// });
+//
+// console.log(result);
 // ================================================================================
 //                             Search for operation without ids
 // ================================================================================
-var result = search({
-    mode: 'operations',
-    keyword: 'SomeCommonHostName.CommonServiceName.common'
-});
-
-console.log(result);
+// var result = search({
+//     mode: 'operations',
+//     keyword: 'SomeCommonHostName.CommonServiceName.common'
+// });
+//
+// console.log(result);
 // ================================================================================
 
 function search(options) {
