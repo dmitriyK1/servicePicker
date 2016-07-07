@@ -1,8 +1,6 @@
     $(function() {
-        $('#cases').hide();
-
         $('#toggle-cases').click(function() {
-            $('#cases').toggle();
+            $(this).parent().toggleClass('active');
         });
     });
 
