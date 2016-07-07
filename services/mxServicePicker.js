@@ -19,6 +19,14 @@
             var serviceId = options.serviceId;
 
             console.log('Searching from a service...');
+            console.log(`Mode: ${mode} | Keyword: ${keyword} | hostId: ${hostId} | serviceId: ${serviceId}`);
+
+            var result = w.search({
+                keyword : keyword,
+                mode    : mode
+            });
+
+            console.log(result);
         }
 
     }
