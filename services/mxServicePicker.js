@@ -5,18 +5,10 @@
         .module('app')
         .service('ServicePicker', ServicePicker);
 
-    function ServicePicker($http) {
+    function ServicePicker() {
         var service = this;
-        var hosts;
 
-        $http
-            .get('hosts.json')
-            .then(function onGet(data) {
-                hosts = data.data;
-        });
-
-        service.search           = search;
-        service.getDisplayString = getDisplayString;
+        service.search = search;
 
         return service;
 
@@ -26,37 +18,7 @@
             var hostId    = options.hostId;
             var serviceId = options.serviceId;
 
-            if (!keyword) return;
-            if (!mode) throw new Error('Mode not specified.');
-
-            if (mode === 'service')   return _searchForService(keyword);
-            if (mode === 'operation') return _searchForOperation(keyword);
-
-            throw new Error('Unknown mode');
-        }
-
-        function getDisplayString(id) { }
-
-        function _searchForService(keyword) {
-            console.log('searching for a service...');
-
-            var serviceSearchResult = {
-                id          : 111,
-                serviceName : 'myServiceName'
-            };
-
-            return serviceSearchResult;
-        }
-
-        function _searchForOperation(keyword) {
-            console.log('searching for an operation...');
-
-            var operationSearchResult = {
-                id            : 222,
-                operationName : 'myOperationName'
-            };
-
-            return operationSearchResult;
+            console.log('Searching from a service...');
         }
 
     }
