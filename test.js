@@ -283,15 +283,17 @@ function search(options) {
     var serviceName = pathSections[1];
     var operationName = pathSections[2];
 
+    if (!keyword) return [];
+
     if (!serviceName) {
         var hosts = getHosts(keyword);
         var services = getServices(keyword);
         var operations = getOperations(keyword);
         var results = {};
 
-        if (hosts.length) results.hosts       = hosts;
-        if (services.length) results.services = services;
-        if (operations.length) results.hosts  = operations;
+        if (hosts.length) results.hosts           = hosts;
+        if (services.length) results.services     = services;
+        if (operations.length) results.operations = operations;
 
         return results;
     }
