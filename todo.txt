@@ -1,4 +1,6 @@
 
+- показывать not found message если пустой результат от сервиса
+
 http://stackoverflow.com/questions/28069696/match-multiple-object-property-values-on-angularjs-typeahead
 
 # убрать mxServicePickerAutocompletePatch
