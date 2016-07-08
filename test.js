@@ -115,7 +115,7 @@ var data = {
             "hostName": "TestingEnvironment",
             "services": [{
                 "id": 6,
-                "serviceName": "Device Install Service",
+                "serviceName": "DeviceInstallService",
                 "operations": [{
                     "id": 18,
                     "operationName": "Fetch"
@@ -129,7 +129,7 @@ var data = {
                 }]
             }, {
                 "id": 7,
-                "serviceName": "Enterprise App Management Service",
+                "serviceName": "EnterpriseAppManagementService",
                 "operations": [{
                     "id": 21,
                     "operationName": "DeviceInfo"
@@ -148,7 +148,7 @@ var data = {
             "hostName": "StagingEnvironment",
             "services": [{
                 "id": 8,
-                "serviceName": "Function Discovery Provider Host",
+                "serviceName": "FunctionDiscoveryProviderHost",
                 "operations": [{
                     "id": 3,
                     "operationName": "Update"
@@ -161,7 +161,7 @@ var data = {
                 }]
             }, {
                 "id": 9,
-                "serviceName": "Network Connections",
+                "serviceName": "NetworkConnections",
                 "operations": [{
                     "id": 9,
                     "operationName": "Options"
