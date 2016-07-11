@@ -5,7 +5,7 @@
         .module('app')
         .controller('DemoCtrl', DemoCtrl)
 
-    function DemoCtrl(ServicePicker) {
+    function DemoCtrl() {
         var vm = this;
 
         vm.isDisabled = false;
@@ -14,12 +14,11 @@
 
         vm.selected = undefined;
 
-        vm.mode  = 'services';
-        vm.modes = ['services', 'operations'];
+        vm.mode      = 'services';
+        vm.modes     = ['services', 'operations'];
+        vm.someModel = 777;
 
         vm.onChange = onChange;
-
-        vm.searchService  = ServicePicker;
 
         function onChange() {
             console.log('search item changed');

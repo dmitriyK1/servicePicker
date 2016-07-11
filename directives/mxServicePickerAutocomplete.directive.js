@@ -146,7 +146,6 @@ function mxServicePickerAutocomplete() {
             ? '<li ng-if="$mdAutocompleteCtrl.notFoundVisible()"\
                          md-autocomplete-parent-scope>' + template + '</li>'
             : '';
-
       }
 
       function getInputElement () {

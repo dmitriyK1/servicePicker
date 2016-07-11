@@ -19,7 +19,7 @@
             if (!attrs.mdFloatingLabel) return;
 
             var template = [
-				'<md-button ng-hide="vm.disabled || vm.readOnly" tabindex="-1" ng-class="vm.browseLookup ? \'clear-autocomplete--offset\' : \'\' " class="md-icon-button clear-autocomplete">',
+                '<md-button ng-hide="vm.disabled || vm.readOnly" tabindex="-1" ng-class="vm.browseLookup ? \'clear-autocomplete--offset\' : \'\' " class="md-icon-button clear-autocomplete">',
                 '<md-icon md-svg-icon="md-close">',
                 '</md-icon>',
                 '</md-button>'
