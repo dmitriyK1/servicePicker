@@ -216,13 +216,6 @@ function mxServicePickerAutocomplete() {
                   return;
                 }
 
-                if (inputValue) {
-                    var pathSections   = inputValue.split('.');
-                    var sectionsNumber = pathSections.length;
-                    console.log(pathSections);
-                    console.log(sectionsNumber);
-                }
-
                 if (keyCode !== DOT_CHARCODE) return;
 
                 console.log('dot pressed');

@@ -18,18 +18,11 @@
                 mode     : '@',
                 // model    : '=ngModel',
                 required : '='
-            },
+            }
 
-            link: link
         };
 
         return ddo;
-
-        function link(scope, element, attrs, ctrl) {
-            element.on('click', function() {
-                console.log('click');
-            });
-        }
 
     }
 

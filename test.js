@@ -279,17 +279,21 @@ function search(options) {
         var keyword   = options.keyword.trim();
     } catch(e) {}
 
-    var mode      = options.mode;
+    var mode  = options.mode;
 
     try {
         var pathSections = keyword.split('.');
     } catch(e) {}
 
+    if (!keyword) {
+        return [{
+            hosts: getHosts()
+        }];
+    }
+
     var hostName      = pathSections[0];
     var serviceName   = pathSections[1];
     var operationName = pathSections[2];
-
-    if (!keyword) return [];
 
     if (!serviceName && !operationName && serviceName !== '' && operationName !== '') {
         var hosts      = getHosts(keyword);
@@ -419,6 +423,10 @@ function getService(host, id, serviceName) {
 // ================================================================================
 
 function getHosts(keyword) {
+    if (!keyword) {
+        keyword = '';
+    }
+
     return data
         .hosts
         .filter(function filterHosts(host) {

@@ -7,14 +7,12 @@
         .controller('MxServicePickerCtrl', MxServicePickerCtrl)
 
     function MxServicePickerCtrl(ServicePicker) {
-        var vm = this;
-        vm.keyword = '';
+        var vm    = this;
         vm.search = ServicePicker.search;
 
         // vm.hosts = ServicePicker.search({
         //     mode: 'hosts'
         // });
-
     }
 
 })(window);

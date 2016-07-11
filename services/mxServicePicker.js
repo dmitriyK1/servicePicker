@@ -6,8 +6,7 @@
         .service('ServicePicker', ServicePicker);
 
     function ServicePicker() {
-        var service = this;
-
+        var service    = this;
         service.search = search;
 
         return service;
