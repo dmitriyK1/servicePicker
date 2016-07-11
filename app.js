@@ -5,7 +5,6 @@
         .module('app', [
             'ngMaterial',
             'ngMessages',
-            'ui.bootstrap',
             'mx.components'
         ])
 
