@@ -73,9 +73,9 @@ function mxServicePickerAutocomplete() {
               ng-class           = "{ \'md-not-found\': $mdAutocompleteCtrl.notFoundVisible() }"\
               role               = "presentation"\
               >\
-            <div class="md-autocomplete-section">Hosts:</div>\
-            <div class="md-autocomplete-section">Services:</div>\
-            <div class="md-autocomplete-section">Operations:</div>\
+            <div class="md-autocomplete-section hidden">Hosts:</div>\
+            <div class="md-autocomplete-section hidden">Services:</div>\
+            <div class="md-autocomplete-section hidden">Operations:</div>\
             <ul class="md-autocomplete-suggestions"\
                 ng-class = "::menuClass"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
