@@ -155,10 +155,10 @@ function mxServicePickerAutocomplete() {
         function link(scope, element, attrs, ctrl) {
             var DOT_CHARCODE = 190;
 
-            scope.$watch('vm.mode', function onModeChange(newValue, oldValue) {
-                console.log('new mode value: ' + newValue);
-                scope.vm.keyword = '';
-            });
+            // scope.$watch('vm.mode', function onModeChange(newValue, oldValue) {
+                // console.log('new mode value: ' + newValue);
+                // scope.vm.keyword = '';
+            // });
 
             element.on('keydown', onKeyDown);
 

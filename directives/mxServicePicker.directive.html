@@ -19,14 +19,6 @@
 >
    <!-- md&#45;search&#45;text&#45;change     = "vm.model.search(vm)" -->
         <md-item-template>
-
-           <section ng-if="vm.mode === 'services' ">
-               <span md-highlight-flags="^i">Service: {{ item }}</span>
-           </section>
-
-           <section ng-if="vm.mode === 'operations' ">
-               <span md-highlight-flags="^i">Operation: {{ item }}</span>
-           </section>
-
+            <span md-highlight-flags="^i">{{ item }}</span>
         </md-item-template>
 </mx-service-picker-autocomplete>

@@ -336,7 +336,8 @@ function searchForService(hostId, hostName, serviceId, serviceName) {
         return {
             services: [{
                 id: service.id,
-                serviceName: service.serviceName,
+                shortName: service.serviceName,
+                name: host.hostName + '.' + service.serviceName,
                 type: 'service'
             }]
         };
@@ -348,7 +349,8 @@ function searchForService(hostId, hostName, serviceId, serviceName) {
     }).map(function mapServices(service) {
         return {
             id: service.id,
-            serviceName: service.serviceName,
+            shortName: service.serviceName,
+            name: host.hostName + '.' + service.serviceName,
             type: 'service'
         };
     });
@@ -363,7 +365,8 @@ function searchForOperation(hostId, hostName, serviceId, serviceName, operationN
     }).map(function mapOperations(operation) {
         return {
             id: operation.id,
-            operationName: operation.operationName,
+            shortName: operation.operationName,
+            name: host.hostName + '.' + service.serviceName + '.' + operation.operationName,
             type: 'operation'
         };
     });
@@ -432,8 +435,8 @@ function getHosts(keyword) {
         }).map(function mapHosts(host) {
             return {
                 id: host.id,
-                hostName: host.hostName,
-                type: 'host'
+                type: 'host',
+                name: host.hostName
             };
         })
 }
@@ -444,14 +447,15 @@ function getServices(keyword) {
         .map(function mapHosts(host) {
             return host.services.filter(function filterServices(service) {
                 return ~service.serviceName.toLowerCase().indexOf(keyword.toLowerCase());
+            }).map(function mapServices(service) {
+                return {
+                    id: service.id,
+                    type: 'service',
+                    shortName: service.serviceName,
+                    name: host.hostName + '.' + service.serviceName
+                };
             })
-        }).concatAll().map(function mapServices(service) {
-            return {
-                id: service.id,
-                serviceName: service.serviceName,
-                type: 'service'
-            };
-        })
+        }).concatAll()
 }
 
 function getOperations(keyword) {
@@ -464,8 +468,9 @@ function getOperations(keyword) {
                 }).map(function mapOperations(operation) {
                     return {
                         id: operation.id,
-                        operationName: operation.operationName,
-                        type: 'operation'
+                        type: 'operation',
+                        name: host.hostName + '.' + service.serviceName + '.' + operation.operationName,
+                        shortName: operation.operationName
                     }
                 })
             }).concatAll()

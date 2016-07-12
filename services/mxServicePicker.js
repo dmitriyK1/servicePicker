@@ -24,6 +24,13 @@
                 mode    : mode
             });
 
+            // TODO: REFACTOR into controller convertor call ( that adds toString method into object )
+            result.forEach(function (value) {
+                value.toString = function() {
+                    return this.name;
+                };
+            });
+
             console.log(result);
 
             return result;
