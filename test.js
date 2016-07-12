@@ -286,9 +286,7 @@ function search(options) {
     } catch (e) {}
 
     if (!keyword) {
-        return [{
-            hosts: getHosts()
-        }];
+        return getHosts();
     }
 
     var hostName = pathSections[0];
@@ -299,11 +297,13 @@ function search(options) {
         var hosts = getHosts(keyword);
         var services = getServices(keyword);
         var operations = getOperations(keyword);
-        var results = [{}];
+        var results = [];
 
-        if (hosts.length) results[0].hosts = hosts;
-        if (services.length) results[0].services = services;
-        if (operations.length) results[0].operations = operations;
+        if (hosts.length) results.push(hosts);
+        if (services.length) results.push(services);
+        if (operations.length) results.push(operations);
+
+        results = results.concatAll();
 
         if (!Object.keys(results).length) return [];
 
@@ -312,26 +312,17 @@ function search(options) {
 
     if (mode === 'services') {
         var services = searchForService(hostId, hostName, serviceId, serviceName);
-        var result = [{
-            services: services
-        }];
-        return result;
+        return services;
     }
 
     if (mode === 'operations') {
         if (!operationName && operationName !== '') {
             var services = searchForService(hostId, hostName, serviceId, serviceName);
-            var result = [{
-                services: services
-            }];
-            return result;
+            return services;
         }
 
         var operations = searchForOperation(hostId, hostName, serviceId, serviceName, operationName);
-        var result = [{
-            operations: operations
-        }];
-        return result;
+        return operations;
     }
 
 }
@@ -345,7 +336,8 @@ function searchForService(hostId, hostName, serviceId, serviceName) {
         return {
             services: [{
                 id: service.id,
-                serviceName: service.serviceName
+                serviceName: service.serviceName,
+                type: 'service'
             }]
         };
 
@@ -356,7 +348,8 @@ function searchForService(hostId, hostName, serviceId, serviceName) {
     }).map(function mapServices(service) {
         return {
             id: service.id,
-            serviceName: service.serviceName
+            serviceName: service.serviceName,
+            type: 'service'
         };
     });
 }
@@ -370,7 +363,8 @@ function searchForOperation(hostId, hostName, serviceId, serviceName, operationN
     }).map(function mapOperations(operation) {
         return {
             id: operation.id,
-            operationName: operation.operationName
+            operationName: operation.operationName,
+            type: 'operation'
         };
     });
 }
@@ -438,7 +432,8 @@ function getHosts(keyword) {
         }).map(function mapHosts(host) {
             return {
                 id: host.id,
-                hostName: host.hostName
+                hostName: host.hostName,
+                type: 'host'
             };
         })
 }
@@ -453,7 +448,8 @@ function getServices(keyword) {
         }).concatAll().map(function mapServices(service) {
             return {
                 id: service.id,
-                serviceName: service.serviceName
+                serviceName: service.serviceName,
+                type: 'service'
             };
         })
 }
@@ -465,6 +461,12 @@ function getOperations(keyword) {
             return host.services.map(function mapServices(service) {
                 return service.operations.filter(function filterOperations(operation) {
                     return ~operation.operationName.toLowerCase().indexOf(keyword.toLowerCase());
+                }).map(function mapOperations(operation) {
+                    return {
+                        id: operation.id,
+                        operationName: operation.operationName,
+                        type: 'operation'
+                    }
                 })
             }).concatAll()
         }).concatAll();
