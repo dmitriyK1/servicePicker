@@ -1,9 +1,5 @@
 
-<div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.matches[0].hosts.length">Hosts:</div>\
-<div class="md-autocomplete-section" ng-if="($mdAutocompleteCtrl.mode === \'services\'|| $mdAutocompleteCtrl.mode === \'operations\') && $mdAutocompleteCtrl.matches[0].services.length ">Services:</div>\
-<div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'operations\' && $mdAutocompleteCtrl.matches[0].operations.length ">Operations:</div>\
-
-
+- increase md-virtual-repeat height
 
 - add readonly mode
 

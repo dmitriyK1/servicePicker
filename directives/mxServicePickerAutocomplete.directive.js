@@ -73,15 +73,15 @@ function mxServicePickerAutocomplete() {
               ng-class           = "{ \'md-not-found\': $mdAutocompleteCtrl.notFoundVisible() }"\
               role               = "presentation"\
               >\
-            <div class="md-autocomplete-section hidden">Hosts:</div>\
-            <div class="md-autocomplete-section hidden">Services:</div>\
-            <div class="md-autocomplete-section hidden">Operations:</div>\
             <ul class="md-autocomplete-suggestions"\
                 ng-class = "::menuClass"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
             >\
+              <div class="md-autocomplete-section hidden" ng-class="{ \'hosts\': $mdAutocompleteCtrl.matches.hosts }">Hosts:</div>\
+              <div class="md-autocomplete-section hidden" ng-class="{ \'services\': $mdAutocompleteCtrl.matches.services }">Services:</div>\
+              <div class="md-autocomplete-section hidden" ng-class="{ \'operations\': $mdAutocompleteCtrl.matches.operations }">Operations:</div>\
               <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches"\
-                  ng-class      = "{ selected: $index === $mdAutocompleteCtrl.index }"\
+                  ng-class      = "{ selected: $index === $mdAutocompleteCtrl.index, host: item.type === \'host\', service: item.type === \'service\', operation: item.type === \'operation\' }"\
                   ng-click      = "$mdAutocompleteCtrl.select($index)"\
                   md-extra-name = "$mdAutocompleteCtrl.itemName"\
               >\

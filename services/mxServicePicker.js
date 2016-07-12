@@ -31,6 +31,22 @@
                 };
             });
 
+            var hosts = result.some(function(value) {
+                return value.type === 'host';
+            });
+
+            var services = result.some(function(value) {
+                return value.type === 'service';
+            });
+
+            var operations = result.some(function(value) {
+                return value.type === 'operation';
+            });
+
+            result.hosts      = hosts;
+            result.services   = services;
+            result.operations = operations;
+
             console.log(result);
 
             return result;

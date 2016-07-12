@@ -80,7 +80,42 @@ md-autocomplete button.clear-autocomplete:after {
 }
 
 .hidden {
-    display: none !important;
+    display: none;
+}
+
+.hosts,
+.services,
+.operations {
+    display: block !important;
+}
+
+.md-autocomplete-suggestions {
+    display: flex;
+    flex-direction: column;
+}
+
+.hosts {
+    order: 0;
+}
+
+.host {
+    order: 1;
+}
+
+.services {
+    order: 2;
+}
+
+.service {
+    order: 3;
+}
+
+.operations {
+    order: 4;
+}
+
+.operation {
+    order: 5;
 }
 
 [md-highlight-text] .highlight {
