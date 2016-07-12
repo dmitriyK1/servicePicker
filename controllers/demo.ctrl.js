@@ -14,7 +14,7 @@
 
         vm.selected = undefined;
 
-        vm.mode      = 'services';
+        vm.mode      = 'operations';
         vm.modes     = ['services', 'operations'];
         vm.someModel = 777;
 
