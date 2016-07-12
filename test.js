@@ -272,18 +272,18 @@ var data = {
 // ================================================================================
 
 function search(options) {
-    var hostId    = options.hostId;
+    var hostId = options.hostId;
     var serviceId = options.serviceId;
 
     try {
-        var keyword   = options.keyword.trim();
-    } catch(e) {}
+        var keyword = options.keyword.trim();
+    } catch (e) {}
 
-    var mode  = options.mode;
+    var mode = options.mode;
 
     try {
         var pathSections = keyword.split('.');
-    } catch(e) {}
+    } catch (e) {}
 
     if (!keyword) {
         return [{
@@ -291,18 +291,18 @@ function search(options) {
         }];
     }
 
-    var hostName      = pathSections[0];
-    var serviceName   = pathSections[1];
+    var hostName = pathSections[0];
+    var serviceName = pathSections[1];
     var operationName = pathSections[2];
 
     if (!serviceName && !operationName && serviceName !== '' && operationName !== '') {
-        var hosts      = getHosts(keyword);
-        var services   = getServices(keyword);
+        var hosts = getHosts(keyword);
+        var services = getServices(keyword);
         var operations = getOperations(keyword);
-        var results    = [{}];
+        var results = [{}];
 
-        if (hosts.length) results[0].hosts           = hosts;
-        if (services.length) results[0].services     = services;
+        if (hosts.length) results[0].hosts = hosts;
+        if (services.length) results[0].services = services;
         if (operations.length) results[0].operations = operations;
 
         if (!Object.keys(results).length) return [];
@@ -312,19 +312,25 @@ function search(options) {
 
     if (mode === 'services') {
         var services = searchForService(hostId, hostName, serviceId, serviceName);
-        var result = [{ services: services }];
+        var result = [{
+            services: services
+        }];
         return result;
     }
 
     if (mode === 'operations') {
         if (!operationName && operationName !== '') {
             var services = searchForService(hostId, hostName, serviceId, serviceName);
-            var result = [{ services: services }];
+            var result = [{
+                services: services
+            }];
             return result;
         }
 
         var operations = searchForOperation(hostId, hostName, serviceId, serviceName, operationName);
-        var result = [{ operations: operations }];
+        var result = [{
+            operations: operations
+        }];
         return result;
     }
 
@@ -349,24 +355,22 @@ function searchForService(hostId, hostName, serviceId, serviceName) {
         return ~service.serviceName.toLowerCase().indexOf(serviceName.toLowerCase());
     }).map(function mapServices(service) {
         return {
-                id: service.id,
-                serviceName: service.serviceName
+            id: service.id,
+            serviceName: service.serviceName
         };
     });
 }
 
 function searchForOperation(hostId, hostName, serviceId, serviceName, operationName) {
-    var host    = getHost(hostId, hostName);
+    var host = getHost(hostId, hostName);
     var service = getService(host, serviceId, serviceName);
 
     return service.operations.filter(function filterOperations(operation) {
         return ~operation.operationName.toLowerCase().indexOf(operationName.toLowerCase());
     }).map(function mapOperations(operation) {
         return {
-            operations: [{
-                id: operation.id,
-                operationName: operation.operationName
-            }]
+            id: operation.id,
+            operationName: operation.operationName
         };
     });
 }

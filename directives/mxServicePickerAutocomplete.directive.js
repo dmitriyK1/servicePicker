@@ -83,7 +83,7 @@ function mxServicePickerAutocomplete() {
                   ng-class = "{ selected: $index === $mdAutocompleteCtrl.index }"\
                   ng-click = "$mdAutocompleteCtrl.select($index)"\
                 >\
-                  Host: {{ value }}</li>\
+                   {{ value.hostName }}</li>\
             </ul>\
             <div class="md-autocomplete-section" ng-if="($mdAutocompleteCtrl.mode === \'services\'|| $mdAutocompleteCtrl.mode === \'operations\') && $mdAutocompleteCtrl.matches[0].services.length ">Services:</div>\
             <ul class="md-autocomplete-suggestions"\
@@ -95,7 +95,7 @@ function mxServicePickerAutocomplete() {
                   ng-class = "{ selected: $index === $mdAutocompleteCtrl.index }"\
                   ng-click = "$mdAutocompleteCtrl.select($index)"\
                 >\
-                  Service: {{ value }}</li>\
+                  {{ value.serviceName }}</li>\
             </ul>\
             <div class="md-autocomplete-section" ng-if="$mdAutocompleteCtrl.mode === \'operations\' && $mdAutocompleteCtrl.matches[0].operations.length ">Operations:</div>\
             <ul class = "md-autocomplete-suggestions"\
@@ -108,7 +108,7 @@ function mxServicePickerAutocomplete() {
                   ng-class = "{ selected: $index === $mdAutocompleteCtrl.index }"\
                   ng-click = "$mdAutocompleteCtrl.select($index)"\
                 >\
-                  Operations: {{ value }}</li>\
+                  {{ value.operationName }}</li>\
             </ul>\
             <ul class="md-autocomplete-suggestions hidden"\
                 ng-class = "::menuClass"\
