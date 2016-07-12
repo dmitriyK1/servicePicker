@@ -436,6 +436,7 @@ function getHosts(keyword) {
             return {
                 id: host.id,
                 type: 'host',
+                shortName: host.hostName,
                 name: host.hostName
             };
         })
