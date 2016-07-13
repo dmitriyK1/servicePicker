@@ -286,7 +286,9 @@ function search(options) {
     } catch (e) {}
 
     if (!keyword) {
-        return getHosts();
+        return {
+            hosts: getHosts()
+        };
     }
 
     var hostName      = pathSections[0];
@@ -297,13 +299,11 @@ function search(options) {
         var hosts      = getHosts(keyword);
         var services   = getServices(keyword);
         var operations = getOperations(keyword);
-        var results    = [];
+        var results    = {};
 
-        if (hosts.length)      results.push(hosts);
-        if (services.length)   results.push(services);
-        if (operations.length) results.push(operations);
-
-        results = results.concatAll();
+        if (hosts.length)      results.hosts      = hosts;
+        if (services.length)   results.services   = services;
+        if (operations.length) results.operations = operations;
 
         if (!Object.keys(results).length) return [];
 
@@ -312,17 +312,23 @@ function search(options) {
 
     if (mode === 'services') {
         var services = searchForService(hostId, hostName, serviceId, serviceName);
-        return services;
+        return {
+            services: services
+        };
     }
 
     if (mode === 'operations') {
         if (!operationName && operationName !== '') {
             var services = searchForService(hostId, hostName, serviceId, serviceName);
-            return services;
+            return {
+                services: services
+            };
         }
 
         var operations = searchForOperation(hostId, hostName, serviceId, serviceName, operationName);
-        return operations;
+        return {
+            operations: operations
+        };
     }
 
 }

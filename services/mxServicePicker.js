@@ -22,25 +22,27 @@
                 mode    : mode
             });
 
-            var hosts = result.some(function(value) {
-                return value.type === 'host';
-            });
+            var matches = [];
 
-            var services = result.some(function(value) {
-                return value.type === 'service';
-            });
+            if (result.hosts) {
+                matches.push.apply(matches, result.hosts);
+                matches.hosts = true;
+            }
 
-            var operations = result.some(function(value) {
-                return value.type === 'operation';
-            });
+            if (result.services) {
+                matches.push.apply(matches, result.services);
+                matches.services = true;
+            }
 
-            result.hosts      = hosts;
-            result.services   = services;
-            result.operations = operations;
+            if (result.operations) {
+                matches.push.apply(matches, result.operations);
+                matches.operations = true;
+            }
 
             console.log(result);
+            // console.log(matches);
 
-            return result;
+            return matches;
         }
 
     }
