@@ -12,7 +12,7 @@
    md-select-on-match        = "true"
    ng-disabled               = "vm.disabled"
    ng-required               = "vm.required"
-   md-min-length             = "0"
+   md-min-length             = "+vm.readOnly || 0"
    md-floating-label         = "{{ :: vm.label }}"
    md-input-name             = "autocomplete"
    md-delay                  = "300"
