@@ -86,6 +86,9 @@
    <!-- ================================================================================  -->
 
     <div ng-controller="DemoCtrl as demoCtrl">
+
+       <h4>Current model: {{ demoCtrl.someModel }}</h4>
+
         <form>
 
            <mx-service-picker
@@ -94,6 +97,7 @@
               ng-disabled = "demoCtrl.isDisabled"
               required    = "demoCtrl.isRequired"
               read-only   = "demoCtrl.isReadonly"
+              ng-model    = "demoCtrl.someModel"
             ></mx-service-picker>
 
             <div layout="column" layout-padding>

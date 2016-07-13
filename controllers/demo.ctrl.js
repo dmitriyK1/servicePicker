@@ -16,7 +16,6 @@
 
         vm.mode      = 'operations';
         vm.modes     = ['services', 'operations'];
-        vm.someModel = 777;
 
         vm.onChange = onChange;
 

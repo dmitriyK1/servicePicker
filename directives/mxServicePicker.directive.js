@@ -13,12 +13,12 @@
             scope: {},
 
             bindToController: {
-                disabled: '=ngDisabled',
-                label: '@',
-                mode: '@',
-                // model    : '=ngModel',
-                required: '=',
-                readOnly: '='
+                disabled : '=ngDisabled',
+                label    : '@',
+                mode     : '@',
+                model    : '=ngModel',
+                required : '=',
+                readOnly : '='
             },
 
             link: link
