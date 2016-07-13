@@ -23,7 +23,7 @@
 >
    <!-- md&#45;search&#45;text&#45;change     = "vm.model.search(vm)" -->
         <md-item-template>
-            <span md-highlight-flags="^i">{{ item.shortName }}</span>
+            <span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.shortName }}</span>
         </md-item-template>
 
         <div

@@ -120,7 +120,6 @@ md-autocomplete button.clear-autocomplete:after {
 
 [md-highlight-text] .highlight {
     color: red !important;
-    font-weight: bold;
 }
 
 md-autocomplete input:focus {
