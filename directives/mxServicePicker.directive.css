@@ -1,50 +1,6 @@
-body {
-    padding-top: 5vw;
-}
-
-form {
-    margin: auto;
-}
-
-form,
-md-autocomplete {
-    width: 900px;
-}
-
-md-autocomplete button md-icon {
-    z-index: 100;
-}
-
-md-autocomplete.invalid-value input {
-    color: red !important;
-}
-
-.autocomplete-search {
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.md-autocomplete-suggestions a {
-    text-decoration: underline;
-}
-
-.test-input {
-    display: block;
-    width: 100%;
-    transition: background 0.3s ease-out;
-    padding: 5px;
-    margin-bottom: 0.5rem;
-    border: 1px gray solid;
-}
-
-.test-input:focus {
-    outline: 0;
-    border: 1px solid blue;
-    background: #EBEBEB;
-}
-
+/* ================================================================================ */
+/*                              clear-autocomplete btn styles                       */
+/* ================================================================================ */
 .clear-autocomplete {
     position: absolute;
     top: 10% !important;
@@ -57,11 +13,6 @@ md-autocomplete.invalid-value input {
 
 .clear-autocomplete--offset {
     right: 20px !important;
-}
-
-md-autocomplete.md-default-theme button.clear-autocomplete:after,
-md-autocomplete button.clear-autocomplete:after {
-    background: none;
 }
 
 .clear-autocomplete.visible {
@@ -79,71 +30,65 @@ md-autocomplete button.clear-autocomplete:after {
     -webkit-user-select: none;
 }
 
-.hidden {
-    display: none;
+mx-service-picker md-autocomplete button md-icon {
+    z-index: 100;
 }
-
-.hosts,
-.services,
-.operations {
-    display: block !important;
-}
-
-.md-autocomplete-suggestions {
-    display: flex;
-    flex-direction: column;
-}
-
-.hosts {
-    order: 0;
-}
-
-.host {
-    order: 1;
-}
-
-.services {
-    order: 2;
-}
-
-.service {
-    order: 3;
-}
-
-.operations {
-    order: 4;
-}
-
-.operation {
-    order: 5;
-}
-
-[md-highlight-text] .highlight {
-    color: red !important;
-}
-
-md-autocomplete input:focus {
-    color: rgba(0, 0, 0, 0.87) !important;
-}
-
-md-autocomplete.error input {
-    color: red !important;
-}
-
-.md-autocomplete-section {
+/* ================================================================================ */
+/*                          mx-picker-service styles                                */
+/* ================================================================================ */
+.mx-autocomplete-section {
     background: #fff;
     font-weight: bold;
     padding: 10px 0 10px 10px;
     cursor: default;
 }
 
-.md-virtual-repeat-container.md-autocomplete-suggestions-container {
-    min-height: 200px;
+.mx-autocomplete-section.hidden {
+    display: none;
 }
 
-mx-service-picker-autocomplete {
-    display: block;
-    position: relative;
+.mx-service-picker-suggestions .md-autocomplete-suggestions {
+    display: flex;
+    flex-direction: column;
+}
+
+.mx-service-picker-suggestions .hosts,
+.mx-service-picker-suggestions .services,
+.mx-service-picker-suggestions .operations {
+    display: block !important;
+}
+
+.mx-service-picker-suggestions .hosts {
+    order: 0;
+}
+
+.mx-service-picker-suggestions .host {
+    order: 1;
+}
+
+.mx-service-picker-suggestions .services {
+    order: 2;
+}
+
+.mx-service-picker-suggestions .service {
+    order: 3;
+}
+
+.mx-service-picker-suggestions .operations {
+    order: 4;
+}
+
+.mx-service-picker-suggestions .operation {
+    order: 5;
+}
+
+ .mx-service-picker-suggestions {
+    min-height: 300px;
+}
+
+mx-service-picker md-autocomplete.md-default-theme button.clear-autocomplete:after,
+mx-service-picker md-autocomplete button.clear-autocomplete:after {
+    background: none;
 }
 
 mx-service-picker .readonly input {
@@ -155,6 +100,10 @@ mx-service-picker .readonly input {
     background-image: -ms-linear-gradient(left, transparent 0%, rgba(0, 0, 0, 0.38) 100%);
 }
 
+mx-service-picker-autocomplete {
+    display: block;
+    position: relative;
+}
 /* ================================================================================ */
 /* popover styles */
 /* ================================================================================ */
@@ -193,4 +142,3 @@ mx-service-picker .readonly input {
     outline: 0;
 }
 /* ================================================================================ */
-

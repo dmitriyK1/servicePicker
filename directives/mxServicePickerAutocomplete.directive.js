@@ -68,7 +68,7 @@
               ng-mouseleave      = "$mdAutocompleteCtrl.listLeave()"\
               ng-mouseup         = "$mdAutocompleteCtrl.mouseUp()"\
               ng-hide            = "$mdAutocompleteCtrl.hidden"\
-              class              = "md-autocomplete-suggestions-container md-whiteframe-z1"\
+              class              = "md-autocomplete-suggestions-container md-whiteframe-z1 mx-service-picker-suggestions"\
               ng-class           = "{ \'md-not-found\': $mdAutocompleteCtrl.notFoundVisible() }"\
               role               = "presentation"\
               >\
@@ -76,9 +76,9 @@
                 ng-class = "::menuClass"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
             >\
-              <div class="md-autocomplete-section hidden" ng-class="{ \'hosts\': $mdAutocompleteCtrl.matches.hosts }">Hosts:</div>\
-              <div class="md-autocomplete-section hidden" ng-class="{ \'services\': $mdAutocompleteCtrl.matches.services }">Services:</div>\
-              <div class="md-autocomplete-section hidden" ng-class="{ \'operations\': $mdAutocompleteCtrl.matches.operations }">Operations:</div>\
+              <div class="mx-autocomplete-section hidden" ng-class="{ \'hosts\': $mdAutocompleteCtrl.matches.hosts }">Hosts:</div>\
+              <div class="mx-autocomplete-section hidden" ng-class="{ \'services\': $mdAutocompleteCtrl.matches.services }">Services:</div>\
+              <div class="mx-autocomplete-section hidden" ng-class="{ \'operations\': $mdAutocompleteCtrl.matches.operations }">Operations:</div>\
               <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches"\
                   ng-class      = "{ selected: $index === $mdAutocompleteCtrl.index, host: item.type === \'host\', service: item.type === \'service\', operation: item.type === \'operation\' }"\
                   ng-click      = "$mdAutocompleteCtrl.select($index)"\
