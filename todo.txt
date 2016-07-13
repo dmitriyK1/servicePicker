@@ -2,4 +2,4 @@
 
 - показывать not found message если пустой результат от сервиса
 
-- store service & host & operation references
+* send hostid / serviceid from currentHost/currentService to backend
