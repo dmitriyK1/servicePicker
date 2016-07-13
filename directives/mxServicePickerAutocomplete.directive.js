@@ -1,57 +1,56 @@
 (function(w) {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('app')
-        .directive('mxServicePickerAutocomplete', mxServicePickerAutocomplete)
-        .directive('mxServicePickerAutocomplete', mxServicePickerAutocompletePatch)
+  angular
+    .module('app')
+    .directive('mxServicePickerAutocomplete', mxServicePickerAutocomplete)
+    .directive('mxServicePickerAutocomplete', mxServicePickerAutocompletePatch);
 
+  function mxServicePickerAutocomplete() {
 
-function mxServicePickerAutocomplete() {
+    return {
+      controller: 'MdAutocompleteCtrl',
+      controllerAs: '$mdAutocompleteCtrl',
+      scope: {
+        inputName: '@mdInputName',
+        inputMinlength: '@mdInputMinlength',
+        inputMaxlength: '@mdInputMaxlength',
+        searchText: '=?mdSearchText',
+        selectedItem: '=?mdSelectedItem',
+        itemsExpr: '@mdItems',
+        itemText: '&mdItemText',
+        placeholder: '@placeholder',
+        noCache: '=?mdNoCache',
+        selectOnMatch: '=?mdSelectOnMatch',
+        itemChange: '&?mdSelectedItemChange',
+        textChange: '&?mdSearchTextChange',
+        minLength: '=?mdMinLength',
+        delay: '=?mdDelay',
+        autofocus: '=?mdAutofocus',
+        floatingLabel: '@?mdFloatingLabel',
+        autoselect: '=?mdAutoselect',
+        menuClass: '@?mdMenuClass',
+        inputId: '@?mdInputId',
+      },
+      bindToController: {
+        mode: '=?'
+      },
+      link: function(scope, element, attrs, controller) {
+        controller.hasNotFound = element.hasNotFoundTemplate;
+        delete element.hasNotFoundTemplate;
+      },
+      template: function(element, attr) {
+        var noItemsTemplate = getNoItemsTemplate(),
+          itemTemplate = getItemTemplate(),
+          leftover = element.html(),
+          tabindex = attr.tabindex;
 
-  return {
-    controller:   'MdAutocompleteCtrl',
-    controllerAs: '$mdAutocompleteCtrl',
-    scope:        {
-      inputName:      '@mdInputName',
-      inputMinlength: '@mdInputMinlength',
-      inputMaxlength: '@mdInputMaxlength',
-      searchText:     '=?mdSearchText',
-      selectedItem:   '=?mdSelectedItem',
-      itemsExpr:      '@mdItems',
-      itemText:       '&mdItemText',
-      placeholder:    '@placeholder',
-      noCache:        '=?mdNoCache',
-      selectOnMatch:  '=?mdSelectOnMatch',
-      itemChange:     '&?mdSelectedItemChange',
-      textChange:     '&?mdSearchTextChange',
-      minLength:      '=?mdMinLength',
-      delay:          '=?mdDelay',
-      autofocus:      '=?mdAutofocus',
-      floatingLabel:  '@?mdFloatingLabel',
-      autoselect:     '=?mdAutoselect',
-      menuClass:      '@?mdMenuClass',
-      inputId:        '@?mdInputId',
-    },
-    bindToController: {
-        mode:         '=?'
-    },
-    link: function(scope, element, attrs, controller) {
-      controller.hasNotFound = element.hasNotFoundTemplate;
-      delete element.hasNotFoundTemplate;
-    },
-    template:     function (element, attr) {
-      var noItemsTemplate = getNoItemsTemplate(),
-          itemTemplate    = getItemTemplate(),
-          leftover        = element.html(),
-          tabindex        = attr.tabindex;
+        // Set our variable for the link function above which runs later
+        element.hasNotFoundTemplate = !!noItemsTemplate;
 
-      // Set our variable for the link function above which runs later
-      element.hasNotFoundTemplate = !!noItemsTemplate;
+        if (!attr.hasOwnProperty('tabindex')) element.attr('tabindex', '-1');
 
-      if (!attr.hasOwnProperty('tabindex')) element.attr('tabindex', '-1');
-
-      return '\
+        return '\
         <md-autocomplete-wrap\
             layout="row"\
             ng-class="{ \'md-whiteframe-z1\': !floatingLabel, \'md-menu-showing\': !$mdAutocompleteCtrl.hidden }"\
@@ -98,24 +97,24 @@ function mxServicePickerAutocomplete() {
           <p ng-repeat="message in $mdAutocompleteCtrl.messages track by $index" ng-if="message">{{message}}</p>\
         </aria-status>';
 
-      function getItemTemplate() {
-        var templateTag = element.find('md-item-template').detach(),
+        function getItemTemplate() {
+          var templateTag = element.find('md-item-template').detach(),
             html = templateTag.length ? templateTag.html() : element.html();
-        if (!templateTag.length) element.empty();
-        return '<md-autocomplete-parent-scope md-autocomplete-replace>' + html + '</md-autocomplete-parent-scope>';
-      }
+          if (!templateTag.length) element.empty();
+          return '<md-autocomplete-parent-scope md-autocomplete-replace>' + html + '</md-autocomplete-parent-scope>';
+        }
 
-      function getNoItemsTemplate() {
-        var templateTag = element.find('md-not-found').detach(),
+        function getNoItemsTemplate() {
+          var templateTag = element.find('md-not-found').detach(),
             template = templateTag.length ? templateTag.html() : '';
-        return template
-            ? '<li ng-if="$mdAutocompleteCtrl.notFoundVisible()"\
-                         md-autocomplete-parent-scope>' + template + '</li>'
-            : '';
-      }
+          return template ?
+            '<li ng-if="$mdAutocompleteCtrl.notFoundVisible()"\
+                         md-autocomplete-parent-scope>' + template + '</li>' :
+            '';
+        }
 
-      function getInputElement () {
-        return '\
+        function getInputElement() {
+          return '\
         <md-input-container flex ng-if="floatingLabel">\
               <label>{{floatingLabel}}</label>\
               <input type="search"\
@@ -140,73 +139,65 @@ function mxServicePickerAutocomplete() {
               <div md-autocomplete-parent-scope md-autocomplete-replace>' + leftover + '</div>\
             </md-input-container>';
 
-      }
-    }
-  };
-}
-
-    function mxServicePickerAutocompletePatch($mdConstant) {
-        var ddo = {
-            link: link
-        };
-
-        return ddo;
-
-        function link(scope, element, attrs, ctrl) {
-            var DOT_CHARCODE = 190;
-
-            // scope.$watch('vm.mode', function onModeChange(newValue, oldValue) {
-                // console.log('new mode value: ' + newValue);
-                // scope.vm.keyword = '';
-            // });
-
-            element.on('keydown', onKeyDown);
-
-            scope.$on('$destroy', function cleanUp() {
-                element.off('keydown');
-            });
-
-            function onKeyDown(e) {
-                var mode    = scope.vm.mode;
-                var keyCode = e.keyCode;
-                var maxNesting;
-
-                if (mode === 'services')   maxNesting = 1;
-                if (mode === 'operations') maxNesting = 2;
-
-                var inputValue = e.target.value;
-
-                if ( validateInput(keyCode, inputValue) ) {
-                  console.log('space pressed or dot pressed');
-                  e.preventDefault();
-                  return;
-                }
-
-                if (keyCode !== DOT_CHARCODE) return;
-
-                console.log('dot pressed');
-
-                if (!inputValue) {
-                    e.preventDefault();
-                    return;
-                }
-
-                var count         = (inputValue.match(/\./g) || []).length;
-                var isLastCharDot = inputValue[inputValue.length-1] === '.';
-
-                if (count === maxNesting || isLastCharDot) {
-                    e.preventDefault();
-                    return;
-                }
-
-                function validateInput(keyCode, inputValue) {
-                    return keyCode === $mdConstant.KEY_CODE.SPACE || keyCode === DOT_CHARCODE && !inputValue;
-                }
-
-            }
-
         }
+      }
+    };
+  }
+
+  function mxServicePickerAutocompletePatch($mdConstant) {
+    var ddo = {
+      link: link
+    };
+
+    return ddo;
+
+    function link(scope, element, attrs, ctrl) {
+      var DOT_CHARCODE = 190;
+
+      element.on('keydown', onKeyDown);
+
+      scope.$on('$destroy', function cleanUp() {
+        element.off('keydown');
+      });
+
+      function onKeyDown(e) {
+        var mode = scope.vm.mode;
+        var keyCode = e.keyCode;
+        var maxNesting;
+
+        if (mode === 'services') maxNesting = 1;
+        if (mode === 'operations') maxNesting = 2;
+
+        var inputValue = e.target.value;
+
+        if (validateInput(keyCode, inputValue)) {
+          e.preventDefault();
+          return;
+        }
+
+        if (keyCode !== DOT_CHARCODE) return;
+
+        if (!inputValue) {
+          e.preventDefault();
+          return;
+        }
+
+        var count = (inputValue.match(/\./g) || []).length;
+        var isLastCharDot = inputValue[inputValue.length - 1] === '.';
+
+        if (count === maxNesting || isLastCharDot) {
+          e.preventDefault();
+          return;
+        }
+
+        function validateInput(keyCode, inputValue) {
+          return keyCode === $mdConstant.KEY_CODE.SPACE || keyCode === DOT_CHARCODE && !inputValue;
+        }
+
+      }
+
     }
+  }
 
 
 })(window);

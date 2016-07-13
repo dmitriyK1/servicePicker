@@ -30,6 +30,10 @@
         function link(scope, element, attrs, ctrl) {
             element.on('keydown', onKeyDown);
 
+            scope.$on('$destroy', function cleanUp() {
+                element.off();
+            });
+
             function onKeyDown(e) {
                 var isCtrlPressed = e.ctrlKey;
                 var isShiftPressed = e.shiftKey;
