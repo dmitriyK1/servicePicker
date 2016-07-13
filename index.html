@@ -103,12 +103,13 @@
     <script src="directives/mxClearPickerBtn.directive.js"></script>
     <script src="directives/mxServicePicker.directive.js"></script>
     <script src="directives/mxServicePickerAutocomplete.directive.js"></script>
+    <script src="directives/mxSglclick.directive.js"></script>
 
    <!-- ================================================================================  -->
 
     <div ng-controller="DemoCtrl as demoCtrl">
 
-       <h4>Current model: {{ demoCtrl.someModel }}</h4>
+       <h4>Current model: {{ demoCtrl.someModel || 'None' }}</h4>
 
         <form>
 

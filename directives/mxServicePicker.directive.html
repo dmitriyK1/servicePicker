@@ -27,14 +27,24 @@
         </md-item-template>
 
         <div
-           class       = "autocomplete-popover"
-           tabindex    = "-1"
-           ng-if       = "vm.model"
-           mx-sglclick = "vm.navigateItem(vm.keyword)"
+           class    = "autocomplete-popover"
+           tabindex = "-1"
+           ng-if    = "vm.model"
         >
-            <span tabindex="-1" ng-click="vm.navigateHost(vm.keyword.split('.')[0])">{{ vm.keyword.split('.')[0] }}</span>
-            <span tabindex="-1" ng-click="vm.navigateService(vm.keyword.split('.')[1])">{{ vm.keyword.split('.')[1] }}</span>
-
+            <span
+               tabindex    = "-1"
+               ng-dblclick = "vm.dblClick($event, 'host')"
+               mx-sglclick = "vm.navigateHost(vm.keyword.split('.')[0])"
+            >
+               {{ vm.keyword.split('.')[0] }}
+            </span>
+            <span
+               tabindex    = "-1"
+               ng-dblclick = "vm.dblClick($event, 'service')"
+               mx-sglclick = "vm.navigateService(vm.keyword.split('.')[1])"
+            >
+               {{ vm.keyword.split('.')[1] }}
+            </span>
         </div>
 
 </mx-service-picker-autocomplete>

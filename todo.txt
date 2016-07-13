@@ -1,12 +1,9 @@
+* fix autocomplete-popover selection
 
 - increase md-virtual-repeat height
 
 - показывать not found message если пустой результат от сервиса
 
-- fix autocomplete-popover selection
-
 - store service & host & operation references
-
-- handle dblclick
 
 - refactor query result structure
