@@ -32,8 +32,8 @@
            ng-if       = "vm.model"
            mx-sglclick = "vm.navigateItem(vm.keyword)"
         >
-            <span ng-click="vm.navigateHost(vm.keyword.split('.')[0])">{{ vm.keyword.split('.')[0] }}</span>
-            <span ng-click="vm.navigateService(vm.keyword.split('.')[1])">{{ vm.keyword.split('.')[1] }}</span>
+            <span tabindex="-1" ng-click="vm.navigateHost(vm.keyword.split('.')[0])">{{ vm.keyword.split('.')[0] }}</span>
+            <span tabindex="-1" ng-click="vm.navigateService(vm.keyword.split('.')[1])">{{ vm.keyword.split('.')[1] }}</span>
 
         </div>
 

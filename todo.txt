@@ -3,4 +3,8 @@
 
 - показывать not found message если пустой результат от сервиса
 
-- add autocomplete-popover
+- fix autocomplete-popover selection
+
+- store service & host & operation references
+
+- handle dblclick
