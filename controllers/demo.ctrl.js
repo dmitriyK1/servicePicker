@@ -17,10 +17,20 @@
         vm.mode      = 'operations';
         vm.modes     = ['services', 'operations'];
 
-        vm.onChange = onChange;
+        vm.onChange          = onChange;
+        vm.onNavigateHost    = onNavigateHost;
+        vm.onNavigateService = onNavigateService;
 
         function onChange() {
             console.log('search item changed');
+        }
+
+        function onNavigateHost(host) {
+            alert('navigate host: ' + host);
+        }
+
+        function onNavigateService(service) {
+            alert('navigate service: ' + service);
         }
 
     }

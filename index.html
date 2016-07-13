@@ -18,6 +18,10 @@
           margin-bottom: -1rem;
        }
 
+       h4 {
+          padding-left: 1rem;
+       }
+
        md-checkbox {
           width: 25%;
        }
@@ -92,12 +96,14 @@
         <form>
 
            <mx-service-picker
-              label       = "Service picker"
-              mode        = "{{ demoCtrl.mode }}"
-              ng-disabled = "demoCtrl.isDisabled"
-              required    = "demoCtrl.isRequired"
-              read-only   = "demoCtrl.isReadonly"
-              ng-model    = "demoCtrl.someModel"
+              label            = "Service picker"
+              mode             = "{{ demoCtrl.mode }}"
+              ng-disabled      = "demoCtrl.isDisabled"
+              required         = "demoCtrl.isRequired"
+              read-only        = "demoCtrl.isReadonly"
+              ng-model         = "demoCtrl.someModel"
+              navigate-host    = "demoCtrl.onNavigateHost"
+              navigate-service = "demoCtrl.onNavigateService"
             ></mx-service-picker>
 
             <div layout="column" layout-padding>
@@ -119,13 +125,16 @@
             <h1>mx-service-picker directive API:</h1>
 
             <b style="font-size: 1rem;">&lt;mx-service-picker</b>
-                ng-disabled = "demoCtrl.isDisabled"
-                required    = "demoCtrl.isRequired"
-                read-only   = "demoCtrl.isReadonly"
+                ng-disabled      = "demoCtrl.isDisabled"
+                required         = "demoCtrl.isRequired"
+                read-only        = "demoCtrl.isReadonly"
 
-                label       = "Service picker"
+                label            = "Service picker"
 
-                ng-model    = "demoCtrl.someModel"
+                ng-model         = "demoCtrl.someModel"
+
+                navigate-host    = "demoCtrl.onNavigateHost"
+                navigate-service = "demoCtrl.onNavigateService"
             <b style="font-size: 1rem;">&gt;</b>
 
             <h1>Binding settings:</h1>
@@ -134,15 +143,19 @@
          bindToController: {
 
             <b>// Boolean</b>
-                  disabled : "=ngDisabled",
-                  required : "=",
-                  readOnly : "="
+                  disabled          : "=ngDisabled",
+                  required          : "=",
+                  readOnly          : "="
 
             <b>// String</b>
-                  label    : "@",
+                  label             : "@",
+
+            <b>// Function</b>
+                   navigateHost    : "=",
+                   navigateService : "=",
 
             <b>// Object</b>
-                  model    : "=ngModel"
+                  model             : "=ngModel"
 
          }
       </span>

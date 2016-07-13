@@ -155,3 +155,43 @@ mx-service-picker .readonly input {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.38) 33%, transparent 0%);
     background-image: -ms-linear-gradient(left, transparent 0%, rgba(0, 0, 0, 0.38) 100%);
 }
+
+/* ================================================================================ */
+/* popover styles */
+/* ================================================================================ */
+.autocomplete-popover {
+    position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    left: 15px;
+    top: 12px;
+    font-size: 14px;
+}
+
+[md-floating-label] .autocomplete-popover {
+    left: 4px;
+    top: 8px;
+    font-size: 16px;
+}
+
+.autocomplete-popover span {
+    transition: 0.3s all ease-in-out;
+    text-decoration: underline;
+    /* color: $mx_palette_Accent_500; */
+    color: #fc8529;
+}
+
+.autocomplete-popover span:hover {
+    color: #0399d7;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    -webkit-text-decoration-style: dashed;
+    cursor: pointer;
+}
+
+.autocomplete-popover span:focus {
+    outline: 0;
+}
+/* ================================================================================ */
+
