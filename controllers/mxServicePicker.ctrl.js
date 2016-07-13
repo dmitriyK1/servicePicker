@@ -7,13 +7,41 @@
         .controller('MxServicePickerCtrl', MxServicePickerCtrl)
 
     function MxServicePickerCtrl(ServicePicker) {
-        var vm      = this;
-        vm.search   = ServicePicker.search;
-        vm.onChange = onChange;
-        vm.dblClick = dblClick;
+        var vm          = this;
+        vm.search       = ServicePicker.search;
+        vm.onItemChange = onItemChange;
+        vm.dblClick     = dblClick;
 
-        function onChange(item) {
+        function onItemChange(item) {
+            // if (!item) {
+            //     vm.currentHost      = null;
+            //     vm.currentService   = null;
+            //     vm.currentOperation = null;
+            //
+            //     return;
+            // }
+
             vm.model = item;
+
+            if (!item) return;
+
+            var type = item.type;
+
+
+            if (type === 'host') {
+                vm.currentHost = item;
+                vm.currentService = null;
+                vm.currentOperation = null;
+            }
+
+            if (type === 'service') {
+                vm.currentService = item;
+                vm.currentOperation = null;
+            }
+
+            if (type === 'operation') {
+                vm.currentOperation = item;
+            }
         }
 
         function dblClick(e, type) {

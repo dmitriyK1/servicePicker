@@ -1,4 +1,7 @@
    <!-- md&#45;items                  = "vm.model.search({ mode: vm.mode, keyword: md&#45;search&#45;text })" -->
+<h5>Current host: {{ vm.currentHost || 'None' }}</h5>
+<h5>Current service: {{ vm.currentService || 'None' }}</h5>
+<h5>Current operation: {{ vm.currentOperation || 'None' }}</h5>
 
 
 <mx-service-picker-autocomplete
@@ -7,7 +10,7 @@
    md-item-text              = "item.name"
    md-search-text            = "vm.keyword"
    md-match-case-insensitive = "true"
-   md-selected-item-change   = "vm.onChange(item)"
+   md-selected-item-change   = "vm.onItemChange(item)"
    md-no-cache               = "true"
    md-select-on-match        = "true"
    ng-disabled               = "vm.disabled || (vm.readOnly && !vm.model)"
