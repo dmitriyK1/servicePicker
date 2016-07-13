@@ -1,7 +1,7 @@
 (function(w) {
 
     angular
-        .module('mx.components')
+        .module('app')
         .directive('mxClearPickerBtn', mxClearPickerBtn);
 
     mxClearPickerBtn.$inject = ['$parse', '$compile'];
