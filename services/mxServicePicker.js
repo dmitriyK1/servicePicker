@@ -17,18 +17,9 @@
             var hostId    = options.hostId;
             var serviceId = options.serviceId;
 
-            // console.log(`Mode: ${mode} | Keyword: ${keyword} | hostId: ${hostId} | serviceId: ${serviceId}`);
-
             var result = w.search({
                 keyword : keyword,
                 mode    : mode
-            });
-
-            // TODO: REFACTOR into controller convertor call ( that adds toString method into object )
-            result.forEach(function (value) {
-                value.toString = function() {
-                    return this.name;
-                };
             });
 
             var hosts = result.some(function(value) {
