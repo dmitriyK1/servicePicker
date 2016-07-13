@@ -12,14 +12,22 @@
         return service;
 
         function search(options) {
-            var mode      = options.mode;
-            var keyword   = options.keyword;
-            var hostId    = options.hostId;
-            var serviceId = options.serviceId;
+            var mode    = options.mode;
+            var keyword = options.keyword;
+
+            if (options.currentHost) {
+                var hostId = options.currentHost.hostId;
+            }
+
+            if (options.currentService) {
+                var serviceId = options.currentService.serviceId;
+            }
 
             var result = w.search({
-                keyword : keyword,
-                mode    : mode
+                keyword   : keyword,
+                mode      : mode,
+                hostId    : hostId,
+                serviceId : serviceId
             });
 
             var matches = [];
