@@ -146,3 +146,13 @@ mx-service-picker-autocomplete {
     display: block;
     position: relative;
 }
+
+mx-service-picker .readonly input {
+    background-position: bottom -1px left 0;
+    background-size: 4px 1px;
+    background-repeat: repeat-x;
+    border-bottom-color: transparent;
+    color: rgba(0, 0, 0, 0.38);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.38) 33%, transparent 0%);
+    background-image: -ms-linear-gradient(left, transparent 0%, rgba(0, 0, 0, 0.38) 100%);
+}
