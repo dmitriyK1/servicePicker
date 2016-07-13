@@ -128,6 +128,7 @@ mx-service-picker-autocomplete {
     text-decoration: underline;
     /* color: $mx_palette_Accent_500; */
     color: #fc8529;
+    display: inline-block;
 }
 
 .autocomplete-popover span:hover {
@@ -141,4 +142,11 @@ mx-service-picker-autocomplete {
 .autocomplete-popover span:focus {
     outline: 0;
 }
+
+mx-service-picker input:focus ~ div .autocomplete-popover span {
+    color: transparent;
+    border-bottom: 1px solid #000;
+    line-height: 0.8;
+}
+
 /* ================================================================================ */

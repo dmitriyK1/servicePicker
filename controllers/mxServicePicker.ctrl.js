@@ -35,6 +35,8 @@
 
                 input.setSelectionRange(hostLen, hostLen + serviceLen);
             }
+
+                input.focus();
         }
     }
 
