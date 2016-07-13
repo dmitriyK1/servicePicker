@@ -8,3 +8,5 @@
 - store service & host & operation references
 
 - handle dblclick
+
+- refactor query result structure
