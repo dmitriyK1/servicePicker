@@ -3,3 +3,5 @@
 - показывать not found message если пустой результат от сервиса
 
 * send hostid / serviceid from currentHost/currentService to backend
+
+- рефакторить какие аргументы отправляются в сервис с каждым запросом (вместо vm как сейчас)
