@@ -10,7 +10,7 @@
    md-selected-item-change   = "vm.onChange(item)"
    md-no-cache               = "true"
    md-select-on-match        = "true"
-   ng-disabled               = "vm.disabled"
+   ng-disabled               = "vm.disabled || (vm.readOnly && !vm.model)"
    ng-required               = "vm.required"
    md-min-length             = "+vm.readOnly || 0"
    md-floating-label         = "{{ :: vm.label }}"
