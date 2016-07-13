@@ -289,18 +289,18 @@ function search(options) {
         return getHosts();
     }
 
-    var hostName = pathSections[0];
-    var serviceName = pathSections[1];
+    var hostName      = pathSections[0];
+    var serviceName   = pathSections[1];
     var operationName = pathSections[2];
 
     if (!serviceName && !operationName && serviceName !== '' && operationName !== '') {
-        var hosts = getHosts(keyword);
-        var services = getServices(keyword);
+        var hosts      = getHosts(keyword);
+        var services   = getServices(keyword);
         var operations = getOperations(keyword);
-        var results = [];
+        var results    = [];
 
-        if (hosts.length) results.push(hosts);
-        if (services.length) results.push(services);
+        if (hosts.length)      results.push(hosts);
+        if (services.length)   results.push(services);
         if (operations.length) results.push(operations);
 
         results = results.concatAll();
