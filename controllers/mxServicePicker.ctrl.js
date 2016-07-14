@@ -13,11 +13,9 @@
         vm.onTextChange = onTextChange;
         vm.dblClick     = dblClick;
 
-        function onTextChange(item, keyword) {
-            console.log('keyword: ', keyword);
+        function onTextChange(keyword) {
 
             if (!keyword) {
-                vm.model            = null;
                 vm.currentHost      = null;
                 vm.currentService   = null;
                 vm.currentOperation = null;
@@ -30,6 +28,10 @@
             var service      = pathSections[1];
             var operation    = pathSections[2];
 
+            if ( host.toLowerCase() !== vm.currentHost.shortName.toLowerCase() ) {
+                vm.currentHost = null;
+            }
+
             if (!service) {
                 vm.currentService = null;
             }
@@ -40,37 +42,23 @@
 
         }
 
-        function onItemChange(item, keyword) {
-            // if (!item) {
-            //     vm.currentHost      = null;
-            //     vm.currentService   = null;
-            //     vm.currentOperation = null;
-            //
-            //     return;
-            // }
-
-
-            vm.model = item;
-
+        function onItemChange(item) {
             if (!item) return;
 
             var type = item.type;
 
-
             if (type === 'host') {
                 vm.currentHost = item;
-                vm.currentService = null;
-                vm.currentOperation = null;
             }
 
             if (type === 'service') {
                 vm.currentService = item;
-                vm.currentOperation = null;
             }
 
             if (type === 'operation') {
                 vm.currentOperation = item;
             }
+
         }
 
         function dblClick(e, type) {

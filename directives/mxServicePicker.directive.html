@@ -3,13 +3,14 @@
 <mx-service-picker-autocomplete
    mx-clear-picker-btn
    md-items                  = "item in vm.search({ mode: vm.mode, keyword: vm.keyword, hostId: vm.currentHost.id, serviceId: vm.currentService.id })"
+   md-selected-item          = "vm.model"
    md-item-text              = "item.name"
    md-search-text            = "vm.keyword"
    md-autoselect             = "true"
    md-select-on-match        = "true"
    md-match-case-insensitive = "true"
    md-selected-item-change   = "vm.onItemChange(item, vm.keyword)"
-   md-search-text-change     = "vm.onTextChange(item, vm.keyword)"
+   md-search-text-change     = "vm.onTextChange(vm.keyword)"
    md-no-cache               = "true"
    ng-disabled               = "vm.disabled || (vm.readOnly && !vm.model)"
    ng-required               = "vm.required"

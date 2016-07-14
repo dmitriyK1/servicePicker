@@ -1,5 +1,3 @@
-* сохранять host / service для отправки запросов по их id
-
 - increase md-virtual-repeat height \ disable list keyboard navigation
 
 - показывать not found message если пустой результат от сервиса
