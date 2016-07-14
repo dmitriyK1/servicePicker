@@ -28,8 +28,10 @@
             var service      = pathSections[1];
             var operation    = pathSections[2];
 
-            if ( host.toLowerCase() !== vm.currentHost.shortName.toLowerCase() ) {
-                vm.currentHost = null;
+            if (vm.currentHost) {
+                if ( host.toLowerCase() !== vm.currentHost.shortName.toLowerCase() ) {
+                    vm.currentHost = null;
+                }
             }
 
             if (!service) {

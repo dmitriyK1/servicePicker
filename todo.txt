@@ -1,3 +1,4 @@
-- increase md-virtual-repeat height \ disable list keyboard navigation
+* показывать not found message если пустой результат от сервиса
 
-- показывать not found message если пустой результат от сервиса
+- increase md-virtual-repeat height \ disable list keyboard navigation   ( ?use css calc? )
+
