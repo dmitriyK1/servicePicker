@@ -1,7 +1,5 @@
-* send hostid / serviceid from currentHost/currentService to backend
+- сохранять host / service для отправки запросов по их id
 
 - increase md-virtual-repeat height \ disable list keyboard navigation
 
 - показывать not found message если пустой результат от сервиса
-
-- рефакторить какие аргументы отправляются в сервис с каждым запросом (вместо vm как сейчас)

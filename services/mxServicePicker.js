@@ -15,12 +15,14 @@
             var mode    = options.mode;
             var keyword = options.keyword;
 
+            console.log('options: ', options);
+
             if (options.currentHost) {
-                var hostId = options.currentHost.hostId;
+                var hostId = options.hostId;
             }
 
             if (options.currentService) {
-                var serviceId = options.currentService.serviceId;
+                var serviceId = options.serviceId;
             }
 
             var result = w.search({

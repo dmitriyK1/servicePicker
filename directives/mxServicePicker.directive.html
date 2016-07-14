@@ -2,7 +2,7 @@
 
 <mx-service-picker-autocomplete
    mx-clear-picker-btn
-   md-items                  = "item in vm.search(vm)"
+   md-items                  = "item in vm.search({ mode: vm.mode, keyword: vm.keyword, hostId: vm.currentHost.id, serviceId: vm.currentService.id })"
    md-item-text              = "item.name"
    md-search-text            = "vm.keyword"
    md-match-case-insensitive = "true"
