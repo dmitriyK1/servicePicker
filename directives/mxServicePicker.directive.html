@@ -1,4 +1,9 @@
    <!-- md&#45;items                  = "vm.model.search({ mode: vm.mode, keyword: md&#45;search&#45;text })" -->
+
+<h5>Query result: {{ $parent.result || 'None' }}</h5>
+
+<h5>Current model (vm.model): {{ vm.model || 'None' }}</h5>
+
 <h5>Current host: {{ vm.currentHost || 'None' }}</h5>
 <h5>Current service: {{ vm.currentService || 'None' }}</h5>
 <h5>Current operation: {{ vm.currentOperation || 'None' }}</h5>

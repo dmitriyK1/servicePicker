@@ -5,7 +5,7 @@
         .module('app')
         .service('ServicePicker', ServicePicker);
 
-    function ServicePicker() {
+    function ServicePicker($rootScope) {
         var service    = this;
         service.search = search;
 
@@ -49,6 +49,7 @@
 
             console.log(result);
             // console.log(matches);
+            $rootScope.result = result;
 
             return matches;
         }
