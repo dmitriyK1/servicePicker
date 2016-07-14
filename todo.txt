@@ -1,4 +1,2 @@
-* показывать not found message если пустой результат от сервиса
-
-- increase md-virtual-repeat height \ disable list keyboard navigation   ( ?use css calc? )
+- md-virtual-repeat - disable list keyboard navigation \ write custom scrolling logic
 
