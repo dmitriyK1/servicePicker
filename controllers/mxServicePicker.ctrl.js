@@ -10,9 +10,37 @@
         var vm          = this;
         vm.search       = ServicePicker.search;
         vm.onItemChange = onItemChange;
+        vm.onTextChange = onTextChange;
         vm.dblClick     = dblClick;
 
-        function onItemChange(item) {
+        function onTextChange(item, keyword) {
+            console.log('keyword: ', keyword);
+
+            if (!keyword) {
+                vm.model            = null;
+                vm.currentHost      = null;
+                vm.currentService   = null;
+                vm.currentOperation = null;
+
+                return;
+            }
+
+            var pathSections = keyword.split('.');
+            var host         = pathSections[0];
+            var service      = pathSections[1];
+            var operation    = pathSections[2];
+
+            if (!service) {
+                vm.currentService = null;
+            }
+
+            if (!operation) {
+                vm.currentOperation = null;
+            }
+
+        }
+
+        function onItemChange(item, keyword) {
             // if (!item) {
             //     vm.currentHost      = null;
             //     vm.currentService   = null;
@@ -20,6 +48,7 @@
             //
             //     return;
             // }
+
 
             vm.model = item;
 

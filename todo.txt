@@ -1,4 +1,4 @@
-- сохранять host / service для отправки запросов по их id
+* сохранять host / service для отправки запросов по их id
 
 - increase md-virtual-repeat height \ disable list keyboard navigation
 

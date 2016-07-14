@@ -15,8 +15,6 @@
             var mode    = options.mode;
             var keyword = options.keyword;
 
-            console.log('options: ', options);
-
             if (options.currentHost) {
                 var hostId = options.hostId;
             }
