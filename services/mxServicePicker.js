@@ -52,6 +52,7 @@
             console.log(result);
             // console.log(matches);
             $rootScope.result = result;
+            $rootScope.query  = options;
 
             return matches;
         }

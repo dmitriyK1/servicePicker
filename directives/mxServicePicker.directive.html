@@ -5,17 +5,17 @@
    md-items                  = "item in vm.search({ mode: vm.mode, keyword: vm.keyword, hostId: vm.currentHost.id, serviceId: vm.currentService.id })"
    md-item-text              = "item.name"
    md-search-text            = "vm.keyword"
+   md-autoselect             = "true"
+   md-select-on-match        = "true"
    md-match-case-insensitive = "true"
    md-selected-item-change   = "vm.onItemChange(item)"
    md-no-cache               = "true"
-   md-select-on-match        = "true"
    ng-disabled               = "vm.disabled || (vm.readOnly && !vm.model)"
    ng-required               = "vm.required"
    md-min-length             = "+vm.readOnly || 0"
    md-floating-label         = "{{ :: vm.label }}"
    md-input-name             = "autocomplete"
    md-delay                  = "300"
-   md-autoselect             = "true"
    spellcheck                = "false"
    mode                      = "vm.mode"
    ng-class                  = "{ readonly: vm.readOnly }"
@@ -48,10 +48,14 @@
 
 </mx-service-picker-autocomplete>
 
+<h5>Query: {{ $parent.query || 'None' }}</h5>
+<hr>
 <h5>Query result: {{ $parent.result || 'None' }}</h5>
-
+<hr>
 <h5>Current model (vm.model): {{ vm.model || 'None' }}</h5>
-
+<hr>
 <h5>Current host: {{ vm.currentHost || 'None' }}</h5>
+<hr>
 <h5>Current service: {{ vm.currentService || 'None' }}</h5>
+<hr>
 <h5>Current operation: {{ vm.currentOperation || 'None' }}</h5>
