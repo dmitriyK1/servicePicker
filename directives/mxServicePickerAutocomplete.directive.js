@@ -58,13 +58,16 @@
           delete element.hasNotFoundTemplate;
 
           controller.customKeydown = function(e) {
-              var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
               var keyCode = e.keyCode;
+              var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
 
-              // prevent selecting title list item on <enter> (hosts/services/operations)
-              if (keyCode === $mdConstant.KEY_CODE.ENTER && selectedElement.classList.contains('title')) {
-                  return;
+              if (selectedElement) {
+                  // prevent selecting title list item on <enter> (hosts/services/operations)
+                  if (keyCode === $mdConstant.KEY_CODE.ENTER && selectedElement.classList.contains('title')) {
+                      return;
+                  }
               }
+
 
               // ================================================================================
               if (keyCode === $mdConstant.KEY_CODE.DOWN_ARROW) {
