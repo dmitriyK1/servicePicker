@@ -85,6 +85,8 @@
               }
 
               if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
+                  e.preventDefault();
+
                   // scroll to top of dropdown if upper edge reached, but do not select a title
                   if (1 === controller.index) {
                       return;
