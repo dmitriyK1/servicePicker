@@ -59,6 +59,12 @@
           var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
           var keyCode = e.keyCode;
 
+          if (!selectedElement) {
+            controller.keydown(e);
+
+            return;
+          }
+
           if ( keyCode === $mdConstant.KEY_CODE.ENTER && selectedElement.classList.contains('title') ) {
             return;
           }

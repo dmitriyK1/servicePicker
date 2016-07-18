@@ -32,11 +32,12 @@
 
             var matches = [];
 
-            if (result.operations) {
-                matches.push({ type: 'title', name: 'operations', shortName: 'operations' });
-                matches.push.apply(matches, result.operations);
-                matches.operations = true;
+            if (result.hosts) {
+                matches.push({ type: 'title', name: 'hosts', shortName: 'hosts' });
+                matches.push.apply(matches, result.hosts);
+                matches.hosts = true;
             }
+
 
             if (result.services) {
                 matches.push({ type: 'title', name: 'services', shortName: 'services' });
@@ -44,10 +45,10 @@
                 matches.services = true;
             }
 
-            if (result.hosts) {
-                matches.push({ type: 'title', name: 'hosts', shortName: 'hosts' });
-                matches.push.apply(matches, result.hosts);
-                matches.hosts = true;
+            if (result.operations) {
+                matches.push({ type: 'title', name: 'operations', shortName: 'operations' });
+                matches.push.apply(matches, result.operations);
+                matches.operations = true;
             }
 
             // console.log(result);

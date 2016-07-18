@@ -49,41 +49,6 @@ mx-service-picker md-autocomplete button md-icon {
     display: none;
 }
 
-.mx-service-picker-suggestions .md-autocomplete-suggestions {
-    display: flex;
-    flex-direction: column;
-}
-
-.mx-service-picker-suggestions .hosts,
-.mx-service-picker-suggestions .services,
-.mx-service-picker-suggestions .operations {
-    display: block !important;
-}
-
-.mx-service-picker-suggestions .hosts {
-    order: 0;
-}
-
-.mx-service-picker-suggestions .host {
-    order: 1;
-}
-
-.mx-service-picker-suggestions .services {
-    order: 2;
-}
-
-.mx-service-picker-suggestions .service {
-    order: 3;
-}
-
-.mx-service-picker-suggestions .operations {
-    order: 4;
-}
-
-.mx-service-picker-suggestions .operation {
-    order: 5;
-}
-
  .mx-service-picker-suggestions {
     min-height: 300px;
 }
