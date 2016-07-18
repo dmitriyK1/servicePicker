@@ -34,20 +34,20 @@
            </div>
 
            <div ng-if="item.type === 'service' ">
-              <span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.shortName }}</span>
+              <span md-highlight-flags="^i" md-highlight-text="vm.keyword.split('.')[1]">{{ item.shortName }}</span>
 
               <div>
                  <b>URL:</b>
-                 <i>http://silverback.de/api/<span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.shortName }}</span></i>
+                 <i>http://silverback.de/api/<span md-highlight-flags="^i" md-highlight-text="vm.keyword.split('.')[1]">{{ item.shortName }}</span></i>
               </div>
 
            </div>
 
            <div ng-if="item.type === 'operation' ">
-               <span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.shortName }}</span>
+               <span md-highlight-flags="^i" md-highlight-text="vm.keyword.split('.')[2]">{{ item.shortName }}</span>
 
                <div>
-                  <b>GET</b> http://silverback.de/api/<span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.name.split('.')[1] }}/{{ item.id }}</span>
+                  <b>GET</b> http://silverback.de/api/<span md-highlight-flags="^i">{{ item.name.split('.')[2] }}/{{ item.id }}</span>
                </div>
            </div>
 
