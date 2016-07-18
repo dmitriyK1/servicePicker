@@ -67,20 +67,6 @@
               }
 
               // ================================================================================
-              // scroll to top of dropdown if upper edge reached, but do not select a title
-              if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
-                  e.preventDefault();
-
-                  if (1 === controller.index) {
-                      return;
-                  }
-
-                  if (2 === controller.index) {
-                      scope.$mdVirtualRepeatContainer.scrollToIndex(0);
-                  }
-
-              }
-              // ================================================================================
               if (keyCode === $mdConstant.KEY_CODE.DOWN_ARROW) {
                   e.preventDefault();
 
@@ -98,6 +84,11 @@
               }
 
               if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
+                  // scroll to top of dropdown if upper edge reached, but do not select a title
+                  if (1 === controller.index) {
+                      return;
+                  }
+
                   if (selectedElement) {
                       var previousListElement = selectedElement.previousElementSibling;
 
@@ -106,7 +97,7 @@
                           // if title selected on arrow up - go to next element above it
                           if (previousListElement.classList.contains('title')) {
                               controller.index -= 2;
-                              scope.$mdVirtualRepeatContainer.scrollToIndex(controller.index - 2);
+                              scope.$mdVirtualRepeatContainer.scrollToIndex(controller.index);
 
                               return;
                           }
@@ -119,6 +110,7 @@
 
                               return;
                           }
+
                       }
                   }
               }
