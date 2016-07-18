@@ -36,20 +36,19 @@ mx-service-picker md-autocomplete button md-icon {
 /* ================================================================================ */
 /*                          mx-picker-service styles                                */
 /* ================================================================================ */
-.title,
-.title.selected,
-.mx-autocomplete-section {
+.mx-service-picker-suggestions .title,
+.mx-service-picker-suggestions .title.selected {
     background: #fff !important;
     font-weight: bold;
     padding: 10px 0 10px 10px !important;
     cursor: default;
 }
 
-.mx-autocomplete-section.hidden {
-    display: none;
+.title .highlight.highlight {
+    color: #000 !important;
 }
 
- .mx-service-picker-suggestions {
+.mx-service-picker-suggestions {
     min-height: 300px;
 }
 

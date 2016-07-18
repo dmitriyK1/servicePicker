@@ -86,28 +86,38 @@
             if (nextListElement) {
               if ( nextListElement.classList.contains('title') ) {
                 controller.index += 1;
+                scope.$mdVirtualRepeatContainer.scrollToIndex( controller.index + 1 );
               }
             }
           }
 
           if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
+
             var previousListElement = selectedElement.previousElementSibling;
 
-            if (previousListElement) {
-              if ( previousListElement.classList.contains('title') ) {
-                controller.index -= 1;
+            if (previousListElement && previousListElement.previousElementSibling) {
 
-                if (2 === controller.index) {
-                  scope.$mdVirtualRepeatContainer.scrollToIndex(0);
-                }
+              // if title selected on arrow up - go to next element above it
+              if (previousListElement.classList.contains('title')) {
+                controller.index -= 2;
+                scope.$mdVirtualRepeatContainer.scrollToIndex( controller.index - 2 );
 
+                return;
               }
+
+              // if scrolled on arrow up to a title shift focus so title section is visible
+              if ( previousListElement.previousElementSibling.classList.contains('title') ) {
+
+                controller.index -= 1;
+                scope.$mdVirtualRepeatContainer.scrollToIndex( controller.index - 1 );
+
+                return;
+              }
+
             }
           }
 
-
             controller.keydown(e);
-
         };
 
       },
