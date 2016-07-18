@@ -12,3 +12,79 @@
 
 X(introduces a number of bugs) md-virtual-repeat - disable list keyboard navigation \ write custom scrolling logic
 
+================================================================================
+
+'mx.SolutionBuilderAgent.ServiceRepositoryService'
+
+return {
+    getServers: getServers,
+    searchService: searchService,
+    getServiceInfo: getServiceInfo,
+    getOperationInfo: getOperationInfo
+   };
+
+
+
+
+public class WebServerInfo
+ {
+  /// <summary>
+  /// Id of the Web Server object
+  /// </summary>
+  public Guid Id { get; set; }
+  /// <summary>
+  /// Name of the Web Server
+  /// </summary>
+  public string Name { get; set; }
+
+  /// <summary>
+  /// Base URL for Web Services
+  /// </summary>
+  public string ServicesBaseUrl { get; set; }
+ }
+[5:55:12 PM] Vadim Zinoviev: /// <summary>
+ /// Represents the result of the Web Services or Operations search
+ /// </summary>
+ public class WebServiceSearchResult: WebServiceOperationSearchResult
+ {
+  /// <summary>
+  /// Name of the Web Server
+  /// </summary>
+  public string ServerName { get; set; }
+
+  /// <summary>
+  /// List of found Operations
+  /// </summary>
+  public WebServiceOperationSearchResult[] Operations { get; set; }
+
+  /// <summary>
+  /// Id of the Service Object
+  /// </summary>
+  public string ServiceId { get; set; }
+
+  /// <summary>
+  /// Indicates the Service matches the search criteria
+  /// </summary>
+  public bool Found { get; set; }
+ }
+
+ /// <summary>
+ /// Represents found Operation
+ /// </summary>
+ public class WebServiceOperationSearchResult
+ {
+  /// <summary>
+  /// Name of the found element (Service or Operation)
+  /// </summary>
+  public string Name { get; set; }
+
+  /// <summary>
+  /// Id of the found element (Service or Operation)
+  /// </summary>
+  public string Id { get; set; }
+
+  /// <summary>
+  /// Route to Service or Operation
+  /// </summary>
+  public string Route { get; set; }
+ }
