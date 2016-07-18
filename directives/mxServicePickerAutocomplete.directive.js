@@ -54,73 +54,77 @@
       },
 
       link: function(scope, element, attrs, controller) {
-        controller.hasNotFound = element.hasNotFoundTemplate;
-        delete element.hasNotFoundTemplate;
+          controller.hasNotFound = element.hasNotFoundTemplate;
+          delete element.hasNotFoundTemplate;
 
-        controller.customKeydown = function(e) {
-          var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
-          var keyCode = e.keyCode;
+          controller.customKeydown = function(e) {
+              var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
+              var keyCode = e.keyCode;
 
-          // prevent selecting title list item on <enter> (hosts/services/operations)
-          if ( keyCode === $mdConstant.KEY_CODE.ENTER && selectedElement.classList.contains('title') ) {
-            return;
-          }
-
-// ================================================================================
-          // scroll to top of dropdown if upper edge reached, but do not select a title
-          if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
-
-            if (1 === controller.index) {
-              e.preventDefault();
-              return;
-            }
-
-            if (2 === controller.index) {
-              e.preventDefault();
-              scope.$mdVirtualRepeatContainer.scrollToIndex(0);
-            }
-
-          }
-// ================================================================================
-          if (keyCode === $mdConstant.KEY_CODE.DOWN_ARROW) {
-            var nextListElement = selectedElement.nextElementSibling;
-
-            if (nextListElement) {
-              if ( nextListElement.classList.contains('title') ) {
-                controller.index += 1;
-                scope.$mdVirtualRepeatContainer.scrollToIndex( controller.index + 1 );
-              }
-            }
-          }
-
-          if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
-
-            var previousListElement = selectedElement.previousElementSibling;
-
-            if (previousListElement && previousListElement.previousElementSibling) {
-
-              // if title selected on arrow up - go to next element above it
-              if (previousListElement.classList.contains('title')) {
-                controller.index -= 2;
-                scope.$mdVirtualRepeatContainer.scrollToIndex( controller.index - 2 );
-
-                return;
+              // prevent selecting title list item on <enter> (hosts/services/operations)
+              if (keyCode === $mdConstant.KEY_CODE.ENTER && selectedElement.classList.contains('title')) {
+                  return;
               }
 
-              // if scrolled on arrow up to a title shift focus so title section is visible
-              if ( previousListElement.previousElementSibling.classList.contains('title') ) {
+              // ================================================================================
+              // scroll to top of dropdown if upper edge reached, but do not select a title
+              if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
+                  e.preventDefault();
 
-                controller.index -= 1;
-                scope.$mdVirtualRepeatContainer.scrollToIndex( controller.index - 1 );
+                  if (1 === controller.index) {
+                      return;
+                  }
 
-                return;
+                  if (2 === controller.index) {
+                      scope.$mdVirtualRepeatContainer.scrollToIndex(0);
+                  }
+
+              }
+              // ================================================================================
+              if (keyCode === $mdConstant.KEY_CODE.DOWN_ARROW) {
+                  e.preventDefault();
+
+                  if (selectedElement) {
+                      var nextListElement = selectedElement.nextElementSibling;
+
+                      if (nextListElement) {
+                          if (nextListElement.classList.contains('title')) {
+                              controller.index += 1;
+                          }
+                      }
+
+                  }
+
               }
 
-            }
-          }
+              if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
+                  if (selectedElement) {
+                      var previousListElement = selectedElement.previousElementSibling;
 
-            controller.keydown(e);
-        };
+                      if (previousListElement && previousListElement.previousElementSibling) {
+
+                          // if title selected on arrow up - go to next element above it
+                          if (previousListElement.classList.contains('title')) {
+                              controller.index -= 2;
+                              scope.$mdVirtualRepeatContainer.scrollToIndex(controller.index - 2);
+
+                              return;
+                          }
+
+                          // if scrolled on arrow up to a title shift focus so title section is visible
+                          if (previousListElement.previousElementSibling.classList.contains('title')) {
+
+                              controller.index -= 1;
+                              scope.$mdVirtualRepeatContainer.scrollToIndex(controller.index - 1);
+
+                              return;
+                          }
+                      }
+                  }
+              }
+
+              controller.keydown(e);
+          };
 
       },
 

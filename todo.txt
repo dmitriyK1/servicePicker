@@ -1,2 +1,7 @@
-- md-virtual-repeat - disable list keyboard navigation \ write custom scrolling logic
+
+- auto-open list after host/service selection
+
+
+
+X(introduces a number of bugs) md-virtual-repeat - disable list keyboard navigation \ write custom scrolling logic
 
