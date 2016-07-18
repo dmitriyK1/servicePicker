@@ -155,11 +155,11 @@
               role               = "presentation"\
               >\
             <ul class="md-autocomplete-suggestions"\
-                ng-class = "::menuClass"\
+                ng-class = "{ services: $mdAutocompleteCtrl.matches.services, operations: $mdAutocompleteCtrl.matches.operations }"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
             >\
               <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches"\
-                  ng-class      = "{ selected: $index === $mdAutocompleteCtrl.index, title: item.type === \'title\' }"\
+                  ng-class      = "{ selected: $index === $mdAutocompleteCtrl.index, title: item.type === \'title\', host: item.type === \'host\', service: item.type === \'service\', operation: item.type === \'operation\' }"\
                   ng-click      = "$mdAutocompleteCtrl.select($index)"\
                   md-extra-name = "$mdAutocompleteCtrl.itemName"\
               >\
