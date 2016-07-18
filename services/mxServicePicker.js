@@ -32,23 +32,27 @@
 
             var matches = [];
 
-            if (result.hosts) {
-                matches.push.apply(matches, result.hosts);
-                matches.hosts = true;
-            }
-
-            if (result.services) {
-                matches.push.apply(matches, result.services);
-                matches.services = true;
-            }
-
             if (result.operations) {
+                matches.push({ type: 'title', name: 'operations', shortName: 'operations' });
                 matches.push.apply(matches, result.operations);
                 matches.operations = true;
             }
 
-            console.log(result);
+            if (result.services) {
+                matches.push({ type: 'title', name: 'services', shortName: 'services' });
+                matches.push.apply(matches, result.services);
+                matches.services = true;
+            }
+
+            if (result.hosts) {
+                matches.push({ type: 'title', name: 'hosts', shortName: 'hosts' });
+                matches.push.apply(matches, result.hosts);
+                matches.hosts = true;
+            }
+
+            // console.log(result);
             // console.log(matches);
+
             $rootScope.result = result;
             $rootScope.query  = options;
 

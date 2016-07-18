@@ -4,41 +4,91 @@
   angular
     .module('app')
     .directive('mxServicePickerAutocomplete', mxServicePickerAutocomplete)
-    .directive('mxServicePickerAutocomplete', mxServicePickerAutocompletePatch);
+    .directive('mxServicePickerAutocomplete', mxServicePickerAutocompletePatch)
+    .directive('addVirtualRepeatContainerCtrl', addVirtualRepeatContainerCtrl)
 
-  function mxServicePickerAutocomplete() {
+  function addVirtualRepeatContainerCtrl() {
+    var ddo = {
+      require: 'mdVirtualRepeatContainer',
+      link: link
+    };
+
+    return ddo;
+
+    function link(scope, element, attrs, ctrl) {
+      scope.$mdVirtualRepeatContainer = ctrl;
+    }
+
+  }
+
+  function mxServicePickerAutocomplete($mdConstant) {
 
     return {
-      controller: 'MdAutocompleteCtrl',
-      controllerAs: '$mdAutocompleteCtrl',
+      controller   : 'MdAutocompleteCtrl',
+      controllerAs : '$mdAutocompleteCtrl',
       scope: {
-        inputName: '@mdInputName',
-        inputMinlength: '@mdInputMinlength',
-        inputMaxlength: '@mdInputMaxlength',
-        searchText: '=?mdSearchText',
-        selectedItem: '=?mdSelectedItem',
-        itemsExpr: '@mdItems',
-        itemText: '&mdItemText',
-        placeholder: '@placeholder',
-        noCache: '=?mdNoCache',
-        selectOnMatch: '=?mdSelectOnMatch',
-        itemChange: '&?mdSelectedItemChange',
-        textChange: '&?mdSearchTextChange',
-        minLength: '=?mdMinLength',
-        delay: '=?mdDelay',
-        autofocus: '=?mdAutofocus',
-        floatingLabel: '@?mdFloatingLabel',
-        autoselect: '=?mdAutoselect',
-        menuClass: '@?mdMenuClass',
-        inputId: '@?mdInputId',
+        inputName      : '@mdInputName',
+        inputMinlength : '@mdInputMinlength',
+        inputMaxlength : '@mdInputMaxlength',
+        searchText     : '=?mdSearchText',
+        selectedItem   : '=?mdSelectedItem',
+        itemsExpr      : '@mdItems',
+        itemText       : '&mdItemText',
+        placeholder    : '@placeholder',
+        noCache        : '=?mdNoCache',
+        selectOnMatch  : '=?mdSelectOnMatch',
+        itemChange     : '&?mdSelectedItemChange',
+        textChange     : '&?mdSearchTextChange',
+        minLength      : '=?mdMinLength',
+        delay          : '=?mdDelay',
+        autofocus      : '=?mdAutofocus',
+        floatingLabel  : '@?mdFloatingLabel',
+        autoselect     : '=?mdAutoselect',
+        menuClass      : '@?mdMenuClass',
+        inputId        : '@?mdInputId',
       },
       bindToController: {
         mode: '=?'
       },
+
       link: function(scope, element, attrs, controller) {
         controller.hasNotFound = element.hasNotFoundTemplate;
         delete element.hasNotFoundTemplate;
+
+        controller.myKeydown = function(e) {
+
+          var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
+
+          if ( $mdConstant.KEY_CODE.ENTER && selectedElement.classList.contains('title') ) {
+            return;
+          }
+
+          if ( $mdConstant.KEY_CODE.UP_ARROW && 1 == controller.index ) {
+            e.preventDefault();
+            console.log(scope.$mdVirtualRepeatContainer);
+            scope.$mdVirtualRepeatContainer.scrollToIndex(0);
+            return;
+          }
+
+          if ($mdConstant.KEY_CODE.DOWN_ARROW) {
+            if ( document.querySelector('.selected').nextElementSibling.classList.contains('title') ) {
+              // controller.index += 1;
+            }
+          }
+
+          if ($mdConstant.KEY_CODE.UP_ARROW) {
+            if ( document.querySelector('.selected').previousElementSibling.classList.contains('title') ) {
+              // controller.index -= 1;
+            }
+          }
+
+
+            controller.keydown(e);
+
+        };
+
       },
+
       template: function(element, attr) {
         var noItemsTemplate = getNoItemsTemplate(),
           itemTemplate = getItemTemplate(),
@@ -62,6 +112,7 @@
               md-mode = "indeterminate"\
               ></md-progress-linear>\
           <md-virtual-repeat-container\
+              add-virtual-repeat-container-ctrl\
               md-auto-shrink\
               md-auto-shrink-min = "1"\
               ng-mouseenter      = "$mdAutocompleteCtrl.listEnter()"\
@@ -76,11 +127,8 @@
                 ng-class = "::menuClass"\
                 id       = "ul-{{$mdAutocompleteCtrl.id}}"\
             >\
-              <div class="mx-autocomplete-section hidden" ng-class="{ \'hosts\': $mdAutocompleteCtrl.matches.hosts }">Hosts:</div>\
-              <div class="mx-autocomplete-section hidden" ng-class="{ \'services\': $mdAutocompleteCtrl.matches.services }">Services:</div>\
-              <div class="mx-autocomplete-section hidden" ng-class="{ \'operations\': $mdAutocompleteCtrl.matches.operations }">Operations:</div>\
               <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches"\
-                  ng-class      = "{ selected: $index === $mdAutocompleteCtrl.index, host: item.type === \'host\', service: item.type === \'service\', operation: item.type === \'operation\' }"\
+                  ng-class      = "{ selected: $index === $mdAutocompleteCtrl.index, title: item.type === \'title\' }"\
                   ng-click      = "$mdAutocompleteCtrl.select($index)"\
                   md-extra-name = "$mdAutocompleteCtrl.itemName"\
               >\
@@ -127,7 +175,7 @@
                   ng-maxlength          = "inputMaxlength"\
                   ng-disabled           = "$mdAutocompleteCtrl.isDisabled"\
                   ng-model              = "$mdAutocompleteCtrl.scope.searchText"\
-                  ng-keydown            = "$mdAutocompleteCtrl.keydown($event)"\
+                  ng-keydown            = "$mdAutocompleteCtrl.myKeydown($event)"\
                   ng-blur               = "$mdAutocompleteCtrl.blur()"\
                   ng-focus              = "$mdAutocompleteCtrl.focus()"\
                   aria-owns             = "ul-{{$mdAutocompleteCtrl.id}}"\
