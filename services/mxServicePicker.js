@@ -33,20 +33,20 @@
             var matches = [];
 
             if (result.hosts) {
-                matches.push({ type: 'title', name: 'hosts', shortName: 'hosts' });
+                matches.push({ type: 'title', name: 'Hosts', shortName: 'Hosts' });
                 matches.push.apply(matches, result.hosts);
                 matches.hosts = true;
             }
 
 
             if (result.services) {
-                matches.push({ type: 'title', name: 'services', shortName: 'services' });
+                matches.push({ type: 'title', name: 'Services', shortName: 'Services' });
                 matches.push.apply(matches, result.services);
                 matches.services = true;
             }
 
             if (result.operations) {
-                matches.push({ type: 'title', name: 'operations', shortName: 'operations' });
+                matches.push({ type: 'title', name: 'Operations', shortName: 'Operations' });
                 matches.push.apply(matches, result.operations);
                 matches.operations = true;
             }

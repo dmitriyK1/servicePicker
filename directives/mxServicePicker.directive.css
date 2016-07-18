@@ -58,10 +58,6 @@ mx-service-picker md-autocomplete button md-icon {
     line-height: 2.5;
 }
 
-.md-autocomplete-suggestions .title {
-    text-transform: capitalize;
-}
-
 mx-service-picker md-autocomplete.md-default-theme button.clear-autocomplete:after,
 mx-service-picker md-autocomplete button.clear-autocomplete:after {
     background: none;

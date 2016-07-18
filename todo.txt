@@ -1,7 +1,9 @@
 
 - auto-open list after host/service selection
 
-- шаблон для operations item сделать ( c routes )
+# в default состоянии hosts не будет
+
+# hosts будут возвращаться отдельным сервисом
 
 
 X(introduces a number of bugs) md-virtual-repeat - disable list keyboard navigation \ write custom scrolling logic
