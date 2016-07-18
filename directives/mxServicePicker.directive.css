@@ -42,6 +42,10 @@ mx-service-picker md-autocomplete button md-icon {
     font-weight: bold;
     padding: 10px 0 10px 10px !important;
     cursor: default;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 .title .highlight.highlight {
