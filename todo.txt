@@ -1,14 +1,10 @@
 
+- make title unselectable on <tab>
 - auto-open list after host/service selection
-
-- починить скролл dropdown'a при клавиатурной навигации
+- show show first element focused on list open ( .selected:fist-child + li  && proper controller.index handling )
 
 # в default состоянии hosts не будет
-
 # hosts будут возвращаться отдельным сервисом
-
-
-X(introduces a number of bugs) md-virtual-repeat - disable list keyboard navigation \ write custom scrolling logic
 
 ================================================================================
 
