@@ -40,7 +40,6 @@ mx-service-picker md-autocomplete button md-icon {
 .mx-service-picker-suggestions .title.selected {
     background: #fff !important;
     font-weight: bold;
-    padding: 10px 0 10px 10px !important;
     cursor: default;
     pointer-events: none;
     -webkit-user-select: none;
@@ -56,10 +55,14 @@ mx-service-picker md-autocomplete button md-icon {
     min-height: 400px;
 }
 
+.md-autocomplete-suggestions li {
+    box-sizing: border-box;
+}
+
 .md-autocomplete-suggestions.services li.service,
 .md-autocomplete-suggestions.operations li.operation {
-    height: 80px !important;
-    line-height: 2.85;
+    line-height: 1.4;
+    padding-top: 5px;
 }
 
 mx-service-picker md-autocomplete.md-default-theme button.clear-autocomplete:after,
