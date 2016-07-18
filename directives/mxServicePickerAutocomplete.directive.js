@@ -21,6 +21,8 @@
 
   }
 
+  mxServicePickerAutocomplete.$inject = ['$mdConstant'];
+
   function mxServicePickerAutocomplete($mdConstant) {
 
     return {
@@ -55,7 +57,7 @@
         controller.hasNotFound = element.hasNotFoundTemplate;
         delete element.hasNotFoundTemplate;
 
-        controller.myKeydown = function(e) {
+        controller.customKeydown = function(e) {
           var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
           var keyCode = e.keyCode;
 
@@ -208,7 +210,7 @@
                   ng-maxlength          = "inputMaxlength"\
                   ng-disabled           = "$mdAutocompleteCtrl.isDisabled"\
                   ng-model              = "$mdAutocompleteCtrl.scope.searchText"\
-                  ng-keydown            = "$mdAutocompleteCtrl.myKeydown($event)"\
+                  ng-keydown            = "$mdAutocompleteCtrl.customKeydown($event)"\
                   ng-blur               = "$mdAutocompleteCtrl.blur()"\
                   ng-focus              = "$mdAutocompleteCtrl.focus()"\
                   aria-owns             = "ul-{{$mdAutocompleteCtrl.id}}"\
