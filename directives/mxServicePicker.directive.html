@@ -24,7 +24,28 @@
 >
    <!-- md&#45;search&#45;text&#45;change     = "vm.model.search(vm)" -->
         <md-item-template>
-            <span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.shortName }}</span>
+           <div ng-if="item.type === 'title' ">
+               <span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.shortName }}</span>
+           </div>
+
+           <div ng-if="item.type === 'service' ">
+              <span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.shortName }}</span>
+
+              <div>
+                 <b>URL:</b>
+                 <i>http://silverback.de/api/<span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.shortName }}</span></i>
+              </div>
+
+           </div>
+
+           <div ng-if="item.type === 'operation' ">
+               <span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.shortName }}</span>
+
+               <div>
+                  GET http://silverback.de/api/<span md-highlight-flags="^i" md-highlight-text="vm.keyword">{{ item.name.split('.')[1] }}/{{ item.id }}</span>
+               </div>
+           </div>
+
         </md-item-template>
         <md-not-found>
             <b>"{{vm.keyword}}"</b> not found.
