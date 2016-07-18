@@ -59,7 +59,7 @@ mx-service-picker md-autocomplete button md-icon {
 .md-autocomplete-suggestions.services li.service,
 .md-autocomplete-suggestions.operations li.operation {
     height: 80px !important;
-    line-height: 2.5;
+    line-height: 2.85;
 }
 
 mx-service-picker md-autocomplete.md-default-theme button.clear-autocomplete:after,
