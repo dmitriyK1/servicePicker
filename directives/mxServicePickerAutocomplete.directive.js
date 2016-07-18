@@ -76,6 +76,7 @@
                       if (nextListElement) {
                           if (nextListElement.classList.contains('title')) {
                               controller.index += 1;
+                              scope.$mdVirtualRepeatContainer.scrollToIndex(controller.index - 1);
                           }
                       }
 
@@ -104,9 +105,8 @@
 
                           // if scrolled on arrow up to a title shift focus so title section is visible
                           if (previousListElement.previousElementSibling.classList.contains('title')) {
-
                               controller.index -= 1;
-                              scope.$mdVirtualRepeatContainer.scrollToIndex(controller.index - 1);
+                              scope.$mdVirtualRepeatContainer.scrollToIndex(controller.index -2);
 
                               return;
                           }
