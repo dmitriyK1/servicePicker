@@ -57,6 +57,13 @@
           controller.hasNotFound = element.hasNotFoundTemplate;
           delete element.hasNotFoundTemplate;
 
+          controller.customClick = function(e, index) {
+              var isTitleClicked = e.target.closest('.title');
+              if (isTitleClicked) return;
+
+              controller.select(index);
+          };
+
           controller.customKeydown = function(e) {
               var keyCode = e.keyCode;
               var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
@@ -165,7 +172,7 @@
             >\
               <li md-virtual-repeat="item in $mdAutocompleteCtrl.matches"\
                   ng-class      = "{ selected: $index === $mdAutocompleteCtrl.index, title: item.type === \'title\', host: item.type === \'host\', service: item.type === \'service\', operation: item.type === \'operation\' }"\
-                  ng-click      = "$mdAutocompleteCtrl.select($index)"\
+                  ng-click      = "$mdAutocompleteCtrl.customClick($event, $index)"\
                   md-extra-name = "$mdAutocompleteCtrl.itemName"\
               >\
                   ' + itemTemplate + '\

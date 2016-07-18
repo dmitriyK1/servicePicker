@@ -1,8 +1,6 @@
 
 - auto-open list after host/service selection
 
-- запретить клик на title
-
 - починить скролл dropdown'a при клавиатурной навигации
 
 # в default состоянии hosts не будет
