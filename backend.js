@@ -296,12 +296,12 @@ function search(options) {
     var operationName = pathSections[2];
 
     if (!serviceName && !operationName && serviceName !== '' && operationName !== '') {
-        var hosts      = getHosts(keyword);
+        // var hosts      = getHosts(keyword);
         var services   = getServices(keyword);
         var operations = getOperations(keyword);
         var results    = {};
 
-        if (hosts.length)      results.hosts      = hosts;
+        // if (hosts.length)      results.hosts      = hosts;
         if (services.length)   results.services   = services;
         if (operations.length) results.operations = operations;
 
