@@ -59,22 +59,27 @@
           var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
           var keyCode = e.keyCode;
 
-          if (!selectedElement) {
-            controller.keydown(e);
-
-            return;
-          }
-
+          // prevent selecting title list item on <enter> (hosts/services/operations)
           if ( keyCode === $mdConstant.KEY_CODE.ENTER && selectedElement.classList.contains('title') ) {
             return;
           }
 
-          if ( keyCode === $mdConstant.KEY_CODE.UP_ARROW && 1 == controller.index ) {
-            e.preventDefault();
-            scope.$mdVirtualRepeatContainer.scrollToIndex(0);
-            return;
-          }
+// ================================================================================
+          // scroll to top of dropdown if upper edge reached, but do not select a title
+          if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
 
+            if (1 === controller.index) {
+              e.preventDefault();
+              return;
+            }
+
+            if (2 === controller.index) {
+              e.preventDefault();
+              scope.$mdVirtualRepeatContainer.scrollToIndex(0);
+            }
+
+          }
+// ================================================================================
           if (keyCode === $mdConstant.KEY_CODE.DOWN_ARROW) {
             var nextListElement = selectedElement.nextElementSibling;
 
