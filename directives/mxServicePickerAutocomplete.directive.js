@@ -56,29 +56,41 @@
         delete element.hasNotFoundTemplate;
 
         controller.myKeydown = function(e) {
-
           var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');
+          var keyCode = e.keyCode;
 
-          if ( $mdConstant.KEY_CODE.ENTER && selectedElement.classList.contains('title') ) {
+          if ( keyCode === $mdConstant.KEY_CODE.ENTER && selectedElement.classList.contains('title') ) {
             return;
           }
 
-          if ( $mdConstant.KEY_CODE.UP_ARROW && 1 == controller.index ) {
+          if ( keyCode === $mdConstant.KEY_CODE.UP_ARROW && 1 == controller.index ) {
             e.preventDefault();
-            console.log(scope.$mdVirtualRepeatContainer);
             scope.$mdVirtualRepeatContainer.scrollToIndex(0);
             return;
           }
 
-          if ($mdConstant.KEY_CODE.DOWN_ARROW) {
-            if ( document.querySelector('.selected').nextElementSibling.classList.contains('title') ) {
-              // controller.index += 1;
+          if (keyCode === $mdConstant.KEY_CODE.DOWN_ARROW) {
+            var nextListElement = selectedElement.nextElementSibling;
+
+            if (nextListElement) {
+              if ( nextListElement.classList.contains('title') ) {
+                controller.index += 1;
+              }
             }
           }
 
-          if ($mdConstant.KEY_CODE.UP_ARROW) {
-            if ( document.querySelector('.selected').previousElementSibling.classList.contains('title') ) {
-              // controller.index -= 1;
+          if (keyCode === $mdConstant.KEY_CODE.UP_ARROW) {
+            var previousListElement = selectedElement.previousElementSibling;
+
+            if (previousListElement) {
+              if ( previousListElement.classList.contains('title') ) {
+                controller.index -= 1;
+
+                if (2 === controller.index) {
+                  scope.$mdVirtualRepeatContainer.scrollToIndex(0);
+                }
+
+              }
             }
           }
 
