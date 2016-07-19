@@ -49,7 +49,22 @@
 
         }
 
-        function onItemChange(item) {
+        function onItemChange(item, keyword, mode) {
+            if (keyword) {
+                var maxNesting = (mode === 'services') ? 1 : 2;
+                var dotsNumber = keyword.split('.').length - 1;
+
+                if (dotsNumber < maxNesting) {
+                    $scope.$applyAsync(function() {
+                        var searchText = $scope.$$childHead.searchText;
+
+                        if (searchText[searchText.length - 1] !== '.') {
+                            $scope.$$childHead.searchText += '.';
+                        }
+                    });
+                }
+            }
+
             if (!item) return;
 
             var type = item.type;
