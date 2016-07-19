@@ -237,7 +237,7 @@
 
     return ddo;
 
-    function link(scope, element, attrs, ctrl) {
+    function link(scope, element, attrs) {
       var DOT_CHARCODE = 190;
 
       element.on('keydown', onKeyDown);
@@ -261,17 +261,10 @@
           return;
         }
 
-        if (keyCode !== DOT_CHARCODE) return;
-
-        if (!inputValue) {
-          e.preventDefault();
-          return;
-        }
-
         var dotsNumber = inputValue.split('.').length - 1;
         var isLastCharDot = inputValue[inputValue.length - 1] === '.';
 
-        if (dotsNumber === maxNesting || isLastCharDot) {
+        if ( (dotsNumber === maxNesting || isLastCharDot ) && keyCode === DOT_CHARCODE ) {
           e.preventDefault();
           return;
         }

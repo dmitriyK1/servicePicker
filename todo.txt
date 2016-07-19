@@ -1,7 +1,10 @@
 
-- prevent entering invalid characters
+
+- hide titles on empty match
 
 - compare directive attributes of picker & servicePicker (auto-selection)
+
+X(possible bugs) prevent entering invalid characters
 
 # в default состоянии hosts не будет
 # hosts будут возвращаться отдельным сервисом
