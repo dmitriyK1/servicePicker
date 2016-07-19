@@ -57,6 +57,8 @@
           controller.hasNotFound = element.hasNotFoundTemplate;
           delete element.hasNotFoundTemplate;
 
+          scope.$parent.$mdAutocompleteCtrl = controller;
+
           controller.customKeydown = function(e) {
               var keyCode = e.keyCode;
               var selectedElement = document.querySelector('md-virtual-repeat-container:not(.ng-hide) .selected');

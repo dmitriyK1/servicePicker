@@ -18,7 +18,7 @@
         function onTextChange(keyword) {
 
             // focus first item in dropdown to prevent focusing section title
-            $scope.$$childHead.$mdAutocompleteCtrl.index = 1;
+            $scope.$mdAutocompleteCtrl.index = 1;
 
             if (!keyword) {
                 vm.currentHost      = null;
