@@ -1,7 +1,5 @@
 
-- make title unselectable on <tab>
 - auto-open list after host/service selection
-- show show first element focused on list open ( .selected:fist-child + li  && proper controller.index handling )
 
 # в default состоянии hosts не будет
 # hosts будут возвращаться отдельным сервисом

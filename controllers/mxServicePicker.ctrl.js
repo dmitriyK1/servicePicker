@@ -6,7 +6,9 @@
         .module('app')
         .controller('MxServicePickerCtrl', MxServicePickerCtrl)
 
-    function MxServicePickerCtrl(ServicePicker) {
+    MxServicePickerCtrl.$inject = ['$scope', 'ServicePicker'];
+
+    function MxServicePickerCtrl($scope, ServicePicker) {
         var vm          = this;
         vm.search       = ServicePicker.search;
         vm.onItemChange = onItemChange;
@@ -14,6 +16,9 @@
         vm.dblClick     = dblClick;
 
         function onTextChange(keyword) {
+
+            // focus first item in dropdown to prevent focusing section title
+            $scope.$$childHead.$mdAutocompleteCtrl.index = 1;
 
             if (!keyword) {
                 vm.currentHost      = null;
