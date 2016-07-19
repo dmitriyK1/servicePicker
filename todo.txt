@@ -1,5 +1,7 @@
 
-- auto-open list after host/service selection
+- prevent entering invalid characters
+
+- compare directive attributes of picker & servicePicker (auto-selection)
 
 # в default состоянии hosts не будет
 # hosts будут возвращаться отдельным сервисом

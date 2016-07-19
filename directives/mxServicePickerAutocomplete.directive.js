@@ -266,10 +266,10 @@
           return;
         }
 
-        var count = (inputValue.match(/\./g) || []).length;
+        var dotsNumber = inputValue.split('.').length - 1;
         var isLastCharDot = inputValue[inputValue.length - 1] === '.';
 
-        if (count === maxNesting || isLastCharDot) {
+        if (dotsNumber === maxNesting || isLastCharDot) {
           e.preventDefault();
           return;
         }
