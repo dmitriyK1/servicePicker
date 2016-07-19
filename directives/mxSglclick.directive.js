@@ -11,7 +11,7 @@
         return {
             restrict: 'A',
             link: function(scope, element, attr) {
-                var fn = $parse(attr['mxSglclick']);
+                var fn = $parse(attr.mxSglclick);
                 var delay = 250;
                 var clicks = 0;
                 var timer = null;
