@@ -230,6 +230,8 @@
     };
   }
 
+  mxServicePickerAutocompletePatch.$inject = ['$mdConstant'];
+
   function mxServicePickerAutocompletePatch($mdConstant) {
     var ddo = {
       link: link

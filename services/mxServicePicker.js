@@ -5,6 +5,8 @@
         .module('app')
         .service('ServicePicker', ServicePicker);
 
+    ServicePicker.$inject = ['$rootScope'];
+
     function ServicePicker($rootScope) {
         var service    = this;
         service.search = search;

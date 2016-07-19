@@ -5,6 +5,8 @@
         .module('app')
         .directive('mxServicePicker', mxServicePicker)
 
+    mxServicePicker.$inject = ['$mdConstant'];
+
     function mxServicePicker($mdConstant) {
         var ddo = {
             restrict: 'E',
