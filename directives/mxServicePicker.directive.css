@@ -47,7 +47,7 @@ mx-service-picker md-autocomplete button md-icon {
     user-select: none;
 }
 
-.title .highlight.highlight {
+.mx-service-picker-suggestions .title .highlight.highlight {
     color: #000 !important;
 }
 
@@ -127,5 +127,3 @@ mx-service-picker input:focus ~ div .autocomplete-popover span {
     border-bottom: 1px solid #000;
     line-height: 0.8;
 }
-
-/* ================================================================================ */
